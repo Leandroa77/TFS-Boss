@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://objects/hook/Hook.gd" type="Script" id=1]
+[ext_resource path="res://objects/hook/sprites/tile294.png" type="Texture" id=2]
+[ext_resource path="res://objects/hook/sprites/tile296.png" type="Texture" id=3]
+[ext_resource path="res://objects/hook/sprites/tile297.png" type="Texture" id=4]
+[ext_resource path="res://objects/hook/sprites/tile298.png" type="Texture" id=5]
+[ext_resource path="res://objects/hook/sprites/tile295.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 30.9077
+
+[node name="Hook" type="Area2D" groups=[
+"hook",
+]]
+position = Vector2( 44, 50 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 1, 1.2, 1.5, 1 )
+scale = Vector2( 2, 2 )
+frames = SubResource( 1 )
+frame = 3
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
+"hook",
+]]
+shape = SubResource( 2 )
+[connection signal="area_entered" from="." to="." method="_on_Hook_area_entered"]

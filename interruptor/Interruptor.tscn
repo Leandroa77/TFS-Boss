@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://interruptor/Interruptor.gd" type="Script" id=1]
+[ext_resource path="res://interruptor/ezgif.com-gif-maker (2).png" type="Texture" id=2]
+[ext_resource path="res://interruptor/ezgif.com-gif-maker (1).png" type="Texture" id=3]
+[ext_resource path="res://Character/Character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interruptor/Switch.gd" type="Script" id=5]
+[ext_resource path="res://objects/platforms/manual/script/PlatformM.gd" type="Script" id=6]
+[ext_resource path="res://objects/platforms/manual/assets/tile142.png" type="Texture" id=7]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16.8476, 23.9386 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 301.907, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16.1803, 4.15556 )
+
+[node name="Interruptor" type="Node2D"]
+position = Vector2( 23.3082, 32.8433 )
+script = ExtResource( 1 )
+
+[node name="Character" parent="." instance=ExtResource( 4 )]
+position = Vector2( 710.999, 298.177 )
+
+[node name="Int" type="Area2D" parent="." groups=[
+"switch",
+]]
+position = Vector2( 219.364, 325.556 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Int"]
+texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="Int"]
+z_index = -1
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Int"]
+position = Vector2( 0.736481, 14.2062 )
+shape = SubResource( 1 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 348.925, 376.632 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="PlatformManual" type="Node" parent="."]
+
+[node name="PlatformM" type="KinematicBody2D" parent="PlatformManual"]
+position = Vector2( 728.225, 367.03 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="PlatformManual/PlatformM"]
+texture = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlatformManual/PlatformM"]
+shape = SubResource( 3 )
+[connection signal="activar_plataforma" from="Int" to="PlatformManual/PlatformM" method="_on_Switch_activar_plataforma"]
+[connection signal="body_entered" from="Int" to="Int" method="_on_Switch_body_entered"]
+[connection signal="desactivar_plataforma" from="Int" to="PlatformManual/PlatformM" method="_on_Int_desactivar_plataforma"]

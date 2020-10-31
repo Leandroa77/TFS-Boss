@@ -1,0 +1,175 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://obstacles/guns/laser gun/LaserGun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/platforms/automatic/Platform.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/hook/Hook.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=6]
+[ext_resource path="res://obstacles/spikes/bigger spikes/bigger spike trap/EvenBiggerSpikeTrap.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Level_3/GameManager.gd" type="Script" id=8]
+[ext_resource path="res://Levels/Level_3/Level3.gd" type="Script" id=9]
+[ext_resource path="res://obstacles/spikes/bigger spikes/bigger spike trap/BiggerSpike.tscn" type="PackedScene" id=10]
+[ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Levels/ParallaxBackground.tscn" type="PackedScene" id=12]
+
+[node name="Level3" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="Character" parent="." instance=ExtResource( 2 )]
+position = Vector2( -2109.32, 114.968 )
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1920, 136 )
+
+[node name="Platform2" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1712, 136 )
+
+[node name="Platform3" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1288, 136 )
+
+[node name="Platform5" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1320, 136 )
+
+[node name="Platform4" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1144, 136 )
+
+[node name="Platform6" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -1176, 136 )
+
+[node name="Platform7" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -688, 72 )
+move_direction = Vector2( 2, 0 )
+
+[node name="Platform8" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -656, 72 )
+move_direction = Vector2( 2, 0 )
+
+[node name="Platform9" parent="Platforms" instance=ExtResource( 4 )]
+position = Vector2( -624, 72 )
+move_direction = Vector2( 2, 0 )
+
+[node name="TrapSpikes" type="Node2D" parent="."]
+
+[node name="EvenBiggerSpikeTrap" parent="TrapSpikes" instance=ExtResource( 7 )]
+position = Vector2( -2320, 352 )
+
+[node name="EvenBiggerSpikeTrap2" parent="TrapSpikes" instance=ExtResource( 7 )]
+position = Vector2( -1520, 352 )
+
+[node name="EvenBiggerSpikeTrap3" parent="TrapSpikes" instance=ExtResource( 7 )]
+position = Vector2( -720, 352 )
+
+[node name="BiggerSpike" parent="TrapSpikes" instance=ExtResource( 10 )]
+position = Vector2( 72, 352 )
+
+[node name="SpikeStatic" parent="TrapSpikes" instance=ExtResource( 11 )]
+position = Vector2( 232, 352 )
+
+[node name="SpikeStatic2" parent="TrapSpikes" instance=ExtResource( 11 )]
+position = Vector2( 264, 352 )
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="BiggerSpike" parent="Spikes" instance=ExtResource( 10 )]
+position = Vector2( -1248, 184 )
+rotation = -1.5708
+
+[node name="BiggerSpike2" parent="Spikes" instance=ExtResource( 10 )]
+position = Vector2( -1248, 344 )
+rotation = -1.5708
+
+[node name="BiggerSpike3" parent="Spikes" instance=ExtResource( 10 )]
+position = Vector2( -256, 184 )
+rotation = -1.5708
+
+[node name="BiggerSpike4" parent="Spikes" instance=ExtResource( 10 )]
+position = Vector2( -256, 344 )
+rotation = -1.5708
+
+[node name="BiggerSpike6" parent="Spikes" instance=ExtResource( 10 )]
+position = Vector2( -64, 88 )
+rotation = -1.5708
+
+[node name="BiggerSpike7" parent="Spikes" instance=ExtResource( 10 )]
+position = Vector2( -64, -72 )
+rotation = -1.5708
+
+[node name="Lasers" type="Node2D" parent="."]
+
+[node name="LaserGun" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -1824, -184 )
+rotation = 1.5708
+
+[node name="LaserGun2" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -1376, -192 )
+rotation = 0.785398
+
+[node name="LaserGun3" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -1112, -184 )
+rotation = 2.35619
+
+[node name="LaserGun4" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -544, -200 )
+rotation = 1.5708
+time_shooting = 60.0
+time_cooldown = 1.0
+laser_size = 40
+raycast_size = 10
+
+[node name="LaserGun5" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -656, -200 )
+rotation = 1.5708
+time_shooting = 60.0
+time_cooldown = 1.0
+laser_size = 40
+raycast_size = 10
+
+[node name="LaserGun6" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -600, -200 )
+rotation = 1.5708
+time_shooting = 60.0
+time_cooldown = 1.0
+laser_size = 40
+raycast_size = 10
+
+[node name="LaserGun7" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -712, -200 )
+rotation = 1.5708
+time_shooting = 60.0
+time_cooldown = 1.0
+laser_size = 40
+raycast_size = 10
+
+[node name="LaserGun8" parent="Lasers" instance=ExtResource( 1 )]
+position = Vector2( -768, -200 )
+rotation = 1.5708
+time_shooting = 60.0
+time_cooldown = 1.0
+laser_size = 40
+raycast_size = 10
+
+[node name="Hooks" type="Node2D" parent="."]
+
+[node name="Hook" parent="Hooks" instance=ExtResource( 5 )]
+position = Vector2( -344, -32 )
+
+[node name="Hook2" parent="Hooks" instance=ExtResource( 5 )]
+position = Vector2( 40, 80 )
+
+[node name="TileMap" parent="." instance=ExtResource( 3 )]
+position = Vector2( 496.975, 292.742 )
+tile_data = PoolIntArray( -1048664, 17, 0, -1048663, 17, 0, -1048662, 17, 0, -1048661, 17, 0, -1048660, 17, 0, -1048659, 17, 0, -1048658, 17, 0, -1048657, 17, 0, -1048656, 17, 0, -1048655, 17, 0, -1048654, 17, 0, -1048653, 17, 0, -1048652, 17, 0, -1048651, 17, 0, -1048650, 17, 0, -1048649, 17, 0, -1048648, 17, 0, -1048647, 17, 0, -1048646, 17, 0, -1048645, 17, 0, -1048644, 17, 0, -1048643, 17, 0, -1048642, 17, 0, -1048641, 17, 0, -1048640, 17, 0, -1048639, 17, 0, -1048638, 17, 0, -1048637, 17, 0, -1048636, 17, 0, -1048635, 17, 0, -1048634, 17, 0, -1048633, 17, 0, -1048632, 17, 0, -1048631, 17, 0, -1048630, 17, 0, -1048629, 17, 0, -1048628, 17, 0, -1048627, 17, 0, -1048626, 17, 0, -1048625, 17, 0, -1048624, 17, 0, -1048623, 17, 0, -1048622, 17, 0, -1048621, 17, 0, -1048620, 17, 0, -1048619, 17, 0, -1048618, 17, 0, -1048617, 17, 0, -1048616, 17, 0, -1048615, 17, 0, -1048614, 17, 0, -1048613, 17, 0, -1048612, 17, 0, -1048611, 17, 0, -1048610, 17, 0, -1048609, 17, 0, -1048608, 17, 0, -1048607, 17, 0, -1048606, 17, 0, -1048605, 17, 0, -1048604, 17, 0, -1048603, 17, 0, -1048602, 17, 0, -1048601, 17, 0, -1048600, 17, 0, -1048599, 17, 0, -1048598, 17, 0, -1048597, 17, 0, -1048596, 17, 0, -1048595, 17, 0, -1048594, 17, 0, -1048593, 17, 0, -1048592, 17, 0, -1048591, 17, 0, -1048590, 17, 0, -1048589, 17, 0, -1048588, 17, 0, -1048587, 17, 0, -1048586, 17, 0, -1048585, 17, 0, -1048584, 17, 0, -1048583, 17, 0, -983128, 39, 0, -983127, 14, 0, -983126, 14, 0, -983125, 14, 0, -983124, 2, 0, -983123, 14, 0, -983122, 2, 0, -983121, 14, 0, -983120, 14, 0, -983119, 2, 0, -983118, 2, 0, -983117, 14, 0, -983116, 14, 0, -983115, 5, 0, -983114, 14, 0, -983113, 14, 0, -983112, 14, 0, -983111, 14, 0, -983110, 8, 0, -983109, 14, 0, -983108, 14, 0, -983107, 14, 0, -983106, 3, 0, -983105, 3, 0, -983104, 3, 0, -983103, 14, 0, -983102, 3, 0, -983101, 13, 0, -983100, 14, 0, -983099, 13, 0, -983098, 14, 0, -983097, 14, 0, -983096, 3, 0, -983095, 4, 0, -983094, 3, 0, -983093, 5, 0, -983092, 13, 0, -983091, 13, 0, -983090, 13, 0, -983089, 14, 0, -983088, 10, 0, -983087, 10, 0, -983086, 13, 0, -983085, 10, 0, -983084, 14, 0, -983083, 14, 0, -983082, 10, 0, -983081, 2, 0, -983080, 2, 0, -983079, 14, 0, -983078, 3, 0, -983077, 2, 0, -983076, 2, 0, -983075, 14, 0, -983074, 2, 0, -983073, 2, 0, -983072, 2, 0, -983071, 14, 0, -983070, 13, 0, -983069, 14, 0, -983068, 2, 0, -983067, 2, 0, -983066, 14, 0, -983065, 14, 0, -983064, 2, 0, -983063, 14, 0, -983062, 2, 0, -983061, 12, 0, -983060, 1, 0, -983059, 1, 0, -983057, 34, 0, -983056, 0, 0, -983055, 10, 0, -983054, 9, 0, -983053, 9, 0, -983052, 13, 0, -983051, 9, 0, -983050, 9, 0, -983049, 9, 0, -983048, 21, 0, -917592, 37, 0, -917578, 5, 0, -917576, 10, 0, -917565, 10, 0, -917564, 14, 0, -917563, 1, 0, -917561, 2, 0, -917556, 10, 0, -917554, 14, 0, -917553, 10, 0, -917548, 14, 0, -917521, 34, 0, -917512, 19, 0, -852056, 37, 0, -851985, 34, 0, -851976, 19, 0, -786520, 37, 0, -786449, 34, 0, -786440, 19, 0, -720984, 37, 0, -720913, 34, 0, -720904, 19, 0, -655448, 37, 0, -655377, 34, 0, -655368, 19, 0, -589912, 37, 0, -589841, 34, 0, -589832, 19, 0, -524376, 37, 0, -524305, 34, 0, -524296, 19, 0, -458840, 37, 0, -458806, 34, 0, -458775, 34, 0, -458769, 34, 0, -458760, 19, 0, -393304, 37, 0, -393270, 34, 0, -393239, 34, 0, -393233, 34, 0, -393224, 19, 0, -327768, 37, 0, -327764, 18, 0, -327763, 18, 0, -327762, 18, 0, -327761, 18, 0, -327760, 18, 0, -327746, 18, 0, -327745, 18, 0, -327744, 18, 0, -327743, 18, 0, -327742, 18, 0, -327734, 34, 0, -327727, 18, 0, -327726, 18, 0, -327725, 18, 0, -327724, 18, 0, -327723, 18, 0, -327722, 18, 0, -327721, 18, 0, -327720, 18, 0, -327719, 18, 0, -327718, 18, 0, -327717, 18, 0, -327716, 18, 0, -327715, 18, 0, -327714, 18, 0, -327713, 18, 0, -327712, 18, 0, -327703, 34, 0, -327693, 18, 0, -327692, 18, 0, -327691, 18, 0, -327690, 18, 0, -327689, 18, 0, -327688, 19, 0, -262232, 37, 0, -262228, 35, 0, -262227, 35, 0, -262226, 20, 0, -262225, 35, 0, -262224, 35, 0, -262210, 35, 0, -262209, 35, 0, -262208, 20, 0, -262207, 35, 0, -262206, 35, 0, -262198, 34, 0, -262191, 35, 0, -262190, 35, 0, -262189, 20, 0, -262188, 35, 0, -262187, 35, 0, -262186, 35, 0, -262185, 35, 0, -262184, 35, 0, -262183, 35, 0, -262182, 35, 0, -262181, 35, 0, -262180, 35, 0, -262179, 35, 0, -262178, 20, 0, -262177, 35, 0, -262176, 35, 0, -262167, 34, 0, -262157, 20, 0, -262156, 35, 0, -262155, 35, 0, -262154, 35, 0, -262153, 20, 0, -262152, 19, 0, -196696, 37, 0, -196690, 25, 0, -196672, 25, 0, -196662, 34, 0, -196653, 25, 0, -196642, 25, 0, -196631, 34, 0, -196621, 25, 0, -196617, 25, 0, -196616, 19, 0, -131160, 37, 0, -131154, 25, 0, -131136, 25, 0, -131126, 34, 0, -131117, 25, 0, -131106, 25, 0, -131095, 34, 0, -131085, 25, 0, -131081, 25, 0, -131080, 19, 0, -65624, 37, 0, -65618, 25, 0, -65600, 25, 0, -65590, 34, 0, -65581, 25, 0, -65570, 25, 0, -65559, 34, 0, -65549, 25, 0, -65545, 25, 0, -65544, 19, 0, -88, 37, 0, -82, 25, 0, -64, 25, 0, -54, 34, 0, -45, 25, 0, -34, 25, 0, -23, 34, 0, -13, 25, 0, -9, 25, 0, -8, 19, 0, 65448, 37, 0, 65454, 25, 0, 65472, 25, 0, 65482, 34, 0, 65491, 25, 0, 65502, 25, 0, 65513, 34, 0, 65523, 25, 0, 65527, 25, 0, 65528, 19, 0, 130984, 37, 0, 130990, 46, 0, 131008, 46, 0, 131018, 34, 0, 131027, 46, 0, 131038, 46, 0, 131049, 34, 0, 131059, 46, 0, 131063, 46, 0, 131064, 19, 0 )
+
+[node name="Exit" parent="." instance=ExtResource( 6 )]
+position = Vector2( 160, 72 )
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource( 8 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 12 )]
+offset = Vector2( -3500, -400 )
+transform = Transform2D( 1, 0, 0, 1, -3500, -400 )
+[connection signal="die" from="Character" to="GameManager" method="_on_Character_die"]
