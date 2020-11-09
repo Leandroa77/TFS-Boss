@@ -2,7 +2,7 @@ extends "res://Character/On_Ground.gd"
 
 export(float) var max_walk_speed = 450
 export(float) var max_run_speed = 700
-var gravity = 30000.0
+var gravity = 20000.0 #3000.0
 var coll:CollisionShape2D
 var animated
 

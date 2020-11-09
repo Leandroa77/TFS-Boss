@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://LevelTimer/LevelTimer.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Character/state_name_displayer.gd" type="Script" id=22]
 [ext_resource path="res://Character/Camera2D.gd" type="Script" id=23]
+[ext_resource path="res://Character/Impulse.gd" type="Script" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -79,6 +80,13 @@ script = ExtResource( 4 )
 [node name="Lighting" type="Node" parent="Character_State_Machine"]
 script = ExtResource( 19 )
 
+[node name="Impulse" type="Node" parent="Character_State_Machine"]
+script = ExtResource( 24 )
+
+[node name="TimerNoInput" type="Timer" parent="Character_State_Machine/Impulse"]
+wait_time = 0.2
+one_shot = true
+
 [node name="BodyPivot" type="Position2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -128,6 +136,7 @@ one_shot = true
 wait_time = 0.05
 one_shot = true
 [connection signal="state_changed" from="Character_State_Machine" to="Label" method="_on_Character_State_Machine_state_changed"]
+[connection signal="timeout" from="Character_State_Machine/Impulse/TimerNoInput" to="Character_State_Machine/Impulse" method="_on_TimerNoInput_timeout"]
 [connection signal="timeOut" from="LevelTimer" to="." method="_on_LevelTimer_timeOut"]
 [connection signal="timeout" from="ImpulseTimer" to="Character_State_Machine/Lighting" method="_on_Timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

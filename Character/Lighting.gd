@@ -27,11 +27,12 @@ var height = 0.0
 
 var hookPosition:Vector2
 
+
 func initialize(direction, speed, velocity, hookPosition):
 	self.direction = direction
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
-	enter_velocity = velocity
+	
 	self.hookPosition = hookPosition
 	
 func exit():
@@ -48,10 +49,9 @@ func update(delta):
 	
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
-	var bol = distancia2.x < 35 and distancia2.y < 35
-	if bol:
+	var reached_hook = distancia2.x < 35 and distancia2.y < 35
+	if reached_hook:
 		owner.itimer.start()
-
 	speed = 1500
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
@@ -61,31 +61,12 @@ func update(delta):
 	velocity = owner.move_and_slide(velocity)
 	line2d.width = 10
 	line2d.visible = true
-
-
-func move_horizontally(delta, direction):
-	if direction:
-		horizontal_speed += air_acceleration * delta
-	else:
-		horizontal_speed -= air_deceleration * delta
-	horizontal_speed = clamp(horizontal_speed, 0, max_horizontal_speed)
-
-	var target_velocity = horizontal_speed * direction.normalized()
-	var steering_velocity = (target_velocity - horizontal_velocity).normalized() * air_steering_power
-	horizontal_velocity += steering_velocity
-
-	owner.move_and_slide(horizontal_velocity)
-
-func jump_height(delta):
-	vertical_speed -= gravity * delta
 	
-	#parche para evitar que caiga rapido
-	velocity = Vector2(0, min(500, vertical_speed * -1))
-		
-	owner.move_and_slide(velocity)
 
 func _on_Timer_timeout():
 	line2d.width = 4
 	line2d.visible = false
 	owner.hitted_hook = false
-	emit_signal("finished", "move") #jump
+	
+	
+	emit_signal("finished", "impulse") #impulse /move

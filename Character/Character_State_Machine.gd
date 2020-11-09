@@ -6,7 +6,8 @@ func _ready():
 		"idle": $Idle,
 		"move": $Move,
 		"jump": $Jump,
-		"lighting": $Lighting
+		"lighting": $Lighting,
+		"impulse": $Impulse
 	}
 	
 	for state in states_map.values():
@@ -19,8 +20,16 @@ func _change_state(state_name):
 		states_stack.push_front(states_map[state_name])
 	if state_name == "jump" and current_state == $Move:
 		$Jump.initialize($Move.speed, $Move.velocity)
+	if state_name == "impulse"  and current_state == $Lighting:
+		
+		$Impulse.initialize(current_state.direction , current_state.velocity, current_state.hookPosition)	
+		
 	._change_state(state_name)
-
+	print("se paso a...")
+	print(state_name)
+		
+		#$Impulse.initialize(current_state.direction, current_state.speed, current_state.velocity,current_state.hookPosition)._change_state(state_name)
+#direction, speed, velocity, 
 
 func _unhandled_input(event):
 	## el lighting deberia interrumpir estados
