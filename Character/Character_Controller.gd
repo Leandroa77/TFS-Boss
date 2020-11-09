@@ -69,5 +69,4 @@ func _on_LevelTimer_timeOut():
 
 func _on_ShootTimer_timeout():
 	aim.visible = false
-	
 	pass 
