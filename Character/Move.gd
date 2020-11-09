@@ -27,16 +27,14 @@ func update(_delta):
 
 	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
 	
+	active_coyote_time()
+	
 	if input_direction.x > 0:
 		animated.play("walk")
 		animated.flip_h = false
 	if input_direction.x < 0:
 		animated.flip_h = true
 		animated.play("walk")
-	
-
-func isOnFloor():
-	return owner.is_on_floor()
 
 
 

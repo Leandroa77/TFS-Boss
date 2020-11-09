@@ -16,7 +16,11 @@ func update(_delta):
 	velocity.y += gravity * _delta
 	#parche para evitar que caiga rapido
 	velocity.y = min(500.0, velocity.y * gravity * _delta)
-	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
+	
+	var snap = Vector2.DOWN * 32
+	velocity = owner.move_and_slide_with_snap(velocity, snap, Vector2.UP, false)
+	
+	active_coyote_time()
 	animated.play("idle")
 
 func isOnFloor():
