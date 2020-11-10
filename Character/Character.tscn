@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://Character/state_name_displayer.gd" type="Script" id=22]
 [ext_resource path="res://Character/Camera2D.gd" type="Script" id=23]
 [ext_resource path="res://Character/Impulse.gd" type="Script" id=24]
+[ext_resource path="res://Character/Attack.gd" type="Script" id=25]
+[ext_resource path="res://Character/Line2DLighting.gd" type="Script" id=26]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -32,15 +34,15 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "jump",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "jump",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -87,6 +89,13 @@ script = ExtResource( 24 )
 wait_time = 0.2
 one_shot = true
 
+[node name="Attack" type="Node" parent="Character_State_Machine"]
+script = ExtResource( 25 )
+
+[node name="Timer" type="Timer" parent="Character_State_Machine/Attack"]
+wait_time = 0.4
+one_shot = true
+
 [node name="BodyPivot" type="Position2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -108,11 +117,12 @@ script = ExtResource( 18 )
 current = true
 script = ExtResource( 23 )
 
-[node name="Line2DAim" type="Line2D" parent="."]
+[node name="Line2DLighting" type="Line2D" parent="."]
 modulate = Color( 1, 1, 1.2, 1 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 4.0
 default_color = Color( 0.4, 0.501961, 1, 0.470588 )
+script = ExtResource( 26 )
 
 [node name="Cursor" parent="." instance=ExtResource( 20 )]
 
@@ -137,6 +147,7 @@ wait_time = 0.05
 one_shot = true
 [connection signal="state_changed" from="Character_State_Machine" to="Label" method="_on_Character_State_Machine_state_changed"]
 [connection signal="timeout" from="Character_State_Machine/Impulse/TimerNoInput" to="Character_State_Machine/Impulse" method="_on_TimerNoInput_timeout"]
+[connection signal="timeout" from="Character_State_Machine/Attack/Timer" to="Character_State_Machine/Attack" method="_on_Timer_timeout"]
 [connection signal="timeOut" from="LevelTimer" to="." method="_on_LevelTimer_timeOut"]
 [connection signal="timeout" from="ImpulseTimer" to="Character_State_Machine/Lighting" method="_on_Timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

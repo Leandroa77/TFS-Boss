@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://objects/hook/Hook.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ForDemoPurposes/BasicTileMap.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ForDemoPurposes/IconoGodot.tscn" type="PackedScene" id=4]
 
 [node name="DemoLevel3" type="Node2D"]
+
+[node name="IconoGodot" parent="." instance=ExtResource( 4 )]
+position = Vector2( 611.309, 224.746 )
+
+[node name="IconoGodot2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 581.343, 425.519 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 659.622, 401.498 )
@@ -16,6 +23,9 @@ tile_data = PoolIntArray( -3211270, 1, 0, -3211269, 1, 0, -3211268, 1, 0, -32112
 
 [node name="Hook" parent="Hooks" instance=ExtResource( 1 )]
 position = Vector2( 751.613, 425.832 )
+
+[node name="Hook10" parent="Hooks" instance=ExtResource( 1 )]
+position = Vector2( 463.938, 353.913 )
 
 [node name="Hook7" parent="Hooks" instance=ExtResource( 1 )]
 position = Vector2( 877.509, -477.875 )

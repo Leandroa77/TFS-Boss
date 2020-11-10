@@ -2,10 +2,10 @@ extends "res://Character/Motion.gd"
 
 signal saliDeAcaLoco()
 
-var speed:float
+var speed:float = 1500.0
 var velocity:Vector2
 var direction:Vector2
-onready var line2d: Line2D = get_parent().get_parent().get_node("Line2DAim")
+onready var lighting: Line2D = get_parent().get_parent().get_node("Line2DLighting")
 
 export(float) var base_max_horizontal_speed = 400.0
 
@@ -32,7 +32,6 @@ func initialize(direction, speed, velocity, hookPosition):
 	self.direction = direction
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
-	
 	self.hookPosition = hookPosition
 	
 func exit():
@@ -46,7 +45,6 @@ func enter():
 	vertical_speed = 800.0
 
 func update(delta):
-	
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
 	var reached_hook = distancia2.x < 35 and distancia2.y < 35
@@ -59,14 +57,13 @@ func update(delta):
 	#shake(duration, frequency, amplitude)
 	owner.get_node("Camera2D").shake(0.02, 100, 2)
 	velocity = owner.move_and_slide(velocity)
-	line2d.width = 10
-	line2d.visible = true
+	lighting.width = 10
+	lighting.visible = true
 	
 
 func _on_Timer_timeout():
-	line2d.width = 4
-	line2d.visible = false
+	lighting.width = 4
+	lighting.visible = false
 	owner.hitted_hook = false
-	
-	
+	lighting.set_default_color(owner.default_aim_color)
 	emit_signal("finished", "impulse") #impulse /move

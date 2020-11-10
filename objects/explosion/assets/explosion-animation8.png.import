@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/explosion-animation8.png-500bc43de6b4ad25a543f7973614103a.stex"
+path="res://.import/explosion-animation8.png-e5f90e96b73fc2b195e4b977c1ca09d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Explosion/assets/explosion-animation8.png"
-dest_files=[ "res://.import/explosion-animation8.png-500bc43de6b4ad25a543f7973614103a.stex" ]
+source_file="res://objects/explosion/assets/explosion-animation8.png"
+dest_files=[ "res://.import/explosion-animation8.png-e5f90e96b73fc2b195e4b977c1ca09d0.stex" ]
 
 [params]
 
