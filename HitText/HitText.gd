@@ -5,15 +5,6 @@ var value = 1
 var baseSize = 16
 var size = 16
 
-func _process(delta):
-	
-	if Input.is_action_just_pressed("test_izq"):
-		toChange(value)
-		value += 1
-	
-	if(value > 6):
-		value = 0
-
 func changeColorRed():
 	set("custom_colors/font_color", Color(1,0,0))
 
