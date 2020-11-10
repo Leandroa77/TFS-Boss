@@ -12,8 +12,10 @@ glow_enabled = true
 glow_blend_mode = 0
 
 [node name="HitText" type="Label"]
-margin_right = 141.0
-margin_bottom = 88.0
+margin_left = 672.717
+margin_top = 248.905
+margin_right = 813.717
+margin_bottom = 336.905
 rect_pivot_offset = Vector2( 44, 18.5 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
