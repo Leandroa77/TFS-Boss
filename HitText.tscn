@@ -11,7 +11,7 @@ background_mode = 4
 glow_enabled = true
 glow_blend_mode = 0
 
-[node name="ContadorRayoTest" type="Label"]
+[node name="HitText" type="Label"]
 margin_left = 646.0
 margin_top = 239.0
 margin_right = 787.0
@@ -19,7 +19,7 @@ margin_bottom = 327.0
 rect_pivot_offset = Vector2( 44, 18.5 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "1 Hit"
+text = "Text"
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -27,5 +27,5 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[node name="Brillito" type="WorldEnvironment" parent="."]
+[node name="Effect" type="WorldEnvironment" parent="."]
 environment = SubResource( 2 )
