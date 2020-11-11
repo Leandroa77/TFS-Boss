@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+class_name Character
 onready var timer:=$LevelTimer
 onready var raycast2d:= $RayCast2DLighting
 onready var lighting:= $Line2DLighting
