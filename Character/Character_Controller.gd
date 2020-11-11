@@ -11,8 +11,10 @@ var last_hook_hitted = null
 var hitted_hook = false
 var default_aim_color = null
 var hitted_enemy = false
+var hitCount = 0
 
 signal direction_changed(new_direction)
+signal hit(value)
 
 signal die(pos)
 
@@ -40,8 +42,6 @@ func _physics_process(delta):
 	if hitted_hook:
 		lighting.set_point_position(1, transform.xform_inv(last_hook_hitted.get_global_position()))
 		lighting.set_default_color(ColorN("darkturquoise",1))
-	
-		
 
 func set_look_direction(value):
 	look_direction = value
@@ -50,6 +50,8 @@ func set_look_direction(value):
 func shoot_lighting():
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("hook"):
+			hitCount += 1
+			emit_signal("hit", hitCount, $HitPositionLeft.position)
 			last_hook_hitted = raycast2d.get_collider()
 			hitted_hook = true
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
@@ -61,14 +63,16 @@ func shoot_lighting():
 	pass
 
 func shoot_attack():
-	if raycast2d.is_colliding():
-		if raycast2d.get_collider().is_in_group("enemy"): 
-			csm.changeToAttack(raycast2d.get_collider())
-			#csm.changeToAttack(raycast2d.get_collider().get_global_position())
-			#raycast2d.get_collider().hitted()
-		else:
-			missed_attack_start()
-	pass
+	if hitCount >= 3:
+		if raycast2d.is_colliding():
+			if raycast2d.get_collider().is_in_group("enemy"):
+				resetHitCount()
+				emit_signal("hit", hitCount, $HitPositionRight.position) 
+				csm.changeToAttack(raycast2d.get_collider())
+				#csm.changeToAttack(raycast2d.get_collider().get_global_position())
+				#raycast2d.get_collider().hitted()
+			else:
+				missed_attack_start()
 
 func missed_shoot_start():
 	lighting.set_default_color(default_aim_color)
@@ -95,4 +99,7 @@ func _on_ShootTimer_timeout():
 	lighting.visible = false
 	lighting.set_default_color(default_aim_color)
 	lighting.width = 4
-	pass 
+
+func resetHitCount():
+	hitCount = 0
+

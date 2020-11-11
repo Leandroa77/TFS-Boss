@@ -5,14 +5,14 @@ var value = 1
 var baseSize = 16
 var size = 16
 
-func incrementHit(value):
+func incrementHit(value, pos):
 	match value:
 		1:
 			text = "1 Hit"
 			changeFontSize(16)
 			changeColor(Color.white)
 			changeModuleColor(Color(1, 1, 1, 1))
-			MoveLeft()
+			MoveLeft(pos)
 		2:
 			text = "2 Hits"
 			changeFontSize(20)
@@ -22,35 +22,35 @@ func incrementHit(value):
 			power()
 			changeFontSize(25)
 		_:
-			MoveRight()
+			MoveRight(pos)
 
-func toChange(value):
+func toChange(value, pos):
 	match value:
 		0:
-			MoveRight()
+			MoveRight(pos)
 		1:
 			text = "1 Hit"
 			size = baseSize
 			changeColor(Color.white)
 			changeModuleColor(Color(1, 1, 1, 1))
 			changeFontSize(size)
-			MoveLeft()
+			MoveLeft(pos)
 		_:
-			text = str(value) + " Hit"
+			text = str(value) + " Hits"
 			size += 3
 			changeFontSize(min(size, 25))
 			if(value == 3):
 				#Aca va el sonido
 				power()
 
-func MoveLeft():
-	var newPos = Vector2(get_rect().position.x - 500, get_rect().position.y)
-	TweenNode.interpolate_property(self, "rect_position", get_rect().position, newPos, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
+func MoveLeft(pos):
+	#var newPos = Vector2(get_rect().position.x - 500, get_rect().position.y)
+	TweenNode.interpolate_property(self, "rect_position", get_rect().position, pos, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
 	TweenNode.start()
 
-func MoveRight():
-	var newPos = Vector2(get_rect().position.x + 500, get_rect().position.y)
-	TweenNode.interpolate_property(self, "rect_position", get_rect().position, newPos, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
+func MoveRight(pos):
+	#var newPos = Vector2(get_rect().position.x + 500, get_rect().position.y)
+	TweenNode.interpolate_property(self, "rect_position", get_rect().position, pos, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
 	TweenNode.start()
 
 func power():
@@ -65,3 +65,6 @@ func changeColor(color):
 
 func changeModuleColor(color):
 	set("modulate", color)
+
+func _on_Character_hit(value, pos):
+	toChange(value, pos)
