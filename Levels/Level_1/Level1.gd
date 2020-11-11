@@ -10,7 +10,8 @@ export var current_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Character.set_timer(20)	
+	$Character.set_timer(20)
+	$MissileSpawner.target = $Character
 	
 	pass # Replace with function body.
 
