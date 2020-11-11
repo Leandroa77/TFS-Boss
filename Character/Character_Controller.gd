@@ -66,6 +66,7 @@ func shoot_attack():
 	if hitCount >= 3:
 		if raycast2d.is_colliding():
 			if raycast2d.get_collider().is_in_group("enemy"):
+				hitted_hook = false
 				resetHitCount()
 				emit_signal("hit", hitCount, $HitPositionRight.position) 
 				csm.changeToAttack(raycast2d.get_collider())
@@ -81,8 +82,9 @@ func clear_hits():
 func tackle():
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("enemy"):
+			
 			last_hook_hitted = raycast2d.get_collider()
-			hitted_hook = true
+			hitted_hook = false
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 			var enemy = raycast2d.get_collider()
 			resetHitCount()

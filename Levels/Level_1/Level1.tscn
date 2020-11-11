@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -10,7 +10,6 @@
 [ext_resource path="res://GameManager/GameManager.gd" type="Script" id=8]
 [ext_resource path="res://Levels/Level_1/Level1.gd" type="Script" id=9]
 [ext_resource path="res://Levels/ParallaxBackground.tscn" type="PackedScene" id=10]
-[ext_resource path="res://missile/MissileSpawner.tscn" type="PackedScene" id=11]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 9 )
@@ -101,7 +100,4 @@ next_scene = ExtResource( 7 )
 
 [node name="GameManager" type="Node" parent="."]
 script = ExtResource( 8 )
-
-[node name="MissileSpawner" parent="." instance=ExtResource( 11 )]
-position = Vector2( -3836.33, 96.1085 )
 [connection signal="die" from="Character" to="GameManager" method="_on_Character_die"]

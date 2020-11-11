@@ -20,8 +20,7 @@ func _on_Explosion_body_entered(body):
 	if $AnimatedSprite.is_playing() and body.is_in_group("player"):
 		if (does_damage):
 			body.die()
-	else:
-		detonate_explosion()
+
 
 
 func _on_AnimatedSprite_animation_finished():
