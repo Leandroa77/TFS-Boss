@@ -26,6 +26,7 @@ func _physics_process(delta):
 		position += velocity * delta
 
 
+
 func seek():
 	var steer = Vector2.ZERO
 	var desired = (target.global_position - global_position).normalized() * speed

@@ -8,7 +8,8 @@ func _ready():
 		"jump": $Jump,
 		"lighting": $Lighting,
 		"impulse": $Impulse,
-		"attack": $Attack
+		"attack": $Attack,
+		"tackle": $Tackle
 	}
 	
 	for state in states_map.values():
@@ -35,6 +36,8 @@ func _unhandled_input(event):
 	## el ataque tambien
 	if Input.is_action_just_pressed("attack"):# or Input.is_pressed"lighting") :
 		current_state.owner.shoot_attack()
+	if Input.is_action_just_pressed("tackle"):# or Input.is_pressed"lighting") :
+		current_state.owner.tackle()
 	current_state.handle_input(event)
 
 func changeToLighting(attraction_direction, hookPosition):
@@ -45,3 +48,6 @@ func changeToAttack(enemy):
 	$Attack.initialize(enemy)
 	._change_state("attack")
 
+func changeToTackle(attraction_direction, enemy):
+	$Tackle.initialize(attraction_direction, $Move.speed, $Move.velocity, enemy)
+	._change_state("tackle")

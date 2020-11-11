@@ -13,4 +13,7 @@ texture = ExtResource( 1 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -48.5455, -19.6546 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

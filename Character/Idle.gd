@@ -19,7 +19,8 @@ func update(_delta):
 	
 	var snap = Vector2.DOWN * 32
 	velocity = owner.move_and_slide_with_snap(velocity, snap, Vector2.UP, false)
-	
+	if(owner.is_on_floor()): 
+		owner.clear_hits()
 	active_coyote_time()
 	animated.play("idle")
 

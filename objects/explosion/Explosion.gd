@@ -1,9 +1,13 @@
 extends Area2D
 
-
+var does_damage = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
+
+func disable_damage():
+	does_damage = false
 
 func detonate_explosion():
 	$AnimatedSprite.set_process(true)
@@ -14,11 +18,15 @@ func detonate_explosion():
 
 func _on_Explosion_body_entered(body):
 	if $AnimatedSprite.is_playing() and body.is_in_group("player"):
-		body.die()
+		if (does_damage):
+			body.die()
+	else:
+		detonate_explosion()
 
 
 func _on_AnimatedSprite_animation_finished():
 	$AnimatedSprite.set_process(false)
 	$AnimatedSprite.visible = false
 	$CollisionShape2D.disabled = true
-	pass # Replace with function body.
+	queue_free()
+	pass 

@@ -34,8 +34,7 @@ func _process(delta):
 	lighting.points[0] = body.position
 	
 	
-func _physics_process(delta):
-	
+func _physics_process(delta):	
 	if raycast2d.is_colliding():
 		lighting.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
 		#if raycast2d.get_collider().is_in_group("hook"):
@@ -74,6 +73,23 @@ func shoot_attack():
 				#raycast2d.get_collider().hitted()
 			else:
 				missed_attack_start()
+				
+func clear_hits():
+	resetHitCount()
+	emit_signal("hit", hitCount, $HitPositionRight.position) 
+
+func tackle():
+	if raycast2d.is_colliding():
+		if raycast2d.get_collider().is_in_group("enemy"):
+			last_hook_hitted = raycast2d.get_collider()
+			hitted_hook = true
+			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
+			var enemy = raycast2d.get_collider()
+			resetHitCount()
+			emit_signal("hit", hitCount, $HitPositionRight.position) 
+			csm.changeToTackle(attraction_direction, enemy)
+		if !raycast2d.get_collider().is_in_group("enemy"):
+			missed_tackle_start()
 
 func missed_shoot_start():
 	lighting.set_default_color(default_aim_color)
@@ -88,14 +104,22 @@ func missed_attack_start():
 	lighting.set_default_color(ColorN("salmon",1))
 	$ShootTimer.start()
 
+func missed_tackle_start():
+	lighting.set_default_color(ColorN("goldenrod",1))
+	lighting.visible = true
+	lighting.set_default_color(ColorN("goldenrod",1))
+	$ShootTimer.start()
+
 func die():
 	$Camera2D.clear_current()
 	emit_signal("die", self.position)
 	queue_free()
 
 func _on_LevelTimer_timeOut():
-	die()
-
+	# probablemente terminemos sacando la mecanica de morir por tiempo por default
+	#die()
+	pass
+	
 func _on_ShootTimer_timeout():
 	lighting.visible = false
 	lighting.set_default_color(default_aim_color)

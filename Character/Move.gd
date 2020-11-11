@@ -26,7 +26,8 @@ func update(_delta):
 	velocity.y += gravity * _delta
 
 	velocity = owner.move_and_slide(velocity, Vector2(0, -1), 5, 2)
-	
+	if(owner.is_on_floor()): 
+		owner.clear_hits()
 	active_coyote_time()
 	
 	if input_direction.x > 0:

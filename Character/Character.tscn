@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
@@ -26,6 +26,8 @@
 [ext_resource path="res://Character/Impulse.gd" type="Script" id=24]
 [ext_resource path="res://Character/Attack.gd" type="Script" id=25]
 [ext_resource path="res://Character/Line2DLighting.gd" type="Script" id=26]
+[ext_resource path="res://HitText/HitText.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Character/Tackle.gd" type="Script" id=28]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -96,6 +98,9 @@ script = ExtResource( 25 )
 wait_time = 0.4
 one_shot = true
 
+[node name="Tackle" type="Node" parent="Character_State_Machine"]
+script = ExtResource( 28 )
+
 [node name="BodyPivot" type="Position2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -118,7 +123,7 @@ current = true
 script = ExtResource( 23 )
 
 [node name="Line2DLighting" type="Line2D" parent="."]
-modulate = Color( 1, 1, 1.2, 1 )
+modulate = Color( 1.4, 1.4, 1.4, 1 )
 points = PoolVector2Array( 0, 0, 0, 0 )
 width = 4.0
 default_color = Color( 0.4, 0.501961, 1, 0.470588 )
@@ -136,6 +141,7 @@ __meta__ = {
 }
 
 [node name="LevelTimer" parent="." instance=ExtResource( 21 )]
+visible = false
 position = Vector2( -13.983, -207.664 )
 
 [node name="ImpulseTimer" type="Timer" parent="."]
@@ -145,6 +151,19 @@ one_shot = true
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="HitText" parent="." instance=ExtResource( 27 )]
+margin_left = 767.414
+margin_top = -275.587
+margin_right = 908.414
+margin_bottom = -187.587
+
+[node name="HitPositionLeft" type="Position2D" parent="."]
+position = Vector2( 370.703, -209.636 )
+
+[node name="HitPositionRight" type="Position2D" parent="."]
+position = Vector2( 796.902, -269.431 )
+[connection signal="hit" from="." to="HitText" method="_on_Character_hit"]
 [connection signal="state_changed" from="Character_State_Machine" to="Label" method="_on_Character_State_Machine_state_changed"]
 [connection signal="timeout" from="Character_State_Machine/Impulse/TimerNoInput" to="Character_State_Machine/Impulse" method="_on_TimerNoInput_timeout"]
 [connection signal="timeout" from="Character_State_Machine/Attack/Timer" to="Character_State_Machine/Attack" method="_on_Timer_timeout"]
