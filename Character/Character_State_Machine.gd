@@ -20,6 +20,7 @@ func _change_state(state_name):
 		return
 	if state_name == "jump":
 		states_stack.push_front(states_map[state_name])
+		$Jump.initialize(350, 350)
 	if state_name == "jump" and current_state == $Move:
 		$Jump.initialize($Move.speed, $Move.velocity)
 	if state_name == "impulse"  and current_state == $Lighting:
