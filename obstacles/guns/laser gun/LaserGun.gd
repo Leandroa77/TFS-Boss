@@ -2,12 +2,14 @@ extends Node2D
 
 export var time_shooting: = 1.0
 export var time_cooldown: = 1.0
+export var time_first_shoot: = 0.0
 export var laser_size: = 0 
 export var raycast_size := 3
 onready var raycast2d := $RayCast2D
 onready var line2d := $Line2D
 onready var timer_cooldown := $TimerCooldown
 onready var timer_shooting := $TimerShooting
+onready var timer_first_shoot := $TimerFirstShoot
 
 
 
@@ -46,6 +48,7 @@ func _ready():
 	
 	timer_shooting.set_wait_time(time_shooting)
 	timer_cooldown.set_wait_time(time_cooldown)
+	timer_first_shoot.set_wait_time(time_first_shoot)
 	timer_shooting.start()
 	set_laser_raycast_width_size(raycast_size)
 	pass 
