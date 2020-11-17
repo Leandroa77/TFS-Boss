@@ -39,6 +39,8 @@ func _physics_process(delta):
 		lighting.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
 		#if raycast2d.get_collider().is_in_group("hook"):
 		#	last_hook_hitted = raycast2d.get_collider()
+	else:
+		lighting.set_point_position(1, transform.xform_inv(get_global_mouse_position()))
 	if hitted_hook:
 		lighting.set_point_position(1, transform.xform_inv(last_hook_hitted.get_global_position()))
 		lighting.set_default_color(ColorN("darkturquoise",1))
@@ -60,6 +62,8 @@ func shoot_lighting():
 
 		if !raycast2d.get_collider().is_in_group("hook"):
 			missed_shoot_start()
+	else:
+		missed_shoot_start()
 	pass
 
 func shoot_attack():

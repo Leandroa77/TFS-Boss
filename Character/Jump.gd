@@ -3,9 +3,9 @@ extends "res://Character/Motion.gd"
 export(float) var base_max_horizontal_speed = 400.0
 
 var coll:CollisionShape2D
-export(float) var air_acceleration = 1000.0
+export(float) var air_acceleration = 750.0 #1000.0
 export(float) var air_deceleration = 2000.0
-export(float) var air_steering_power = 50.0
+export(float) var air_steering_power = 30.0 #50.0
 
 export(float) var gravity = 1400.0
 
