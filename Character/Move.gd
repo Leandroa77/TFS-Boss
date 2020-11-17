@@ -9,7 +9,7 @@ var animated
 func enter():
 	speed = 0.0
 	velocity = Vector2()
-	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 	var input_direction = get_input_direction()
 
 func handle_input(event):

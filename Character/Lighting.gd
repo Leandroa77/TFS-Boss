@@ -27,6 +27,7 @@ var height = 0.0
 
 var hookPosition:Vector2
 
+var animated
 
 func initialize(direction, speed, velocity, hookPosition):
 	self.direction = direction
@@ -43,7 +44,8 @@ func handle_input(_event):
 func enter():
 	horizontal_velocity = enter_velocity
 	vertical_speed = 800.0
-
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
+	
 func update(delta):
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
@@ -59,7 +61,7 @@ func update(delta):
 	velocity = owner.move_and_slide(velocity)
 	lighting.width = 10
 	lighting.visible = true
-	
+	animated.play("hook")
 
 func _on_Timer_timeout():
 	lighting.width = 4

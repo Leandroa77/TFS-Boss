@@ -51,7 +51,7 @@ func enter():
 	horizontal_velocity = enter_velocity if input_direction else Vector2()
 	can_impulse = true
 	was_moved = false
-	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 
 func update(delta):
 	owner.move_and_slide(Vector2.DOWN, Vector2(0, -1))
@@ -73,7 +73,7 @@ func update(delta):
 	if can_impulse:
 		impulse(delta)
 
-	animated.play("jump")
+	animated.play("on_air")
 	owner.move_and_slide(Vector2.DOWN, Vector2(0, -1))
 	if (owner.is_on_floor()):
 		print("esta en floor")

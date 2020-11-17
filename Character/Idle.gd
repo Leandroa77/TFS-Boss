@@ -4,7 +4,7 @@ export(float) var gravity = 800.0
 var animated
 
 func enter():
-	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 
 func handle_input(event):
 	return .handle_input(event)

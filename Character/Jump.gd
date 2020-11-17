@@ -33,7 +33,7 @@ func enter():
 	horizontal_velocity = enter_velocity if input_direction else Vector2()
 	vertical_speed = 600.0
 	
-	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite")
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 
 func update(delta):
 	if owner.is_on_wall():

@@ -1,22 +1,10 @@
-[gd_scene load_steps=31 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
 [ext_resource path="res://Character/Character_State_Machine.gd" type="Script" id=3]
 [ext_resource path="res://Character/Jump.gd" type="Script" id=4]
-[ext_resource path="res://Character/assets/tile545.png" type="Texture" id=5]
 [ext_resource path="res://Character/Move.gd" type="Script" id=6]
-[ext_resource path="res://Character/assets/tile546.png" type="Texture" id=7]
-[ext_resource path="res://Character/assets/tile547.png" type="Texture" id=8]
-[ext_resource path="res://Character/assets/tile544.png" type="Texture" id=9]
-[ext_resource path="res://Character/assets/tile514.png" type="Texture" id=10]
-[ext_resource path="res://Character/assets/tile513.png" type="Texture" id=11]
-[ext_resource path="res://Character/assets/tile515.png" type="Texture" id=12]
-[ext_resource path="res://Character/assets/tile519.png" type="Texture" id=13]
-[ext_resource path="res://Character/assets/tile518.png" type="Texture" id=14]
-[ext_resource path="res://Character/assets/tile517.png" type="Texture" id=15]
-[ext_resource path="res://Character/assets/tile512.png" type="Texture" id=16]
-[ext_resource path="res://Character/assets/tile516.png" type="Texture" id=17]
 [ext_resource path="res://Character/RayCast2D.gd" type="Script" id=18]
 [ext_resource path="res://Character/Lighting.gd" type="Script" id=19]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=20]
@@ -28,27 +16,75 @@
 [ext_resource path="res://Character/Line2DLighting.gd" type="Script" id=26]
 [ext_resource path="res://HitText/HitText.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Character/Tackle.gd" type="Script" id=28]
+[ext_resource path="res://Character/assets robot rojo/r_run_16.png" type="Texture" id=47]
+[ext_resource path="res://Character/assets robot rojo/r_idle_10.png" type="Texture" id=48]
+[ext_resource path="res://Character/assets robot rojo/r_run_2.png" type="Texture" id=49]
+[ext_resource path="res://Character/assets robot rojo/r_idle_13.png" type="Texture" id=50]
+[ext_resource path="res://Character/assets robot rojo/r_idle_16.png" type="Texture" id=51]
+[ext_resource path="res://Character/assets robot rojo/r_run_3.png" type="Texture" id=52]
+[ext_resource path="res://Character/assets robot rojo/r_run_4.png" type="Texture" id=53]
+[ext_resource path="res://Character/assets robot rojo/r_run_5.png" type="Texture" id=54]
+[ext_resource path="res://Character/assets robot rojo/r_run_8.png" type="Texture" id=55]
+[ext_resource path="res://Character/assets robot rojo/r_idle_7.png" type="Texture" id=56]
+[ext_resource path="res://Character/assets robot rojo/r_run_9.png" type="Texture" id=57]
+[ext_resource path="res://Character/assets robot rojo/r_idle_19.png" type="Texture" id=58]
+[ext_resource path="res://Character/assets robot rojo/r_run_10.png" type="Texture" id=59]
+[ext_resource path="res://Character/assets robot rojo/r_idle_4.png" type="Texture" id=60]
+[ext_resource path="res://Character/assets robot rojo/r_run_11.png" type="Texture" id=61]
+[ext_resource path="res://Character/assets robot rojo/r_run_14.png" type="Texture" id=62]
+[ext_resource path="res://Character/assets robot rojo/r_run_1.png" type="Texture" id=63]
+[ext_resource path="res://Character/assets robot rojo/r_run_12.png" type="Texture" id=64]
+[ext_resource path="res://Character/assets robot rojo/r_idle_20.png" type="Texture" id=65]
+[ext_resource path="res://Character/assets robot rojo/r_idle_1.png" type="Texture" id=66]
+[ext_resource path="res://Character/assets robot rojo/r_run_13.png" type="Texture" id=67]
+[ext_resource path="res://Character/assets robot rojo/r_run_15.png" type="Texture" id=68]
+[ext_resource path="res://Character/assets robot rojo/r_run_6.png" type="Texture" id=69]
+[ext_resource path="res://Character/assets robot rojo/r_run_7.png" type="Texture" id=70]
+[ext_resource path="res://Character/assets robot rojo/r_jump_14.png" type="Texture" id=71]
+[ext_resource path="res://Character/assets robot rojo/r_jump_2.png" type="Texture" id=72]
+[ext_resource path="res://Character/assets robot rojo/r_jump_3.png" type="Texture" id=73]
+[ext_resource path="res://Character/assets robot rojo/r_jump_4.png" type="Texture" id=74]
+[ext_resource path="res://Character/assets robot rojo/r_jump_6.png" type="Texture" id=75]
+[ext_resource path="res://Character/assets robot rojo/r_jump_7.png" type="Texture" id=76]
+[ext_resource path="res://Character/assets robot rojo/r_jump_10.png" type="Texture" id=77]
+[ext_resource path="res://Character/assets robot rojo/r_jump_9.png" type="Texture" id=78]
+[ext_resource path="res://Character/assets robot rojo/r_jump_8.png" type="Texture" id=79]
+[ext_resource path="res://Character/assets robot rojo/r_jump_5.png" type="Texture" id=80]
+[ext_resource path="res://Character/assets robot rojo/r_jump_11.png" type="Texture" id=81]
+[ext_resource path="res://Character/assets robot rojo/r_jump_1.png" type="Texture" id=82]
+[ext_resource path="res://Character/assets robot rojo/r_jump_12.png" type="Texture" id=83]
+[ext_resource path="res://Character/assets robot rojo/r_jump_15.png" type="Texture" id=85]
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 66 ), ExtResource( 60 ), ExtResource( 56 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 65 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
+"speed": 7.0
 }, {
-"frames": [ ExtResource( 16 ), ExtResource( 11 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 17 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 13 ) ],
+"frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
+"loop": true,
+"name": "hook",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 77 ), ExtResource( 81 ), ExtResource( 83 ), ExtResource( 71 ), ExtResource( 85 ) ],
 "loop": true,
 "name": "jump",
-"speed": 10.0
+"speed": 15.0
 }, {
-"frames": [ ExtResource( 9 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "walk",
-"speed": 5.0
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 76 ) ],
+"loop": true,
+"name": "on_air",
+"speed": 10.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8.987, 14.315 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 9.83038, 21.3771 )
 
 [node name="Character" type="KinematicBody2D" groups=[
 "player",
@@ -106,9 +142,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="BodyPivot"]
-frames = SubResource( 1 )
-animation = "jump"
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="BodyPivot"]
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 4 )
+animation = "on_air"
 
 [node name="RayCast2DLighting" type="RayCast2D" parent="."]
 enabled = true
@@ -134,11 +171,8 @@ script = ExtResource( 26 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
 "player",
 ]]
-position = Vector2( -1, 2 )
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_lock_": true
-}
+position = Vector2( -0.250854, 2 )
+shape = SubResource( 3 )
 
 [node name="LevelTimer" parent="." instance=ExtResource( 21 )]
 visible = false
