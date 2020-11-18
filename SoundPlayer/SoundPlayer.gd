@@ -26,3 +26,6 @@ func _on_Character_sound(value):
 	fxPlayer.stream = fxSoundsMap[value]
 	fxPlayer.play()
 
+func _on_Level1_backgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
