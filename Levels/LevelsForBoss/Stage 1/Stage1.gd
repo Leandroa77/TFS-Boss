@@ -36,8 +36,6 @@ func spawn_player():
 	
 
 func respawn_player():
-	print("en respawn player")
-	print(ya_se_llamo_restart_ui)
 	if !ya_se_llamo_restart_ui:
 		var new_player:Character = character_template.instance()
 		
