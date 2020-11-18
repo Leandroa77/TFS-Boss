@@ -28,6 +28,8 @@ var height = 0.0
 var hookPosition:Vector2
 var enemy
 
+var animated
+
 
 func initialize(direction, speed, velocity, enemy):
 	self.direction = direction
@@ -45,6 +47,7 @@ func handle_input(_event):
 func enter():
 	horizontal_velocity = enter_velocity
 	vertical_speed = 800.0
+	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 
 func update(delta):
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
@@ -61,10 +64,11 @@ func update(delta):
 	lighting.set_default_color(ColorN("gold",1))
 	lighting.width = 10
 	lighting.visible = true
+	animated.play("tackle")
 	if reached_hook:
 		owner.get_node("Camera2D").shake(0.5, 100, 10)
 		enemy.hitted()
 		lighting.set_default_color(owner.default_aim_color)
 		lighting.width = 4
 		lighting.visible = false
-		emit_signal("finished", "jump")
+		emit_signal("finished", "impulse")
