@@ -29,3 +29,8 @@ func _on_Character_sound(value):
 func _on_Level1_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
 	bgPlayer.play()
+
+
+func _on_Level2_backgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
