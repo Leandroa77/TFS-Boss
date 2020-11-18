@@ -22,9 +22,12 @@ signal die(pos)
 var look_direction = Vector2.RIGHT setget set_look_direction
 
 func _ready():
+	
 	lighting.visible = false
 	default_aim_color = lighting.get_default_color()
 	lighting.set_default_color(default_aim_color)
+	#get_parent().set_ya_se_llamo_restart_ui(false)#parche horrible por checkpoint
+	
 	
 func set_timer(seconds):
 	timer.value = seconds
@@ -50,6 +53,7 @@ func set_look_direction(value):
 	emit_signal("direction_changed", value)
 
 func shoot_lighting():
+	
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("hook"):
 			hitCount += 1
@@ -117,9 +121,14 @@ func missed_tackle_start():
 	$ShootTimer.start()
 
 func die():
+	
 	$Camera2D.clear_current()
 	emit_signal("die", self.position)
+	
 	queue_free()
+	
+	#aca habria que agregar alguna animacion o algo
+	
 
 func _on_LevelTimer_timeOut():
 	# probablemente terminemos sacando la mecanica de morir por tiempo por default
