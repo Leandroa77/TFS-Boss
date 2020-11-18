@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://obstacles/guns/laser gun/LaserGun.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -12,9 +12,12 @@
 [ext_resource path="res://obstacles/spikes/bigger spikes/bigger spike trap/BiggerSpike.tscn" type="PackedScene" id=10]
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/ParallaxBackground.tscn" type="PackedScene" id=12]
+[ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=13]
 
 [node name="Level3" type="Node2D"]
 script = ExtResource( 9 )
+
+[node name="SoundPlayer" parent="." instance=ExtResource( 13 )]
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 position = Vector2( -2109.32, 114.968 )
@@ -172,4 +175,6 @@ script = ExtResource( 8 )
 [node name="ParallaxBackground" parent="." instance=ExtResource( 12 )]
 offset = Vector2( -3500, -400 )
 transform = Transform2D( 1, 0, 0, 1, -3500, -400 )
+[connection signal="backgroundMusic" from="." to="SoundPlayer" method="_on_Level3_backgroundMusic"]
 [connection signal="die" from="Character" to="GameManager" method="_on_Character_die"]
+[connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
