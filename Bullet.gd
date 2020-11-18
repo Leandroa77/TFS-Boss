@@ -19,6 +19,7 @@ func _ready():
 
 func _physics_process(delta):
 	if (dir != null and is_shooting):
+		
 		#dir = target_position - position
 		dir = move_and_slide(dir.normalized() * delta * speed ) 
 	if (hitted_something()):
@@ -36,7 +37,7 @@ func detonate():
 
 func set_target(target):
 	self.target = target
-	dir = global_position - target.global_position
+	dir = ( position - target.global_position).normalized()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
