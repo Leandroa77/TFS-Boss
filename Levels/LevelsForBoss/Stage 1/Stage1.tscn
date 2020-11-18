@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Levels/LevelsForBoss/Stage 1/Stage1.gd" type="Script" id=9]
 [ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Level_1/Level1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8.60693, 151.061 )
@@ -20,6 +21,8 @@ extents = Vector2( 7.83478, 178.981 )
 
 [node name="Stage1" type="Node2D"]
 script = ExtResource( 9 )
+
+[node name="SoundPlayer" parent="." instance=ExtResource( 12 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -5856.0
@@ -173,6 +176,8 @@ position = Vector2( 277.381, -1142.32 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2"]
 shape = SubResource( 2 )
+[connection signal="backgroundMusic" from="." to="SoundPlayer" method="_on_Stage1_backgroundMusic"]
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
+[connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_Checkpoint1_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="." method="_on_Checkpoint2_body_entered"]

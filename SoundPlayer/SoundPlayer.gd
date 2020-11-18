@@ -18,8 +18,11 @@ func _ready():
 	bgSoundsMap[0] = null
 	bgSoundsMap[1] = music
 
-#	bgPlayer.stream = bgSoundsMap[value]
-#	bgPlayer.play()
+func _on_Stage1_backgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
 
-#	fxPlayer.stream = fxSoundsMap[value]
-#	fxPlayer.play()
+func _on_Character_sound(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+

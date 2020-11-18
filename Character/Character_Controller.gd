@@ -16,6 +16,7 @@ var hitCount = 0
 
 signal direction_changed(new_direction)
 signal hit(value)
+signal sound(value)
 
 signal die(pos)
 
@@ -57,6 +58,7 @@ func shoot_lighting():
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("hook"):
 			hitCount += 1
+			emit_signal("sound", 2)
 			emit_signal("hit", hitCount, $HitPositionLeft.position)
 			last_hook_hitted = raycast2d.get_collider()
 			hitted_hook = true
@@ -76,6 +78,7 @@ func shoot_attack():
 			if raycast2d.get_collider().is_in_group("enemy"):
 				hitted_hook = false
 				resetHitCount()
+				emit_signal("sound", 2)
 				emit_signal("hit", hitCount, $HitPositionRight.position) 
 				csm.changeToAttack(raycast2d.get_collider())
 				#csm.changeToAttack(raycast2d.get_collider().get_global_position())
@@ -96,12 +99,14 @@ func tackle():
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 			var enemy = raycast2d.get_collider()
 			resetHitCount()
+			emit_signal("sound", 3)
 			emit_signal("hit", hitCount, $HitPositionRight.position) 
 			csm.changeToTackle(attraction_direction, enemy)
 		if !raycast2d.get_collider().is_in_group("enemy"):
 			missed_tackle_start()
 
 func missed_shoot_start():
+	emit_signal("sound", 2)
 	lighting.set_default_color(default_aim_color)
 	lighting.visible = true
 	lighting.set_default_color(default_aim_color)
@@ -109,12 +114,14 @@ func missed_shoot_start():
 
 func missed_attack_start():
 	print("color salmooooon")
+	emit_signal("sound", 2)
 	lighting.set_default_color(ColorN("salmon",1))
 	lighting.visible = true
 	lighting.set_default_color(ColorN("salmon",1))
 	$ShootTimer.start()
 
 func missed_tackle_start():
+	emit_signal("sound", 3)
 	lighting.set_default_color(ColorN("goldenrod",1))
 	lighting.visible = true
 	lighting.set_default_color(ColorN("goldenrod",1))
@@ -123,6 +130,7 @@ func missed_tackle_start():
 func die():
 	
 	$Camera2D.clear_current()
+	emit_signal("sound", 1)
 	emit_signal("die", self.position)
 	
 	queue_free()

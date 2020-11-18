@@ -1,5 +1,7 @@
 extends "res://Character/State_Machine.gd"
 
+signal sound(value)
+
 func _ready():
 	owner = get_parent()
 	states_map = {
@@ -33,6 +35,7 @@ func _change_state(state_name):
 func _unhandled_input(event):
 	## el lighting deberia interrumpir estados
 	if Input.is_action_just_pressed("lighting"):# or Input.is_pressed"lighting") :
+		emit_signal("sound", 2)
 		current_state.owner.shoot_lighting()
 	## el ataque tambien
 	if Input.is_action_just_pressed("attack"):# or Input.is_pressed"lighting") :

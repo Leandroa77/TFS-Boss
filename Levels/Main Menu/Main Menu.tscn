@@ -38,7 +38,9 @@ margin_top = 30.0135
 margin_right = 358.271
 margin_bottom = 80.0135
 custom_fonts/font = SubResource( 1 )
-text = "Minion 3"
+text = "BOSS"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_lock_": true,
 "_edit_use_anchors_": false
