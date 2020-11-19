@@ -2,7 +2,6 @@ extends "res://Character/Motion.gd"
 
 export(float) var base_max_horizontal_speed = 400.0
 
-var coll:CollisionShape2D
 export(float) var air_acceleration = 750.0 #1000.0
 export(float) var air_deceleration = 2000.0
 export(float) var air_steering_power = 30.0 #50.0
@@ -36,14 +35,13 @@ func enter():
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 
 func update(delta):
-	if owner.is_on_wall():
-		emit_signal("finished", "idle")
-
+	
 	var input_direction = get_input_direction()
 
 	move_horizontally(delta, input_direction)
 	jump_height(delta)
-
+	if owner.is_on_wall():
+		emit_signal("finished", "previous")
 	animated.play("jump")
 
 func move_horizontally(delta, direction):
