@@ -28,14 +28,12 @@ animations = [ {
 } ]
 
 [node name="Explosion" type="Area2D"]
-position = Vector2( 133.289, 98.6413 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.24263 )
 shape = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

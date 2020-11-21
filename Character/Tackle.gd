@@ -71,4 +71,4 @@ func update(delta):
 		lighting.set_default_color(owner.default_aim_color)
 		lighting.width = 4
 		lighting.visible = false
-		emit_signal("finished", "impulse")
+		emit_signal("finished", "jump")

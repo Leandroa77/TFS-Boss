@@ -41,7 +41,7 @@ func update(delta):
 	move_horizontally(delta, input_direction)
 	jump_height(delta)
 	if owner.is_on_wall():
-		emit_signal("finished", "previous")
+		emit_signal("finished", "idle")
 	animated.play("jump")
 
 func move_horizontally(delta, direction):
