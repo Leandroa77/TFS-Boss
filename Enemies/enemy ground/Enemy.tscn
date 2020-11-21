@@ -31,7 +31,6 @@ extents = Vector2( 22.3436, 19.1483 )
 ]]
 scale = Vector2( 1.5, 1.5 )
 collision_layer = 8
-motion/sync_to_physics = true
 script = ExtResource( 7 )
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]

@@ -49,10 +49,6 @@ func _physics_process(delta):
 			$AnimatedSprite2.play("idle")
 			$AnimatedSprite2.flip_h = false
 			pos = $Position2D.position
-		
-	print("wall:" , is_on_wall())
-	#print("ray:", $RayCast2D.is_colliding())
-	#print("target:", target_in_sight)
 
 func hitted():
 	$Explosion.detonate_explosion()
@@ -72,7 +68,7 @@ func _on_ShotTimer_timeout():
 	if target == null:
 		misil.queue_free()
 	else:
-		if (target.get_global_position().distance_to(self.get_global_position()) < 600):
+		if (target.get_global_position().distance_to(self.get_global_position()) < 200):
 			target_in_sight = true
 			speed = 0
 			shoot(misil)
@@ -80,6 +76,7 @@ func _on_ShotTimer_timeout():
 			target_in_sight = false
 			speed = 30
 			velocity.x = speed * direction
+			
 func shoot(misil):
 	misil.target = target
 	misil.position = pos
