@@ -35,6 +35,7 @@ func initialize(direction, speed, velocity, hookPosition):
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
 	self.hookPosition = hookPosition
 	
+	
 func exit():
 	pass
 
@@ -48,8 +49,11 @@ func enter():
 	
 func update(delta):
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
+	#var distanciaEntrePersonajeYHook = owner.body.position - self.hookPosition
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
 	var reached_hook = distancia2.x < 35 and distancia2.y < 35
+	
+	
 	if reached_hook:
 		owner.itimer.start()
 	speed = 1500
