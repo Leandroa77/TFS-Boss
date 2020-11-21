@@ -54,7 +54,7 @@ func MoveRight(pos):
 	TweenNode.start()
 
 func power():
-	changeModuleColor(Color(1.5, 1.5, 1.5, 1))
+	changeModuleColor(Color(1.3, 1.3, 1.3, 1))
 	changeColor(Color.red)
 
 func changeFontSize(value):

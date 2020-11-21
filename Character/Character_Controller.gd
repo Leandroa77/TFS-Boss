@@ -62,7 +62,7 @@ func set_look_direction(value):
 func shoot_lighting():
 	
 	if raycast2d.is_colliding():
-		if raycast2d.get_collider().is_in_group("hook"):
+		if raycast2d.get_collider().is_in_group("hook") and !hitted_hook:
 			hitCount += 1
 			emit_signal("sound", 2)
 			emit_signal("hit", hitCount, $HitPositionLeft.position)
@@ -83,9 +83,9 @@ func shoot_attack():
 		if raycast2d.is_colliding():
 			if raycast2d.get_collider().is_in_group("enemy"):
 				hitted_hook = false
-				resetHitCount()
+				#resetHitCount()
 				emit_signal("sound", 2)
-				emit_signal("hit", hitCount, $HitPositionRight.position) 
+				#emit_signal("hit", hitCount, $HitPositionRight.position) 
 				csm.changeToAttack(raycast2d.get_collider())
 				#csm.changeToAttack(raycast2d.get_collider().get_global_position())
 				#raycast2d.get_collider().hitted()
@@ -104,9 +104,9 @@ func tackle():
 			hitted_hook = false
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 			var enemy = raycast2d.get_collider()
-			resetHitCount()
+			#resetHitCount()
 			emit_signal("sound", 3)
-			emit_signal("hit", hitCount, $HitPositionRight.position) 
+			#emit_signal("hit", hitCount, $HitPositionRight.position) 
 			csm.changeToTackle(attraction_direction, enemy)
 		if !raycast2d.get_collider().is_in_group("enemy"):
 			missed_tackle_start()
@@ -117,6 +117,7 @@ func missed_shoot_start():
 	lighting.visible = true
 	lighting.set_default_color(default_aim_color)
 	$ShootTimer.start()
+	hitted_hook = false
 
 func missed_attack_start():
 	print("color salmooooon")
@@ -159,4 +160,15 @@ func _on_ShootTimer_timeout():
 
 func resetHitCount():
 	hitCount = 0
+	
+func increase_hit_count():
+	hitCount+=1
 
+func get_hit_count():
+	return hitCount
+	
+func play_atraction_sound():
+	emit_signal("sound", 2)
+
+func show_hit_count(): 
+	emit_signal("hit", hitCount, $HitPositionLeft.position)

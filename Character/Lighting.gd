@@ -47,6 +47,7 @@ func enter():
 	vertical_speed = 800.0
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 	
+	
 func update(delta):
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
 	#var distanciaEntrePersonajeYHook = owner.body.position - self.hookPosition
