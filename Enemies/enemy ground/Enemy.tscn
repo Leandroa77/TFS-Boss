@@ -1,0 +1,68 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://objects/explosion/Explosion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemies/enemy ground/Enemy.gd" type="Script" id=7]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile0000_preview_rev_1.png" type="Texture" id=8]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile000_preview_rev_1.png" type="Texture" id=9]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile004_preview_rev_1.png" type="Texture" id=10]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile006_preview_rev_1.png" type="Texture" id=11]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile0003_preview_rev_1.png" type="Texture" id=12]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile0001_preview_rev_1.png" type="Texture" id=13]
+[ext_resource path="res://Enemies/enemy ground/assets enemy ground/tile003_preview_rev_1.png" type="Texture" id=14]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 9.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 14 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 22.3436, 19.1483 )
+
+[node name="EnemyFloor" type="KinematicBody2D" groups=[
+"enemy",
+]]
+scale = Vector2( 1.5, 1.5 )
+collision_layer = 8
+script = ExtResource( 7 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 1 )
+animation = "walk"
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.6837, 1.77723 )
+shape = SubResource( 2 )
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 20.4639, 1.79468 )
+enabled = true
+cast_to = Vector2( 0, 20 )
+
+[node name="Explosion" parent="." instance=ExtResource( 1 )]
+position = Vector2( -0.396851, 0 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 27.1226, -7.09265 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Position2D2" type="Position2D" parent="."]
+position = Vector2( -29.4992, -7.27559 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]

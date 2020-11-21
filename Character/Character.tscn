@@ -64,6 +64,11 @@ animations = [ {
 "name": "idle",
 "speed": 7.0
 }, {
+"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "tackle",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 79 ), ExtResource( 78 ), ExtResource( 77 ), ExtResource( 81 ), ExtResource( 83 ), ExtResource( 71 ), ExtResource( 85 ) ],
 "loop": true,
 "name": "jump",
@@ -74,20 +79,22 @@ animations = [ {
 "name": "on_air",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
 "loop": true,
-"name": "walk",
+"name": "hook",
 "speed": 20.0
 }, {
+
 "frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
 "loop": true,
 "name": "hook",
 "speed": 20.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+
 "loop": true,
-"name": "tackle",
-"speed": 10.0
+"name": "walk",
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -97,6 +104,7 @@ extents = Vector2( 9.83038, 21.3771 )
 "player",
 ]]
 position = Vector2( 488.763, 91.815 )
+collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
@@ -157,7 +165,7 @@ animation = "tackle"
 [node name="RayCast2DLighting" type="RayCast2D" parent="."]
 enabled = true
 cast_to = Vector2( 0, 1500 )
-collision_mask = 3
+collision_mask = 11
 script = ExtResource( 18 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=[

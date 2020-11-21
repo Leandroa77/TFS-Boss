@@ -25,6 +25,9 @@ signal die(pos)
 
 var look_direction = Vector2.RIGHT setget set_look_direction
 
+######### CHARACTER ESTA EN CAPA 3 ###########
+######### VER RAYCAST2D COLLISION PARA AGREGAR COLISIONES ##########
+
 func _ready():
 	
 	lighting.visible = false
