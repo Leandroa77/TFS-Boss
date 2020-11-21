@@ -40,7 +40,10 @@ func update(delta):
 
 	move_horizontally(delta, input_direction)
 	jump_height(delta)
-	if owner.is_on_wall():
+	#cuando se usa is on wall el personaje se cae como ladrillo cuando toca 
+	# el techo
+	owner.move_and_slide(Vector2.DOWN, Vector2(0, -1))
+	if owner.is_on_floor():
 		emit_signal("finished", "previous")
 	animated.play("jump")
 

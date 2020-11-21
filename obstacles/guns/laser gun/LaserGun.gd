@@ -16,10 +16,17 @@ onready var timer_first_shoot := $TimerFirstShoot
 export var speed:= 50000
 var is_shooting = false
 
-func _physics_process(delta):
+func _process(delta):
 	check_for_hits()
 	if is_shooting and raycast2d.is_colliding():
+		$clipart2761458.set_modulate(Color(1.25,1,1,1))
 		make_beam()
+	else:
+		$clipart2761458.set_modulate(Color(1,1,1,1))
+
+func _physics_process(delta):
+	pass
+	
 	
 	
 func shoot():
@@ -35,12 +42,16 @@ func make_beam():
 	line2d.points[1] = transform.xform_inv(raycast2d.get_collision_point())
 
 func check_for_hits():
-	if raycast2d.is_colliding() and raycast2d.get_collider().is_in_group("player") and raycast2d.get_collider() != null and line2d.points[1] != line2d.points[0]:
-		raycast2d.get_collider().die()
+	#rompe cuando el personaje muere muy rapido (?
+	# attempt to call function "is in group" in base null instance on a null instance
+	#wtf... raro. es por que es muy rapido??
+	if raycast2d.is_colliding(): 
+		if raycast2d.get_collider().is_in_group("player") and line2d.points[1] != line2d.points[0]:
+			raycast2d.get_collider().got_hit()
 
 func _ready():
-	#configurar el audio. en un volumen tan negativo no se escucha
-	$AudioStreamPlayer2D.set_volume_db(-200000)
+	#configurar el audio.
+	$AudioStreamPlayer2D.set_volume_db(-20)
 	line2d.width = laser_size
 	line2d.points[0] = $BeamStart.position
 	line2d.points[1] = $BeamStart.position
