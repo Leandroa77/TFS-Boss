@@ -1,4 +1,7 @@
 extends KinematicBody2D
+#El nodo Raycast esta em la mascara de colision 1 y 2
+#para que detecte a los hooks
+
 
 class_name Character
 onready var timer:=$LevelTimer
@@ -66,7 +69,7 @@ func shoot_lighting():
 			last_hook_hitted = raycast2d.get_collider()
 			hitted_hook = true
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
-			var hookPosition = raycast2d.get_collider().get_global_position()
+			var hookPosition = raycast2d.get_collider().get_global_position() #raycast2d.get_collider().get_global_position()
 			csm.changeToLighting(attraction_direction, hookPosition)
 
 		if !raycast2d.get_collider().is_in_group("hook"):
@@ -129,6 +132,9 @@ func missed_tackle_start():
 	lighting.visible = true
 	lighting.set_default_color(ColorN("goldenrod",1))
 	$ShootTimer.start()
+
+func got_hit():
+	die() #no creo que este bueno lo de un hit y moris si agregamos un boss
 
 func die():
 	
