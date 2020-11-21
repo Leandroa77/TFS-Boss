@@ -46,9 +46,7 @@ func enter():
 	horizontal_velocity = enter_velocity
 	vertical_speed = 800.0
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
-	#owner.increase_hit_count()
-	#owner.show_hit_count()
-	#owner.play_atraction_sound()
+	
 	
 func update(delta):
 	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition

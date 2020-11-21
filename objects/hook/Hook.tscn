@@ -8,7 +8,7 @@
 [ext_resource path="res://objects/hook/sprites/tile295.png" type="Texture" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 39.4396
+radius = 41.8704
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -29,11 +29,11 @@ script = ExtResource( 1 )
 "hook",
 ]]
 shape = SubResource( 1 )
-one_way_collision_margin = 10.0
+one_way_collision_margin = 30.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1, 1.2, 1.5, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
