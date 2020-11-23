@@ -63,6 +63,11 @@ animations = [ {
 "name": "jump",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 76 ) ],
+"loop": true,
+"name": "on_air",
+"speed": 10.0
+}, {
 "frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "walk",
@@ -72,11 +77,6 @@ animations = [ {
 "loop": true,
 "name": "hook",
 "speed": 20.0
-}, {
-"frames": [ ExtResource( 76 ) ],
-"loop": true,
-"name": "on_air",
-"speed": 10.0
 }, {
 "frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,

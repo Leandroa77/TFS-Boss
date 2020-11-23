@@ -67,8 +67,9 @@ func update(delta):
 	animated.play("tackle")
 	if reached_hook:
 		owner.get_node("Camera2D").shake(0.5, 100, 10)
-		enemy.hitted()
+		if enemy != null:
+			enemy.hitted()
 		lighting.set_default_color(owner.default_aim_color)
 		lighting.width = 4
 		lighting.visible = false
-		emit_signal("finished", "jump") #emit_signal("finished", "impulse") 
+		emit_signal("finished", "idle") #emit_signal("finished", "impulse") 

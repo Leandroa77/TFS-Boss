@@ -3,6 +3,7 @@ extends KinematicBody2D
 onready var Missile = preload ("res://missile/Missile.tscn")
 export var gravity = 10
 export var speed = 40
+export var radar = 500
 const ground = Vector2.DOWN
 
 var velocity = Vector2.ZERO
@@ -10,6 +11,7 @@ var direction = 1
 var target
 var target_in_sight = false
 var pos
+var isAlive = true
 
 ######## ENEMIGO ESTA EN CAPA 4 ##########
 func _ready():
@@ -55,6 +57,7 @@ func hitted():
 	$AnimatedSprite2.visible = false
 	$CollisionShape2D.disabled = true
 	$Timer.start()
+	isAlive = false
 
 func set_target(target):
 	self.target = target
@@ -68,7 +71,7 @@ func _on_ShotTimer_timeout():
 	if target == null:
 		misil.queue_free()
 	else:
-		if (target.get_global_position().distance_to(self.get_global_position()) < 200):
+		if (target.get_global_position().distance_to(self.get_global_position()) < radar):
 			target_in_sight = true
 			speed = 0
 			shoot(misil)
@@ -78,6 +81,7 @@ func _on_ShotTimer_timeout():
 			velocity.x = speed * direction
 			
 func shoot(misil):
+	yield(get_tree().create_timer(0.5), "timeout")
 	misil.target = target
 	misil.position = pos
 	add_child(misil)
