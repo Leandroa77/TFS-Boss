@@ -38,8 +38,9 @@ func _unhandled_input(event):
 		emit_signal("sound", 2)
 		current_state.owner.shoot_lighting()
 	## el ataque tambien
-	if Input.is_action_just_pressed("attack"):# or Input.is_pressed"lighting") :
-		current_state.owner.shoot_attack()
+#	Por el momento quitamos al laser
+#	if Input.is_action_just_pressed("attack"):# or Input.is_pressed"lighting") :
+#		current_state.owner.shoot_attack()
 	if Input.is_action_just_pressed("tackle"):# or Input.is_pressed"lighting") :
 		current_state.owner.tackle()
 	current_state.handle_input(event)

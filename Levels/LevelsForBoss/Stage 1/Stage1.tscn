@@ -254,3 +254,4 @@ position = Vector2( -4638.05, 225.496 )
 [connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_Checkpoint1_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="." method="_on_Checkpoint2_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint3" to="." method="_on_Checkpoint2_body_entered"]
+[connection signal="sound_missile" from="EnemyFloor" to="SoundPlayer" method="_on_EnemyFloor_sound_missile"]

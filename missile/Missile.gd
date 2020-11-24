@@ -9,7 +9,6 @@ var acceleration = Vector2.ZERO
 
 var target
 
-
 func start(_transform, _target):
 	global_transform = _transform
 	velocity = transform.x * speed

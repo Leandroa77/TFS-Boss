@@ -12,6 +12,7 @@ var target
 var target_in_sight = false
 var pos
 var isAlive = true
+signal sound_missile(value)
 
 ######## ENEMIGO ESTA EN CAPA 4 ##########
 func _ready():
@@ -67,21 +68,19 @@ func _on_Timer_timeout():
 
 
 func _on_ShotTimer_timeout():
-	var misil = Missile.instance()
-	if target == null:
-		misil.queue_free()
+	if target != null && (target.get_global_position().distance_to(self.get_global_position()) < radar):
+		target_in_sight = true
+		speed = 0
+		shoot()
 	else:
-		if (target.get_global_position().distance_to(self.get_global_position()) < radar):
-			target_in_sight = true
-			speed = 0
-			shoot(misil)
-		else:
-			target_in_sight = false
-			speed = 30
-			velocity.x = speed * direction
+		target_in_sight = false
+		speed = 30
+		velocity.x = speed * direction
 			
-func shoot(misil):
+func shoot():
 	yield(get_tree().create_timer(0.5), "timeout")
+	var misil = Missile.instance()
+	emit_signal("sound_missile", 5)
 	misil.target = target
 	misil.position = pos
 	add_child(misil)

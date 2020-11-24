@@ -54,7 +54,6 @@ func update(delta):
 	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
 	var reached_hook = distancia2.x < 35 and distancia2.y < 35
 	
-	
 	if reached_hook:
 		owner.itimer.start()
 	speed = 1500
@@ -67,7 +66,7 @@ func update(delta):
 	lighting.width = 10
 	lighting.visible = true
 	animated.play("hook")
-
+	
 func _on_Timer_timeout():
 	lighting.width = 4
 	lighting.visible = false

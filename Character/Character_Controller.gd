@@ -44,7 +44,7 @@ func _process(delta):
 	lighting.points[0] = body.position
 	
 	
-func _physics_process(delta):	
+func _physics_process(delta):
 	if raycast2d.is_colliding():
 		lighting.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
 		#if raycast2d.get_collider().is_in_group("hook"):
