@@ -30,6 +30,10 @@ func _on_Restart_UI_timeOutRestart():
 func _ready():
 	emit_signal("backgroundMusic", 1)
 	spawn_player()
+	#feo hardcodeado, pero el tiempo apura.
+	$Enemies/EnemyFloor.set_target($Character)
+	#$Enemies/EnemyFloor2.set_target($Character)
+	#$Enemies/EnemyFloor3.set_target($Character)
 	pass # Replace with function body.
 
 
@@ -48,9 +52,10 @@ func respawn_player():
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
 		add_child(new_player)
-		if is_instance_valid($EnemyFloor):
-			$EnemyFloor.set_target(new_player)
-			$EnemyFloor.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
+		if is_instance_valid($Enemies/EnemyFloor):
+			$Enemies/EnemyFloor.set_target(new_player)
+	#		$Enemies/EnemyFloor2.set_target(new_player)
+	#		$Enemies/EnemyFloor3.set_target(new_player)
 		
 		
 		#ya se llamo restart ui previene que se llame mas de una vez esto.
