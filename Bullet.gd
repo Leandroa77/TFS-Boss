@@ -21,8 +21,8 @@ func _ready():
 func _physics_process(delta):
 	if (dir != null and is_shooting):
 		
-		#dir = target_position - position
-		move_and_slide(dir  * speed ) 
+		var normalized_dir = dir.normalized()  * speed
+		move_and_slide(normalized_dir) 
 	if (hitted_something() and is_shooting):
 		is_shooting = false
 		detonate()
@@ -52,7 +52,7 @@ func set_target(target):
 	setDir()
 	
 func setDir():	
-	dir = (target.global_position - global_position ).normalized()
+	dir = (target.global_position - global_position )
 
 
 

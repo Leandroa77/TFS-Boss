@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 15.7964, 96.9817 )
 
-[node name="ParedMadera" type="StaticBody2D" groups=[
+[node name="ParedMaderaOtroColor" type="StaticBody2D" groups=[
 "enemy",
 ]]
 position = Vector2( 202.766, 443.003 )
@@ -15,6 +15,7 @@ collision_layer = 8
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.7, 0.7, 1.2, 1 )
 scale = Vector2( 1, 6.06861 )
 texture = ExtResource( 1 )
 __meta__ = {

@@ -45,8 +45,9 @@ func check_for_hits():
 	#rompe cuando el personaje muere muy rapido (?
 	# attempt to call function "is in group" in base null instance on a null instance
 	#wtf... raro. es por que es muy rapido??
-	if raycast2d.is_colliding(): 
-		if raycast2d.get_collider().is_in_group("player") and line2d.points[1] != line2d.points[0]:
+	var col = raycast2d.get_collider()
+	if col != null: 
+		if col.is_in_group("player") and line2d.points[1] != line2d.points[0]:
 			raycast2d.get_collider().got_hit()
 
 func _ready():
