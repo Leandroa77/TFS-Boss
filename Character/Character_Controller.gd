@@ -29,7 +29,7 @@ var look_direction = Vector2.RIGHT setget set_look_direction
 ######### VER RAYCAST2D COLLISION PARA AGREGAR COLISIONES ##########
 
 func _ready():
-	
+	$DeathSprite.visible = false
 	lighting.visible = false
 	default_aim_color = lighting.get_default_color()
 	lighting.set_default_color(default_aim_color)
@@ -142,8 +142,14 @@ func die():
 	$Camera2D.clear_current()
 	emit_signal("sound", 1)
 	emit_signal("die", self.position)
-	
-	queue_free()
+	$CollisionShape2D.queue_free()
+#	$BodyPivot/AnimatedSprite3.visible = false
+#	$DeathSprite.visible = true
+#	$DeathSprite.play("dead")
+	csm.changeToDie()
+	#get_viewport()._unhandled_input()
+	$AnimationPlayer.play("fade_in")
+	#aca habria que agregar alguna animacion o algo
 	
 	#aca habria que agregar alguna animacion o algo
 	
@@ -172,3 +178,8 @@ func play_atraction_sound():
 
 func show_hit_count(): 
 	emit_signal("hit", hitCount, $HitPositionLeft.position)
+
+
+func _on_AnimatedSprite_animation_finished():
+	queue_free()
+	pass # Replace with function body.

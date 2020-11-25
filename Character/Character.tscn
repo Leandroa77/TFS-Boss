@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=67 format=2]
 
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Character/Idle.gd" type="Script" id=2]
@@ -7,6 +7,16 @@
 [ext_resource path="res://Character/assets robot rojo/r_flip.png" type="Texture" id=5]
 [ext_resource path="res://Character/Move.gd" type="Script" id=6]
 [ext_resource path="res://Character/assets robot rojo/r_flip_shoot.png" type="Texture" id=7]
+[ext_resource path="res://Character/assets robot rojo/r_death_1.png" type="Texture" id=8]
+[ext_resource path="res://Character/assets robot rojo/r_death_3.png" type="Texture" id=9]
+[ext_resource path="res://Character/assets robot rojo/r_death_4.png" type="Texture" id=10]
+[ext_resource path="res://Character/assets robot rojo/r_death_9.png" type="Texture" id=11]
+[ext_resource path="res://Character/assets robot rojo/r_death_10.png" type="Texture" id=12]
+[ext_resource path="res://Character/assets robot rojo/r_death_5.png" type="Texture" id=13]
+[ext_resource path="res://Character/assets robot rojo/r_death_12.png" type="Texture" id=14]
+[ext_resource path="res://Character/assets robot rojo/r_death_6.png" type="Texture" id=15]
+[ext_resource path="res://Character/assets robot rojo/r_death_7.png" type="Texture" id=16]
+[ext_resource path="res://Character/assets robot rojo/r_death_8.png" type="Texture" id=17]
 [ext_resource path="res://Character/RayCast2D.gd" type="Script" id=18]
 [ext_resource path="res://Character/Lighting.gd" type="Script" id=19]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=20]
@@ -18,6 +28,7 @@
 [ext_resource path="res://Character/Line2DLighting.gd" type="Script" id=26]
 [ext_resource path="res://HitText/HitText.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Character/Tackle.gd" type="Script" id=28]
+[ext_resource path="res://Character/assets robot rojo/r_death_11.png" type="Texture" id=29]
 [ext_resource path="res://Character/assets robot rojo/r_run_16.png" type="Texture" id=47]
 [ext_resource path="res://Character/assets robot rojo/r_idle_10.png" type="Texture" id=48]
 [ext_resource path="res://Character/assets robot rojo/r_run_2.png" type="Texture" id=49]
@@ -58,9 +69,9 @@ animations = [ {
 "name": "idle",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 76 ) ],
 "loop": true,
-"name": "tackle",
+"name": "on_air",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 83 ) ],
@@ -68,24 +79,86 @@ animations = [ {
 "name": "jump",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 76 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "on_air",
+"name": "tackle",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
-"loop": true,
-"name": "hook",
-"speed": 20.0
 }, {
 "frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "walk",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
+"loop": true,
+"name": "hook",
+"speed": 20.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.83038, 21.3771 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 29 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=4]
+resource_name = "START"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0.0313726, 0.027451, 0.027451, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.0313726, 0.027451, 0.027451, 0 ), Color( 0.0313726, 0.027451, 0.027451, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Character" type="KinematicBody2D" groups=[
 "player",
@@ -201,6 +274,27 @@ position = Vector2( 333.328, -205.631 )
 
 [node name="HitPositionRight" type="Position2D" parent="."]
 position = Vector2( 796.902, -269.431 )
+
+[node name="DeathSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 3 )
+animation = "dead"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0313726, 0.027451, 0.027451, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "START"
+anims/START = SubResource( 4 )
+anims/fade_in = SubResource( 5 )
 [connection signal="hit" from="." to="HitText" method="_on_Character_hit"]
 [connection signal="state_changed" from="Character_State_Machine" to="Label" method="_on_Character_State_Machine_state_changed"]
 [connection signal="timeout" from="Character_State_Machine/Impulse/TimerNoInput" to="Character_State_Machine/Impulse" method="_on_TimerNoInput_timeout"]
@@ -208,3 +302,4 @@ position = Vector2( 796.902, -269.431 )
 [connection signal="timeOut" from="LevelTimer" to="." method="_on_LevelTimer_timeOut"]
 [connection signal="timeout" from="ImpulseTimer" to="Character_State_Machine/Lighting" method="_on_Timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="animation_finished" from="DeathSprite" to="." method="_on_AnimatedSprite_animation_finished"]
