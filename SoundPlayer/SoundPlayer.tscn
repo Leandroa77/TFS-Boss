@@ -10,3 +10,5 @@ volume_db = -10.0
 
 [node name="BgPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -20.0
+
+[node name="FxEnemy" type="AudioStreamPlayer" parent="."]
