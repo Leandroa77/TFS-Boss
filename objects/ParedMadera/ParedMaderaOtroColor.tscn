@@ -11,7 +11,8 @@ extents = Vector2( 15.7964, 96.9817 )
 "enemy",
 ]]
 position = Vector2( 202.766, 443.003 )
-collision_layer = 8
+collision_layer = 9
+collision_mask = 9
 script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
