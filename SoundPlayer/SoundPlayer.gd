@@ -88,3 +88,13 @@ func _on_EnemyFloor7_sound_missile(value):
 func _on_EnemyFloor9_sound_missile(value):
 	fxEnemy.stream = fxEnemySoundsMap[value]
 	fxEnemy.play()
+
+
+func _on_Stage2_backgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
+	pass # Replace with function body.
+
+
+func _on_Tutorial_backgroundMusic(value):
+	pass # Replace with function body.
