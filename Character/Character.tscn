@@ -69,19 +69,9 @@ animations = [ {
 "name": "idle",
 "speed": 7.0
 }, {
-"frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
+"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "hook",
-"speed": 20.0
-}, {
-"frames": [ ExtResource( 76 ) ],
-"loop": true,
-"name": "on_air",
-"speed": 10.0
-}, {
-"frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 83 ) ],
-"loop": true,
-"name": "jump",
+"name": "tackle",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
@@ -89,9 +79,19 @@ animations = [ {
 "name": "walk",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 76 ) ],
 "loop": true,
-"name": "tackle",
+"name": "on_air",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 74 ) ],
+"loop": true,
+"name": "hook",
+"speed": 20.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 83 ) ],
+"loop": true,
+"name": "jump",
 "speed": 10.0
 } ]
 
@@ -228,9 +228,7 @@ cast_to = Vector2( 0, 1500 )
 collision_mask = 11
 script = ExtResource( 18 )
 
-[node name="Camera2D" type="Camera2D" parent="." groups=[
-"player",
-]]
+[node name="Camera2D" type="Camera2D" parent="."]
 current = true
 offset_v = -0.4
 script = ExtResource( 23 )
@@ -244,9 +242,7 @@ script = ExtResource( 26 )
 
 [node name="Cursor" parent="." instance=ExtResource( 20 )]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
-"player",
-]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.250854, 2 )
 shape = SubResource( 2 )
 one_way_collision_margin = 50.0
