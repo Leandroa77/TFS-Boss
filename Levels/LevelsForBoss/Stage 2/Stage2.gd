@@ -31,7 +31,7 @@ func _ready():
 	emit_signal("backgroundMusic", 1)
 	spawn_player()
 	#feo hardcodeado, pero el tiempo apura.
-	$Enemies/EnemyFloor.set_target($Character)
+	#$Enemies/EnemyFloor.set_target($Character)
 	#$Enemies/EnemyFloor2.set_target($Character)
 	#$Enemies/EnemyFloor3.set_target($Character)
 	pass # Replace with function body.
@@ -41,6 +41,8 @@ func _ready():
 #func _process(delta):
 #	pass
 func spawn_player():
+	call_deferred("add_child", player)
+	
 	player.global_position = player_spawn_position.global_position
 	
 
@@ -51,9 +53,10 @@ func respawn_player():
 		new_player.global_position = player_spawn_position.global_position
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
-		add_child(new_player)
-		if is_instance_valid($Enemies/EnemyFloor):
-			$Enemies/EnemyFloor.set_target(new_player)
+		#add_child(new_player)
+		call_deferred("add_child", new_player)
+		#if is_instance_valid($Enemies/EnemyFloor):
+			#$Enemies/EnemyFloor.set_target(new_player)
 	#		$Enemies/EnemyFloor2.set_target(new_player)
 	#		$Enemies/EnemyFloor3.set_target(new_player)
 		
