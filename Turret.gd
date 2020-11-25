@@ -11,12 +11,16 @@ onready var bullet_start_position:Position2D = $Position2DStartOfProyectile
 
 func shoot():
 	var bullet = bullet_scene.instance()
-	get_parent().add_child(bullet)
+	#get_parent().add_child(bullet)
+	#get_parent().call_deferred("add_child", bullet)
+	#call_deferred("add_child", bullet)
+	add_child(bullet)
 	bullet.global_position = bullet_start_position.global_position
 	bullet.set_target(target)
 
-
-
+#get_parent().call_deferred("add_child", bullet)
+#	call_deferred("add_child", bullet)
+#
 func _on_Area2DDetection_body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("playerDetected")
