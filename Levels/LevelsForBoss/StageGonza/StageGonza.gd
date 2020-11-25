@@ -1,7 +1,10 @@
 extends Node
 
-onready var enemy = $EnemyFloor
+onready var enemies = $Enemies
 onready var character = $Character
+signal playBackgroundMusic(value)
 
 func _ready():
-	enemy.target = character
+	emit_signal("playBackgroundMusic", 1)
+	for enemy in enemies.get_children():
+		enemy.target = character

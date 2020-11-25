@@ -35,7 +35,6 @@ func _on_Level1_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
 	bgPlayer.play()
 
-
 func _on_Level2_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
 	bgPlayer.play()
@@ -47,3 +46,7 @@ func _on_Level3_backgroundMusic(value):
 func _on_EnemyFloor_sound_missile(value):
 	fxPlayer.stream = fxSoundsMap[value]
 	fxPlayer.play()
+
+func _on_StageGonza_playBackgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
