@@ -80,7 +80,7 @@ func _on_ShotTimer_timeout():
 func shoot():
 	yield(get_tree().create_timer(0.5), "timeout")
 	var misil = Missile.instance()
-	emit_signal("sound_missile", 5)
+	emit_signal("sound_missile", 2)
 	misil.target = target
 	misil.position = pos
 	add_child(misil)

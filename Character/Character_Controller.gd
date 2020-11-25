@@ -120,7 +120,6 @@ func missed_shoot_start():
 	hitted_hook = false
 
 func missed_attack_start():
-	print("color salmooooon")
 	emit_signal("sound", 2)
 	lighting.set_default_color(ColorN("salmon",1))
 	lighting.visible = true

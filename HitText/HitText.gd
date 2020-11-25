@@ -17,7 +17,6 @@ func incrementHit(value, pos):
 			text = "2 Hits"
 			changeFontSize(20)
 		3:
-			#Aca va el sonido
 			text = "3 Hits"
 			power()
 			changeFontSize(25)
@@ -40,16 +39,13 @@ func toChange(value, pos):
 			size += 3
 			changeFontSize(min(size, 25))
 			if(value == 3):
-				#Aca va el sonido
 				power()
 
 func MoveLeft(pos):
-	#var newPos = Vector2(get_rect().position.x - 500, get_rect().position.y)
 	TweenNode.interpolate_property(self, "rect_position", get_rect().position, pos, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
 	TweenNode.start()
 
 func MoveRight(pos):
-	#var newPos = Vector2(get_rect().position.x + 500, get_rect().position.y)
 	TweenNode.interpolate_property(self, "rect_position", get_rect().position, pos, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
 	TweenNode.start()
 
