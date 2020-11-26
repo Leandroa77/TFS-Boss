@@ -5,5 +5,5 @@ func _ready():
 	
 func _physics_process(delta):
 	#se puede tener el crosshair titileando o el estatico
-	#$SpriteCrosshair.set_global_position(get_global_mouse_position())
-	$AnimatedSprite.set_global_position(get_global_mouse_position())
+	$SpriteCrosshair.set_global_position(get_global_mouse_position())
+	#$AnimatedSprite.set_global_position(get_global_mouse_position())

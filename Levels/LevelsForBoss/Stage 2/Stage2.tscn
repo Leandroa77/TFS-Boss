@@ -263,10 +263,10 @@ position = Vector2( 4152, 1768 )
 position = Vector2( 4480, 1904 )
 
 [node name="Hook10" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 4920, 1768 )
+position = Vector2( 4939.48, 1791.97 )
 
 [node name="Hook11" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 5504, 1616 )
+position = Vector2( 5502.5, 1619 )
 
 [node name="Hook12" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 5504, 1384 )
@@ -275,10 +275,10 @@ position = Vector2( 5504, 1384 )
 position = Vector2( 5568, 1168 )
 
 [node name="Hook14" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 6544, 1096 )
+position = Vector2( 6561.98, 1109.48 )
 
 [node name="Hook15" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 7216, 1104 )
+position = Vector2( 7226.49, 1165.43 )
 
 [node name="Hook16" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 8200, 1576 )
@@ -293,7 +293,7 @@ position = Vector2( 9104, 1592 )
 position = Vector2( 9368, 1672 )
 
 [node name="Hook22" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 9698.59, 1586.44 )
+position = Vector2( 9740.54, 1607.42 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( 192, 2192 )
