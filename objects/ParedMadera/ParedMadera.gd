@@ -1,6 +1,9 @@
 extends StaticBody2D
 
+signal detonate(value)
+
 func hitted():
+	emit_signal("detonate", 7)
 	$Explosion.detonate_explosion()
 	$Sprite.visible = false
 	$CollisionShape2D.disabled = true

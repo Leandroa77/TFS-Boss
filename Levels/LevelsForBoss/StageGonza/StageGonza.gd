@@ -36,9 +36,10 @@ func respawn_player():
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
 		add_child(new_player)
-		if is_instance_valid($EnemyFloor):
-			$EnemyFloor.set_target(new_player)
-			$EnemyFloor.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
+
+		for enemy in enemies.get_children():
+			enemy.set_target(new_player)
+			enemy.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
 		ya_se_llamo_restart_ui = true
 
 func set_ya_se_llamo_restart_ui(boolean):

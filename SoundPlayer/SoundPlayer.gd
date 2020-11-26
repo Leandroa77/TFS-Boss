@@ -10,6 +10,7 @@ onready var tackle = load("res://sounds/Tackle.ogg")
 onready var missile_explosion = load("res://sounds/explosion_missile.ogg")
 onready var missile = load("res://sounds/missile.ogg")
 onready var portalG = load("res://sounds/portalGonza.ogg")
+onready var paredEx = load("res://sounds/paredExplota.ogg")
 
 var bgSoundsMap = {}
 var fxSoundsMap = {}
@@ -21,6 +22,7 @@ func _ready():
 	fxSoundsMap[2] = grappHook
 	fxSoundsMap[3] = tackle
 	fxSoundsMap[6] = portalG
+	fxSoundsMap[7] = paredEx
 	
 	fxEnemySoundsMap[0] = null
 	fxEnemySoundsMap[1] = missile_explosion
@@ -89,12 +91,23 @@ func _on_EnemyFloor9_sound_missile(value):
 	fxEnemy.stream = fxEnemySoundsMap[value]
 	fxEnemy.play()
 
-
 func _on_Stage2_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
 	bgPlayer.play()
 	pass # Replace with function body.
-
-
+	
 func _on_Tutorial_backgroundMusic(value):
 	pass # Replace with function body.
+
+func _on_ParedMadera_detonate(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+
+func _on_ParedMadera2_detonate(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+
+func _on_ParedMadera3_detonate(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+

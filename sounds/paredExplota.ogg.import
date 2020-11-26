@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/paredExplota.ogg-aa46734c067f9c4af0dd2c0235c7af53.oggstr"
+
+[deps]
+
+source_file="res://sounds/paredExplota.ogg"
+dest_files=[ "res://.import/paredExplota.ogg-aa46734c067f9c4af0dd2c0235c7af53.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

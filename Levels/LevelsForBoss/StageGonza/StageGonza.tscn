@@ -18,21 +18,21 @@
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 78.981, 10 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 78.981, 10 )
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 78.981, 10 )
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 78.981, 10 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 78.981, 10 )
-
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1.00903, -0.514038, 0, 0, 0, 0, -647.531, -462.516, 0, 0, 0, 0, -646.551, -463.026, 0, 0, 0, 0, 0.239014, -0.0759277, 0, 0, 0, 0, 1.00903, -0.514038 )
 }
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.161377, 0.320251, 0, 0, 0, 0, -410.603, -69.359, 0, 0, 0, 0, -661.837, -219.03, 0, 0, 0, 0, -788.344, -393.646, 0, 0, 0, 0, -827.544, -625.28, 0, 0, 0, 0, -841.799, -803.46, 0, 0, 0, 0, -802.599, -872.95, 0, 0, 0, 0, -688.564, -942.44, 0, 0, 0, 0, -537.111, -985.203, 0, 0, 0, 0, -401.695, -992.33, 0, 0, 0, 0, -316.168, -983.421, 0, 0, 0, 0, -157.589, -905.022, 0, 0, 0, 0, -73.844, -776.733, 0, 0, 0, 0, -39.99, -618.153, 0, 0, 0, 0, -34.6445, -447.1, 0, 0, 0, 0, -64.9351, -372.265, 0, 0, 0, 0, -107.698, -260.011, 0, 0, 0, 0, -104.135, -179.831, 0, 0, 0, 0, -86.3167, -106.777, 0, 0, 0, 0, -31.0808, -47.9775, 0, 0, 0, 0, 0.161377, 0.320251 )
 }
@@ -67,7 +67,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/Checkpoint2/Area2D"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -82,7 +82,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/Checkpoint3/Area2D"]
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -97,7 +97,7 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/Checkpoint4/Area2D"]
-shape = SubResource( 5 )
+shape = SubResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -437,7 +437,7 @@ modulate = Color( 1.1, 1.1, 1.1, 1 )
 position = Vector2( -2354.66, 1592.63 )
 
 [node name="Path2D" type="Path2D" parent="MovHooks/MovHook"]
-curve = SubResource( 1 )
+curve = SubResource( 4 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
@@ -458,7 +458,7 @@ modulate = Color( 1.1, 1.1, 1.1, 1 )
 position = Vector2( -2307.46, 627.989 )
 
 [node name="Path2D" type="Path2D" parent="MovHooks/MovHook2"]
-curve = SubResource( 2 )
+curve = SubResource( 5 )
 script = ExtResource( 7 )
 __meta__ = {
 "_edit_lock_": true
@@ -551,6 +551,9 @@ position = Vector2( -7573.87, 4147.37 )
 [connection signal="body_entered" from="Checkpoint/Checkpoint3/Area2D" to="Checkpoint/Checkpoint3" method="_on_Area2D_body_entered"]
 [connection signal="setCheckpoint" from="Checkpoint/Checkpoint4" to="." method="_on_Checkpoint4_setCheckpoint"]
 [connection signal="body_entered" from="Checkpoint/Checkpoint4/Area2D" to="Checkpoint/Checkpoint4" method="_on_Area2D_body_entered"]
+[connection signal="detonate" from="Paredes/ParedMadera" to="SoundPlayer" method="_on_ParedMadera_detonate"]
+[connection signal="detonate" from="Paredes/ParedMadera2" to="SoundPlayer" method="_on_ParedMadera2_detonate"]
+[connection signal="detonate" from="Paredes/ParedMadera3" to="SoundPlayer" method="_on_ParedMadera3_detonate"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor2" to="SoundPlayer" method="_on_EnemyFloor2_sound_missile"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor3" to="SoundPlayer" method="_on_EnemyFloor3_sound_missile"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor5" to="SoundPlayer" method="_on_EnemyFloor5_sound_missile"]
