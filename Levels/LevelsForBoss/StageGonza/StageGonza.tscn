@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -16,8 +16,16 @@
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic20.tscn" type="PackedScene" id=14]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Levels/LevelsForBoss/StageGonza/GameManagerG.gd" type="Script" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 78.981, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 78.981, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 78.981, 10 )
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -29,30 +37,69 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.161377, 0.320251, 0, 0, 0, 0, -410.603, -69.359, 0, 0, 0, 0, -661.837, -219.03, 0, 0, 0, 0, -788.344, -393.646, 0, 0, 0, 0, -827.544, -625.28, 0, 0, 0, 0, -841.799, -803.46, 0, 0, 0, 0, -802.599, -872.95, 0, 0, 0, 0, -688.564, -942.44, 0, 0, 0, 0, -537.111, -985.203, 0, 0, 0, 0, -401.695, -992.33, 0, 0, 0, 0, -316.168, -983.421, 0, 0, 0, 0, -157.589, -905.022, 0, 0, 0, 0, -73.844, -776.733, 0, 0, 0, 0, -39.99, -618.153, 0, 0, 0, 0, -34.6445, -447.1, 0, 0, 0, 0, -64.9351, -372.265, 0, 0, 0, 0, -107.698, -260.011, 0, 0, 0, 0, -104.135, -179.831, 0, 0, 0, 0, -86.3167, -106.777, 0, 0, 0, 0, -31.0808, -47.9775, 0, 0, 0, 0, 0.161377, 0.320251 )
 }
 
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 78.981, 10 )
-
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 78.981, 10 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 78.981, 10 )
-
 [node name="StageGonza" type="Node"]
 script = ExtResource( 6 )
 
-[node name="GameManagerG" type="Node" parent="."]
-script = ExtResource( 17 )
-
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -8661.45
-margin_top = -1518.95
-margin_right = 4366.55
-margin_bottom = 5464.05
+anchor_left = 0.627386
+anchor_top = 3.16737
+anchor_right = 0.627386
+anchor_bottom = 3.16737
+margin_left = -12334.4
+margin_top = -5851.42
+margin_right = 8759.56
+margin_bottom = 5805.58
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
+}
+
+[node name="Checkpoint" type="Node" parent="."]
+
+[node name="Checkpoint2" type="Node2D" parent="Checkpoint"]
+position = Vector2( -2435.95, 1781.61 )
+script = ExtResource( 18 )
+
+[node name="Area2D" type="Area2D" parent="Checkpoint/Checkpoint2"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/Checkpoint2/Area2D"]
+shape = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Checkpoint3" type="Node2D" parent="Checkpoint"]
+position = Vector2( 250.647, 4652.74 )
+script = ExtResource( 18 )
+
+[node name="Area2D" type="Area2D" parent="Checkpoint/Checkpoint3"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/Checkpoint3/Area2D"]
+shape = SubResource( 4 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Checkpoint4" type="Node2D" parent="Checkpoint"]
+position = Vector2( 1617.51, -900.573 )
+script = ExtResource( 18 )
+
+[node name="Area2D" type="Area2D" parent="Checkpoint/Checkpoint4"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint/Checkpoint4/Area2D"]
+shape = SubResource( 5 )
+__meta__ = {
+"_edit_lock_": true
 }
 
 [node name="SoundPlayer" parent="." instance=ExtResource( 9 )]
@@ -495,51 +542,15 @@ tile_data = PoolIntArray( -8126197, 47, 0, -8126196, 47, 0, -8126195, 47, 0, -81
 modulate = Color( 1.1, 1.1, 1.1, 1 )
 position = Vector2( -7575.44, 4128.15 )
 
-[node name="Checkpoint2" type="Node2D" parent="."]
-position = Vector2( -2435.95, 1781.61 )
-script = ExtResource( 18 )
-
-[node name="Area2D" type="Area2D" parent="Checkpoint2"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint2/Area2D"]
-shape = SubResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Checkpoint3" type="Node2D" parent="."]
-position = Vector2( 250.647, 4652.74 )
-script = ExtResource( 18 )
-
-[node name="Area2D" type="Area2D" parent="Checkpoint3"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint3/Area2D"]
-shape = SubResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Checkpoint4" type="Node2D" parent="."]
-position = Vector2( 1617.51, -900.573 )
-script = ExtResource( 18 )
-
-[node name="Area2D" type="Area2D" parent="Checkpoint4"]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoint4/Area2D"]
-shape = SubResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="PlayerRespawn" type="Position2D" parent="."]
+position = Vector2( -7573.87, 4147.37 )
 [connection signal="playBackgroundMusic" from="." to="SoundPlayer" method="_on_StageGonza_playBackgroundMusic"]
+[connection signal="setCheckpoint" from="Checkpoint/Checkpoint2" to="." method="_on_Checkpoint2_setCheckpoint"]
+[connection signal="body_entered" from="Checkpoint/Checkpoint2/Area2D" to="Checkpoint/Checkpoint2" method="_on_Area2D_body_entered"]
+[connection signal="setCheckpoint" from="Checkpoint/Checkpoint3" to="." method="_on_Checkpoint3_setCheckpoint"]
+[connection signal="body_entered" from="Checkpoint/Checkpoint3/Area2D" to="Checkpoint/Checkpoint3" method="_on_Area2D_body_entered"]
+[connection signal="setCheckpoint" from="Checkpoint/Checkpoint4" to="." method="_on_Checkpoint4_setCheckpoint"]
+[connection signal="body_entered" from="Checkpoint/Checkpoint4/Area2D" to="Checkpoint/Checkpoint4" method="_on_Area2D_body_entered"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor2" to="SoundPlayer" method="_on_EnemyFloor2_sound_missile"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor3" to="SoundPlayer" method="_on_EnemyFloor3_sound_missile"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor5" to="SoundPlayer" method="_on_EnemyFloor5_sound_missile"]
@@ -548,11 +559,5 @@ __meta__ = {
 [connection signal="playFx" from="PortalParticula" to="SoundPlayer" method="_on_PortalParticula_playFx"]
 [connection signal="playFx" from="PortalParticula2" to="SoundPlayer" method="_on_PortalParticula2_playFx"]
 [connection signal="playFx" from="PortalParticula3" to="SoundPlayer" method="_on_PortalParticula3_playFx"]
-[connection signal="die" from="Character" to="GameManagerG" method="_on_Character_die"]
+[connection signal="die" from="Character" to="." method="_on_Character_die"]
 [connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
-[connection signal="setCheckpoint" from="Checkpoint2" to="." method="_on_Checkpoint2_setCheckpoint"]
-[connection signal="body_entered" from="Checkpoint2/Area2D" to="Checkpoint2" method="_on_Area2D_body_entered"]
-[connection signal="setCheckpoint" from="Checkpoint3" to="." method="_on_Checkpoint3_setCheckpoint"]
-[connection signal="body_entered" from="Checkpoint3/Area2D" to="Checkpoint3" method="_on_Area2D_body_entered"]
-[connection signal="setCheckpoint" from="Checkpoint4" to="." method="_on_Checkpoint4_setCheckpoint"]
-[connection signal="body_entered" from="Checkpoint4/Area2D" to="Checkpoint4" method="_on_Area2D_body_entered"]
