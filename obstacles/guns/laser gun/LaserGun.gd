@@ -45,6 +45,7 @@ func check_for_hits():
 	#rompe cuando el personaje muere muy rapido (?
 	# attempt to call function "is in group" in base null instance on a null instance
 	#wtf... raro. es por que es muy rapido??
+	raycast2d.force_raycast_update()
 	var col = raycast2d.get_collider()
 	if col != null: 
 		if col.is_in_group("player") and line2d.points[1] != line2d.points[0]:
@@ -60,7 +61,10 @@ func _ready():
 	
 	timer_shooting.set_wait_time(time_shooting)
 	timer_cooldown.set_wait_time(time_cooldown)
+	
+	#para setear los lasers en diferente tiempo
 	timer_first_shoot.set_wait_time(time_first_shoot)
+	
 	timer_shooting.start()
 	set_laser_raycast_width_size(raycast_size)
 	pass 

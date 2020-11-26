@@ -14,6 +14,7 @@ var hitted_player = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	setDir()
 	is_shooting = true
 	pass # Replace with function body.
 
@@ -49,10 +50,11 @@ func detonate():
 
 func set_target(target):
 	self.target = target
-	setDir()
 	
-func setDir():	
+	
+func setDir():
 	dir = (target.global_position - global_position )
+	#dir = (self.global_position )
 
 
 

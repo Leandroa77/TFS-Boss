@@ -10,6 +10,7 @@ extents = Vector2( 24, 7.55952 )
 [node name="LaserGun" type="Node2D"]
 script = ExtResource( 1 )
 time_cooldown = 1.5
+time_first_shoot = 0.1
 laser_size = 15
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

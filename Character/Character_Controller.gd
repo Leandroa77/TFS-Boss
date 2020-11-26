@@ -60,7 +60,7 @@ func set_look_direction(value):
 	emit_signal("direction_changed", value)
 
 func shoot_lighting():
-	
+	raycast2d.force_raycast_update()
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("hook") and !hitted_hook:
 			hitCount += 1
@@ -79,6 +79,7 @@ func shoot_lighting():
 	pass
 
 func shoot_attack():
+	raycast2d.force_raycast_update()
 	if hitCount >= 3:
 		if raycast2d.is_colliding():
 			if raycast2d.get_collider().is_in_group("enemy"):
@@ -97,6 +98,7 @@ func clear_hits():
 	emit_signal("hit", hitCount, $HitPositionRight.position) 
 
 func tackle():
+	raycast2d.force_raycast_update()
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("enemy"):
 			
