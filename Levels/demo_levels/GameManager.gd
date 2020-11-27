@@ -10,4 +10,4 @@ func _on_Character_die(cameraDir):
 	get_parent().add_child(restart_UI)
 
 func _on_Restart_UI_timeOutRestart():
-	get_tree().change_scene("res://Levels/Level_1/Level1.tscn")
+	get_tree().change_scene("res://Levels/demo_levels/DemoLevelPresentacion.tscn")

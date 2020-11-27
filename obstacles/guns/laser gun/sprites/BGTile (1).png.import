@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Box.png-72a32da579949994cd567a04756bc99d.stex"
+path="res://.import/BGTile (1).png-bb03ca0f3868341dd59f35571ef0e950.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Objects/Box.png"
-dest_files=[ "res://.import/Box.png-72a32da579949994cd567a04756bc99d.stex" ]
+source_file="res://obstacles/guns/laser gun/sprites/BGTile (1).png"
+dest_files=[ "res://.import/BGTile (1).png-bb03ca0f3868341dd59f35571ef0e950.stex" ]
 
 [params]
 

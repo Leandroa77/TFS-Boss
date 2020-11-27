@@ -48,9 +48,9 @@ func respawn_player():
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
 		add_child(new_player)
-		if is_instance_valid($EnemyFloor):
-			$EnemyFloor.set_target(new_player)
-			$EnemyFloor.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
+		#if is_instance_valid($EnemyFloor):
+		#	$EnemyFloor.set_target(new_player)
+		#	$EnemyFloor.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
 		
 		
 		#ya se llamo restart ui previene que se llame mas de una vez esto.
