@@ -99,7 +99,7 @@ func _on_Stage2_backgroundMusic(value):
 func _on_Tutorial_backgroundMusic(value):
 	pass # Replace with function body.
 
-func _on_ParedMadera_detonate(value):
+func _on_ParedMadera1_detonate(value):
 	fxPlayer.stream = fxSoundsMap[value]
 	fxPlayer.play()
 
@@ -110,4 +110,3 @@ func _on_ParedMadera2_detonate(value):
 func _on_ParedMadera3_detonate(value):
 	fxPlayer.stream = fxSoundsMap[value]
 	fxPlayer.play()
-

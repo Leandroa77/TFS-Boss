@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic20.tscn" type="PackedScene" id=14]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Levels/LevelsForBoss/StageGonza/Pause.gd" type="Script" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -255,7 +256,7 @@ position = Vector2( -7075.96, 4306.92 )
 
 [node name="Paredes" type="Node" parent="."]
 
-[node name="ParedMadera" parent="Paredes" instance=ExtResource( 3 )]
+[node name="ParedMadera1" parent="Paredes" instance=ExtResource( 3 )]
 position = Vector2( -2180.46, -284.927 )
 
 [node name="ParedMadera2" parent="Paredes" instance=ExtResource( 3 )]
@@ -544,6 +545,27 @@ position = Vector2( -7575.44, 4128.15 )
 
 [node name="PlayerRespawn" type="Position2D" parent="."]
 position = Vector2( -7573.87, 4147.37 )
+
+[node name="Pause" type="Control" parent="."]
+pause_mode = 2
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="Pause"]
+pause_mode = 2
+margin_left = -11970.0
+margin_top = -4113.0
+margin_right = 9487.0
+margin_bottom = 7879.0
+color = Color( 0, 0, 0, 0.211765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="playBackgroundMusic" from="." to="SoundPlayer" method="_on_StageGonza_playBackgroundMusic"]
 [connection signal="setCheckpoint" from="Checkpoint/Checkpoint2" to="." method="_on_Checkpoint2_setCheckpoint"]
 [connection signal="body_entered" from="Checkpoint/Checkpoint2/Area2D" to="Checkpoint/Checkpoint2" method="_on_Area2D_body_entered"]
@@ -551,7 +573,7 @@ position = Vector2( -7573.87, 4147.37 )
 [connection signal="body_entered" from="Checkpoint/Checkpoint3/Area2D" to="Checkpoint/Checkpoint3" method="_on_Area2D_body_entered"]
 [connection signal="setCheckpoint" from="Checkpoint/Checkpoint4" to="." method="_on_Checkpoint4_setCheckpoint"]
 [connection signal="body_entered" from="Checkpoint/Checkpoint4/Area2D" to="Checkpoint/Checkpoint4" method="_on_Area2D_body_entered"]
-[connection signal="detonate" from="Paredes/ParedMadera" to="SoundPlayer" method="_on_ParedMadera_detonate"]
+[connection signal="detonate" from="Paredes/ParedMadera1" to="SoundPlayer" method="_on_ParedMadera1_detonate"]
 [connection signal="detonate" from="Paredes/ParedMadera2" to="SoundPlayer" method="_on_ParedMadera2_detonate"]
 [connection signal="detonate" from="Paredes/ParedMadera3" to="SoundPlayer" method="_on_ParedMadera3_detonate"]
 [connection signal="sound_missile" from="Enemies/EnemyFloor2" to="SoundPlayer" method="_on_EnemyFloor2_sound_missile"]

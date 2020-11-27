@@ -1,19 +1,36 @@
 extends Node
 
+signal playBackgroundMusic(value)
+
 onready var player_spawn_position : Position2D = $PlayerRespawn
 onready var enemies = $Enemies
 onready var character = $Character
 onready var soundPlayer = $SoundPlayer
-
+onready var walls = $Paredes
+onready var wall_template = preload("res://objects/ParedMadera/ParedMadera.tscn")
 onready var restart_UI_template = preload("res://UI/Restart_UI/Restart_UI.tscn")
 onready var character_template = preload("res://Character/Character.tscn")
-
-signal playBackgroundMusic(value)
-
-var players = 0
+var wallPositionList = [Vector2(-2180.46, -284.927), Vector2(-2179.27, 67.078), Vector2(-3300.04, 1986.87)]
 var ya_se_llamo_restart_ui = false
 
-#var actualCheckpoint = Vector2(-7570.123, 4139.863)
+func _ready():
+	emit_signal("playBackgroundMusic", 1)
+	spawn_player()
+	for enemy in enemies.get_children():
+		enemy.target = character
+
+func respawnWalls():
+	var index = 1
+	for wall in walls.get_children():
+		wall.queue_free()
+	for pos in wallPositionList:
+		var newWall = wall_template.instance()
+		newWall.global_position = pos
+		var st = "_on_ParedMadera" + str(index) + "_detonate"
+		index += 1
+		print(st)
+		newWall.connect("detonate", soundPlayer, st);
+		walls.add_child(newWall)
 
 func _on_Character_die(cameraDir):
 	var restart_UI:Node2D = restart_UI_template.instance()
@@ -30,6 +47,7 @@ func spawn_player():
 
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
+		respawnWalls()
 		var new_player:Character = character_template.instance()
 		
 		new_player.global_position = player_spawn_position.global_position
@@ -44,12 +62,6 @@ func respawn_player():
 
 func set_ya_se_llamo_restart_ui(boolean):
 	ya_se_llamo_restart_ui = boolean
-
-func _ready():
-	emit_signal("playBackgroundMusic", 1)
-	spawn_player()
-	for enemy in enemies.get_children():
-		enemy.target = character
 
 func _on_Checkpoint2_setCheckpoint(value):
 	player_spawn_position.global_position = value
