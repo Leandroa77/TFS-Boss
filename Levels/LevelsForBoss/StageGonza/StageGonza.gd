@@ -29,7 +29,6 @@ func respawnWalls():
 		newWall.global_position = pos
 		var st = "_on_ParedMadera" + str(index) + "_detonate"
 		index += 1
-		print(st)
 		newWall.connect("detonate", soundPlayer, st);
 		walls.add_child(newWall)
 
