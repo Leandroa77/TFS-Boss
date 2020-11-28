@@ -94,10 +94,10 @@ func _on_EnemyFloor9_sound_missile(value):
 func _on_Stage2_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
 	bgPlayer.play()
-	pass # Replace with function body.
 	
 func _on_Tutorial_backgroundMusic(value):
-	pass # Replace with function body.
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
 
 func _on_ParedMadera1_detonate(value):
 	fxPlayer.stream = fxSoundsMap[value]

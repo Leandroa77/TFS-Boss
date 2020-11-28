@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -16,9 +16,8 @@
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic20.tscn" type="PackedScene" id=14]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Levels/LevelsForBoss/StageGonza/Pause.gd" type="Script" id=17]
+[ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
-[ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=19]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 78.981, 10 )
@@ -38,16 +37,6 @@ _data = {
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.161377, 0.320251, 0, 0, 0, 0, -410.603, -69.359, 0, 0, 0, 0, -661.837, -219.03, 0, 0, 0, 0, -788.344, -393.646, 0, 0, 0, 0, -827.544, -625.28, 0, 0, 0, 0, -841.799, -803.46, 0, 0, 0, 0, -802.599, -872.95, 0, 0, 0, 0, -688.564, -942.44, 0, 0, 0, 0, -537.111, -985.203, 0, 0, 0, 0, -401.695, -992.33, 0, 0, 0, 0, -316.168, -983.421, 0, 0, 0, 0, -157.589, -905.022, 0, 0, 0, 0, -73.844, -776.733, 0, 0, 0, 0, -39.99, -618.153, 0, 0, 0, 0, -34.6445, -447.1, 0, 0, 0, 0, -64.9351, -372.265, 0, 0, 0, 0, -107.698, -260.011, 0, 0, 0, 0, -104.135, -179.831, 0, 0, 0, 0, -86.3167, -106.777, 0, 0, 0, 0, -31.0808, -47.9775, 0, 0, 0, 0, 0.161377, 0.320251 )
 }
-
-[sub_resource type="DynamicFont" id=6]
-size = 40
-font_data = ExtResource( 19 )
-
-[sub_resource type="DynamicFont" id=7]
-font_data = ExtResource( 19 )
-
-[sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 19 )
 
 [node name="StageGonza" type="Node"]
 script = ExtResource( 6 )
@@ -554,71 +543,7 @@ tile_data = PoolIntArray( -8126197, 47, 0, -8126196, 47, 0, -8126195, 47, 0, -81
 modulate = Color( 1.1, 1.1, 1.1, 1 )
 position = Vector2( -7575.44, 4128.15 )
 
-[node name="Pause" type="Control" parent="Character"]
-pause_mode = 2
-visible = false
-margin_left = 7575.44
-margin_top = -4128.15
-margin_right = 7615.44
-margin_bottom = -4088.15
-script = ExtResource( 17 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Background" type="ColorRect" parent="Character/Pause"]
-pause_mode = 2
-margin_left = -8174.53
-margin_top = 3774.51
-margin_right = -6957.53
-margin_bottom = 4474.51
-color = Color( 0, 0, 0, 0.211765 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PausePanel" type="Panel" parent="Character/Pause"]
-pause_mode = 2
-margin_left = -7748.53
-margin_top = 3996.91
-margin_right = -7393.53
-margin_bottom = 4249.91
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Text" type="Label" parent="Character/Pause/PausePanel"]
-pause_mode = 2
-margin_left = 58.8671
-margin_top = 20.4388
-margin_right = 298.867
-margin_bottom = 70.4388
-custom_fonts/font = SubResource( 6 )
-text = "Paused"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Resume" type="Button" parent="Character/Pause/PausePanel"]
-pause_mode = 2
-margin_left = 94.9141
-margin_top = 98.9016
-margin_right = 250.914
-margin_bottom = 152.902
-custom_fonts/font = SubResource( 7 )
-text = "Resume"
-
-[node name="Quit" type="Button" parent="Character/Pause/PausePanel"]
-pause_mode = 2
-margin_left = 95.4591
-margin_top = 163.867
-margin_right = 251.459
-margin_bottom = 217.867
-custom_fonts/font = SubResource( 8 )
-text = "Quit game"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Pause" parent="Character" instance=ExtResource( 17 )]
 
 [node name="PlayerRespawn" type="Position2D" parent="."]
 position = Vector2( -7573.87, 4147.37 )
@@ -642,5 +567,3 @@ position = Vector2( -7573.87, 4147.37 )
 [connection signal="playFx" from="PortalParticula3" to="SoundPlayer" method="_on_PortalParticula3_playFx"]
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
 [connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
-[connection signal="pressed" from="Character/Pause/PausePanel/Resume" to="Character/Pause" method="_on_Resume_pressed"]
-[connection signal="pressed" from="Character/Pause/PausePanel/Quit" to="Character/Pause" method="_on_Quit_pressed"]
