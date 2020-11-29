@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://objects/hook/Hook.gd" type="Script" id=1]
+[ext_resource path="res://objects/hook/HookMovSimple.gd" type="Script" id=1]
 [ext_resource path="res://objects/hook/sprites/tile294.png" type="Texture" id=2]
 [ext_resource path="res://objects/hook/sprites/tile296.png" type="Texture" id=3]
 [ext_resource path="res://objects/hook/sprites/tile297.png" type="Texture" id=4]
@@ -21,12 +21,14 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=3]
 radius = 8.70815
 
-[node name="Hook" type="StaticBody2D" groups=[
+[node name="HookMovSimple" type="KinematicBody2D" groups=[
 "hook",
 ]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
+speed = 100.0
+move_direction = Vector2( 1, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=[
 "hook",
@@ -37,7 +39,6 @@ shape = SubResource( 1 )
 modulate = Color( 1, 1.2, 1.5, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." groups=[

@@ -1,9 +1,10 @@
-extends StaticBody2D
+extends RigidBody2D
 
-#mask 2
-#layer 2
-
-
+#mask 1 y 2
+#layer 1 y 2
+	
+	
+## cuiidado al usar esto que puede romperse :V actualizar el inpulso primero.
 
 func glow_on():
 	$Light2D.set_process(true)

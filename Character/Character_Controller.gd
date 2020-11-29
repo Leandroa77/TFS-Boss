@@ -47,8 +47,7 @@ func _process(delta):
 func _physics_process(delta):
 	if raycast2d.is_colliding():
 		lighting.set_point_position(1, transform.xform_inv(raycast2d.get_collision_point()))
-		#if raycast2d.get_collider().is_in_group("hook"):
-		#	last_hook_hitted = raycast2d.get_collider()
+		
 	else:
 		lighting.set_point_position(1, transform.xform_inv(get_global_mouse_position()))
 	if hitted_hook:

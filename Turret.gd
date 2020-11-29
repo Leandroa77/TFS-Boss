@@ -29,10 +29,8 @@ func shoot():
 #	call_deferred("add_child", bullet)
 #
 func _on_Area2DDetection_body_entered(body):
+	
 	if body.is_in_group("player"):
-		
-		
-		
 		target = body
 		try_to_shoot()
 		timer_shooting_cooldown.start()
@@ -47,10 +45,10 @@ func try_to_shoot():
 	#shoot()
 	can_shoot = true
 	var space_state = get_world_2d().direct_space_state
-	var result = space_state.intersect_ray(position, target.position,
-					[self])#, collision_mask
-	print("esta intentando disparar")
-	print (result.values())
+	
+	var result = space_state.intersect_ray(global_position, target.global_position,
+					[self], collision_mask)#, collision_mask
+	
 	if result:
 		
 		#hit_pos = result.position
