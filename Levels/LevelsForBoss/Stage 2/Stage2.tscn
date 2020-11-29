@@ -239,13 +239,13 @@ tile_data = PoolIntArray( 589982, 64, 0, 589983, 64, 0, 589984, 64, 0, 589985, 6
 position = Vector2( 400, 2176 )
 
 [node name="Hook2" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 1184, 2128 )
+position = Vector2( 1174.1, 2136.49 )
 
 [node name="Hook3" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 1680, 2136 )
+position = Vector2( 1640.4, 2130.34 )
 
 [node name="Hook4" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 2064, 2080 )
+position = Vector2( 1997.53, 2053.13 )
 
 [node name="Hook5" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 2088, 1840 )
@@ -296,7 +296,7 @@ position = Vector2( 9368, 1672 )
 position = Vector2( 9740.54, 1607.42 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
-position = Vector2( 192, 2192 )
+position = Vector2( -447.225, 2228.77 )
 
 [node name="Checkpoints" type="Node2D" parent="."]
 

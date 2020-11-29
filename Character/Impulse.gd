@@ -76,7 +76,6 @@ func update(delta):
 	animated.play("on_air")
 	owner.move_and_slide(Vector2.DOWN, Vector2(0, -1))
 	if (owner.is_on_floor()):
-		print("esta en floor")
 		emit_signal("finished", "move")
 
 func move_horizontally(delta, direction):

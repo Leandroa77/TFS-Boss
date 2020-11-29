@@ -37,15 +37,8 @@ func set_laser_raycast_width_size(aSize):
 	$RayCast2D.scale.y = aSize
 
 func make_beam():
-	#print ("esta haciendo el beam buacho")
-	#print ("puntos 0 1 ")
-	#print (line2d.points[0])
-	#print (line2d.points[1])
-	
-	
 	line2d.points[1] = global_transform.xform_inv(raycast2d.get_collision_point())
-	#line2d.points[1] = raycast2d.get_collision_point()
-	#line2d.points[1].to_local()to_local()
+	
 
 func check_for_hits():
 	raycast2d.force_raycast_update()

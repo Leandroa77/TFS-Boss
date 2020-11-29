@@ -1,10 +1,10 @@
 extends "res://Character/Motion.gd"
 
-export(float) var base_max_horizontal_speed = 400.0
+export(float) var base_max_horizontal_speed = 300.0#400.0
 
 export(float) var air_acceleration = 750.0 #1000.0
 export(float) var air_deceleration = 2000.0
-export(float) var air_steering_power = 30.0 #50.0
+export(float) var air_steering_power = 20.0 #30.0
 
 export(float) var gravity = 1400.0
 
