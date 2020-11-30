@@ -74,10 +74,10 @@ animations = [ {
 "name": "tackle",
 "speed": 10.0
 }, {
-"frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 83 ) ],
+"frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
 "loop": true,
-"name": "jump",
-"speed": 10.0
+"name": "walk",
+"speed": 20.0
 }, {
 "frames": [ ExtResource( 76 ) ],
 "loop": true,
@@ -89,10 +89,10 @@ animations = [ {
 "name": "hook",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 63 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 62 ), ExtResource( 68 ), ExtResource( 47 ) ],
+"frames": [ ExtResource( 82 ), ExtResource( 72 ), ExtResource( 73 ), ExtResource( 74 ), ExtResource( 80 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 83 ) ],
 "loop": true,
-"name": "walk",
-"speed": 20.0
+"name": "jump",
+"speed": 10.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

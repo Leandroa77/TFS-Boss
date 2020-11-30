@@ -4,7 +4,6 @@ extends StaticBody2D
 #layer 2
 
 
-
 func glow_on():
 	$Light2D.set_process(true)
 	$Light2D.visible = true
@@ -17,3 +16,5 @@ func glow_off():
 func _on_Hook_area_entered(area):
 	#aca se produciria el efecto
 	pass 
+
+

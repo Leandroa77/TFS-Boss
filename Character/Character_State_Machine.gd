@@ -29,6 +29,8 @@ func _change_state(state_name):
 		$Impulse.initialize(current_state.direction , current_state.velocity, current_state.hookPosition)	
 		
 	._change_state(state_name)
+	print("se cambio el estado a")
+	print(state_name)
 	
 		
 	
@@ -39,14 +41,14 @@ func _unhandled_input(event):
 		current_state.owner.shoot_lighting()
 	## el ataque tambien
 #	Por el momento quitamos al laser
-#	if Input.is_action_just_pressed("attack"):# or Input.is_pressed"lighting") :
-#		current_state.owner.shoot_attack()
+	if Input.is_action_just_pressed("attack"):# or Input.is_pressed"lighting") :
+		current_state.owner.shoot_attack()
 	if Input.is_action_just_pressed("tackle"):# or Input.is_pressed"lighting") :
 		current_state.owner.tackle()
 	current_state.handle_input(event)
 
-func changeToLighting(attraction_direction, hookPosition):
-	$Lighting.initialize(attraction_direction, $Move.speed, $Move.velocity, hookPosition)
+func changeToLighting(attraction_direction, hook):
+	$Lighting.initialize(attraction_direction, $Move.speed, $Move.velocity, hook)
 	._change_state("lighting")
 	
 func changeToAttack(enemy):

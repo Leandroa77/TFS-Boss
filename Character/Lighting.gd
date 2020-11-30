@@ -26,14 +26,15 @@ var vertical_speed = 0.0
 var height = 0.0
 
 var hookPosition:Vector2
-
+var hitted_hook
 var animated
 
-func initialize(direction, speed, velocity, hookPosition):
+func initialize(direction, speed, velocity, hook):
 	self.direction = direction
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
-	self.hookPosition = hookPosition
+	hookPosition = hook.get_global_position()
+	hitted_hook = hook
 	
 	
 func exit():
@@ -49,13 +50,7 @@ func enter():
 	
 	
 func update(delta):
-	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
-	#var distanciaEntrePersonajeYHook = owner.body.position - self.hookPosition
-	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
-	var reached_hook = distancia2.x < 35 and distancia2.y < 35
-	
-	if reached_hook:
-		owner.itimer.start()
+	#owner.itimer.start()
 	speed = 1500
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
@@ -63,10 +58,29 @@ func update(delta):
 	#shake(duration, frequency, amplitude)
 	owner.get_node("Camera2D").shake(0.02, 100, 2)
 	velocity = owner.move_and_slide(velocity)
+	#var slide_count = owner.get_slide_count()
+	
+	# var slide_count = get_slide_count()
+	# if slide_count:
+	#    var collision = get_slide_collision(slide_count - 1)
+	#    var collider = collision.collider
+	
+	var distance2character = hitted_hook.get_global_position().distance_to(owner.get_global_position());
+	if(distance2character<100): 
+		owner.itimer.start()
+		
+	var slide_count = owner.get_slide_count()
+	if slide_count:
+		var collision = owner.get_slide_collision(slide_count - 1)
+		var collider = collision.collider
+		if !collider.is_in_group("hook"):
+			emit_signal("finished", "impulse")
+
 	lighting.width = 10
 	lighting.visible = true
 	animated.play("hook")
 	
+
 func _on_Timer_timeout():
 	lighting.width = 4
 	lighting.visible = false
