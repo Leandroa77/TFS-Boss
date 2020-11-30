@@ -45,7 +45,8 @@ func update(delta):
 	# el techo
 	owner.move_and_slide(Vector2.DOWN, Vector2(0, -1))
 	if owner.is_on_floor():
-		emit_signal("finished", "previous")
+		#emit_signal("finished", "previous") # esto hacia el bug del tackle (?
+		emit_signal("finished", "idle")
 #=======
 #	if owner.is_on_wall():
 #		emit_signal("finished", "idle")

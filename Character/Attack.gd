@@ -28,5 +28,7 @@ func _on_Timer_timeout():
 	lighting.visible = false
 	lighting.set_default_color(owner.default_aim_color)
 	enemy.hitted()
-	emit_signal("finished", "move")
+	#shake(duration, frequency, amplitude)
+	owner.get_node("Camera2D").shake(0.4, 100, 10)
+	emit_signal("finished", "jump")#
 	pass # Replace with function body.

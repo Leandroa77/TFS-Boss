@@ -68,8 +68,10 @@ func shoot_lighting():
 			last_hook_hitted = raycast2d.get_collider()
 			hitted_hook = true
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
-			var hookPosition = raycast2d.get_collider().get_global_position() #raycast2d.get_collider().get_global_position()
-			csm.changeToLighting(attraction_direction, hookPosition)
+			#var hookPosition = raycast2d.get_collider().get_global_position() #raycast2d.get_collider().get_global_position()
+			var hook = raycast2d.get_collider() #raycast2d.get_collider().get_global_position()
+			
+			csm.changeToLighting(attraction_direction, hook)
 
 		if !raycast2d.get_collider().is_in_group("hook"):
 			missed_shoot_start()
@@ -100,7 +102,8 @@ func tackle():
 	raycast2d.force_raycast_update()
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("enemy"):
-			
+			hitCount += 1
+			emit_signal("hit", hitCount, $HitPositionLeft.position)
 			last_hook_hitted = raycast2d.get_collider()
 			hitted_hook = false
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
@@ -184,3 +187,4 @@ func show_hit_count():
 #func _on_AnimatedSprite_animation_finished():
 #	queue_free()
 #	pass # Replace with function body.
+

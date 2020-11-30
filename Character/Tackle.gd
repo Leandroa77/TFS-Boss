@@ -50,26 +50,30 @@ func enter():
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
 
 func update(delta):
-	var distanciaEntrePersonajeYHook = owner.body.get_global_position() - self.hookPosition
-	var distancia2 = Vector2(abs(distanciaEntrePersonajeYHook.x), abs(distanciaEntrePersonajeYHook.y))
-	var reached_hook = distancia2.x < 35 and distancia2.y < 35
-	
-	speed = 2000
+	speed = 1500
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
 	#screen shake
 	#shake(duration, frequency, amplitude)
 	owner.get_node("Camera2D").shake(0.02, 100, 2)
-	velocity = owner.move_and_slide(velocity)
 	lighting.set_default_color(ColorN("gold",1))
 	lighting.width = 10
 	lighting.visible = true
 	animated.play("tackle")
-	if reached_hook:
-		owner.get_node("Camera2D").shake(0.5, 100, 10)
-		if enemy != null:
-			enemy.hitted()
-		lighting.set_default_color(owner.default_aim_color)
-		lighting.width = 4
-		lighting.visible = false
-		emit_signal("finished", "idle") #emit_signal("finished", "impulse") 
+	velocity = owner.move_and_slide(velocity)
+	
+	var slide_count = owner.get_slide_count()
+	if slide_count:
+		var collision = owner.get_slide_collision(slide_count - 1)
+		var collider = collision.collider
+		if collider.is_in_group("enemy"):
+			owner.get_node("Camera2D").shake(0.5, 100, 10)
+			collider.hitted()
+			lighting.set_default_color(owner.default_aim_color)
+			lighting.width = 4
+			lighting.visible = false
+			emit_signal("finished", "jump") 
+		else:
+			emit_signal("finished", "idle")
+	
+	

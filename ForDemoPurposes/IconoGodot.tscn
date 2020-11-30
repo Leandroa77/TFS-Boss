@@ -10,6 +10,8 @@ extents = Vector2( 36.4742, 38.3809 )
 [node name="IconoGodot" type="StaticBody2D" groups=[
 "enemy",
 ]]
+collision_layer = 9
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -22,6 +24,4 @@ shape = SubResource( 1 )
 position = Vector2( -1.26273, -5.186 )
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.8
-one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
