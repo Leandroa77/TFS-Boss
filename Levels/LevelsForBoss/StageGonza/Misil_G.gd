@@ -16,7 +16,6 @@ func start(_transform, _target):
 	target = _target
 	
 func _physics_process(delta):
-	
 	if(isActive):
 		acceleration += seek()
 		velocity += acceleration * delta
@@ -24,10 +23,8 @@ func _physics_process(delta):
 		rotation = velocity.angle()
 		position += velocity * delta
 	else:
-		acceleration += seekWithoutTarget()
-		velocity += acceleration * delta
-		velocity = velocity.clamped(speed)
-		position += velocity * delta
+		var direccion = targetDisabled.normalized()
+		position += direccion * speed * delta
 
 func seek():
 	var steer = Vector2.ZERO
@@ -35,21 +32,19 @@ func seek():
 	steer = (desired - velocity).normalized() * steer_force
 	return steer
 
-func seekWithoutTarget():
-	var steer = Vector2.ZERO
-	var desired = (targetDisabled - global_position).normalized() * speed
-	steer = (desired - velocity).normalized() * steer_force
-	return steer
-
 func disable(position):
-	isActive = !isActive
-	disconnect("body_entered", self, "_on_Misil_G_body_entered")
-	targetDisabled = target.global_position
+	isActive = false
+	disconnect("body_shape_entered", self, "_on_Misil_G_body_shape_entered")
+	remove_from_group("mhook")
+	if((abs(global_position.x) - abs(position.x)) > 0):
+		targetDisabled = Vector2(abs(position.x), position.y)
+	else:
+		targetDisabled = position
 
 func _on_LifeTime_timeout():
 	queue_free()
 
-func _on_Misil_G_body_entered(body):
+func _on_Misil_G_body_shape_entered(body_id, body, body_shape, local_shape):
 	queue_free()
 	if body.is_in_group("player"):
 		body.die()

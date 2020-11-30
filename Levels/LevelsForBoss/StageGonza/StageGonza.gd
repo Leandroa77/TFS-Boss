@@ -14,6 +14,8 @@ onready var pause_template = preload("res://Pause/Pause.tscn")
 var wallPositionList = [Vector2(-2180.46, -284.927), Vector2(-2179.27, 67.078), Vector2(-3300.04, 1986.87)]
 var ya_se_llamo_restart_ui = false
 
+onready var misil = $Misil_G
+
 func _ready():
 	emit_signal("playBackgroundMusic", 1)
 	spawn_player()

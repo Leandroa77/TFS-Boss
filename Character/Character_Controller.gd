@@ -60,7 +60,6 @@ func set_look_direction(value):
 	emit_signal("direction_changed", value)
 
 func shoot_lighting():
-	
 	if raycast2d.is_colliding():
 		if raycast2d.get_collider().is_in_group("hook") and !hitted_hook:
 			hitCount += 1
@@ -70,6 +69,17 @@ func shoot_lighting():
 			hitted_hook = true
 			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
 			var hookPosition = raycast2d.get_collider().get_global_position() #raycast2d.get_collider().get_global_position()
+			csm.changeToLighting(attraction_direction, hookPosition)
+			
+		if raycast2d.get_collider().is_in_group("mhook") and !hitted_hook:
+			raycast2d.get_collider().disable(global_position)
+			hitCount += 1
+			emit_signal("sound", 2)
+			emit_signal("hit", hitCount, $HitPositionLeft.position)
+			last_hook_hitted = raycast2d.get_collider()
+			hitted_hook = true
+			var attraction_direction = (raycast2d.get_collider().get_global_position() - body.get_global_position()).normalized()
+			var hookPosition = raycast2d.get_collider().get_global_position()
 			csm.changeToLighting(attraction_direction, hookPosition)
 
 		if !raycast2d.get_collider().is_in_group("hook"):

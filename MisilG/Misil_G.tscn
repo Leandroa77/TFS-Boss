@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://objects/explosion/Explosion.gd" type="Script" id=1]
+[ext_resource path="res://Levels/LevelsForBoss/StageGonza/Misil_G.gd" type="Script" id=2]
+[ext_resource path="res://objects/explosion/Explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://MisilG/ParticulasFuego.tscn" type="PackedScene" id=4]
+[ext_resource path="res://MisilG/MisilG.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 47.416
+height = 1186.54
+
+[node name="Misil_G" type="Area2D" groups=[
+"mhook",
+]]
+position = Vector2( -7293.59, 188.011 )
+collision_layer = 2147483655
+collision_mask = 7
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 2.6543, -0.09375 )
+rotation = 1.5708
+scale = Vector2( 0.08, 0.02 )
+shape = SubResource( 6 )
+one_way_collision_margin = 30.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LifeTime" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="Explosion" type="Area2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( -9.25879, 0.151505 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="ParticulasFuego" type="Node2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( -7.16064, -0.258667 )
+scale = Vector2( 0.5, 0.5 )
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="body_shape_entered" from="." to="." method="_on_Misil_G_body_shape_entered"]
+[connection signal="timeout" from="LifeTime" to="." method="_on_LifeTime_timeout"]
+[connection signal="body_entered" from="Explosion" to="Explosion" method="_on_Explosion_body_entered"]

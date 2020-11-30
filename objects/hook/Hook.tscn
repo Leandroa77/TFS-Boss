@@ -35,5 +35,4 @@ one_way_collision_margin = 30.0
 modulate = Color( 1, 1.2, 1.5, 1 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 2 )
-frame = 1
 playing = true

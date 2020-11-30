@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -18,11 +18,6 @@
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
-[ext_resource path="res://missile/Missile.tscn" type="PackedScene" id=19]
-[ext_resource path="res://MisilG/MisilG.png" type="Texture" id=20]
-[ext_resource path="res://MisilG/ParticulasFuego.tscn" type="PackedScene" id=21]
-[ext_resource path="res://objects/explosion/Explosion.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Levels/LevelsForBoss/StageGonza/Misil_G.gd" type="Script" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 78.981, 10 )
@@ -42,10 +37,6 @@ _data = {
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 0.161377, 0.320251, 0, 0, 0, 0, -410.603, -69.359, 0, 0, 0, 0, -661.837, -219.03, 0, 0, 0, 0, -788.344, -393.646, 0, 0, 0, 0, -827.544, -625.28, 0, 0, 0, 0, -841.799, -803.46, 0, 0, 0, 0, -802.599, -872.95, 0, 0, 0, 0, -688.564, -942.44, 0, 0, 0, 0, -537.111, -985.203, 0, 0, 0, 0, -401.695, -992.33, 0, 0, 0, 0, -316.168, -983.421, 0, 0, 0, 0, -157.589, -905.022, 0, 0, 0, 0, -73.844, -776.733, 0, 0, 0, 0, -39.99, -618.153, 0, 0, 0, 0, -34.6445, -447.1, 0, 0, 0, 0, -64.9351, -372.265, 0, 0, 0, 0, -107.698, -260.011, 0, 0, 0, 0, -104.135, -179.831, 0, 0, 0, 0, -86.3167, -106.777, 0, 0, 0, 0, -31.0808, -47.9775, 0, 0, 0, 0, 0.161377, 0.320251 )
 }
-
-[sub_resource type="CapsuleShape2D" id=6]
-radius = 47.416
-height = 1186.54
 
 [node name="StageGonza" type="Node"]
 script = ExtResource( 6 )
@@ -69,7 +60,7 @@ __meta__ = {
 [node name="Checkpoint" type="Node" parent="."]
 
 [node name="Checkpoint2" type="Node2D" parent="Checkpoint"]
-position = Vector2( -2435.95, 1781.61 )
+position = Vector2( -2435.1, 1784.11 )
 script = ExtResource( 18 )
 
 [node name="Area2D" type="Area2D" parent="Checkpoint/Checkpoint2"]
@@ -551,43 +542,12 @@ tile_data = PoolIntArray( -8126197, 47, 0, -8126196, 47, 0, -8126195, 47, 0, -81
 
 [node name="Character" parent="." instance=ExtResource( 2 )]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
-position = Vector2( -7309.88, 228.736 )
+position = Vector2( -7567.27, 4134.79 )
 
 [node name="Pause" parent="Character" instance=ExtResource( 17 )]
 
 [node name="PlayerRespawn" type="Position2D" parent="."]
-position = Vector2( -7247.24, 239.785 )
-
-[node name="Missile" parent="." instance=ExtResource( 19 )]
-position = Vector2( -7399.68, 208.522 )
-
-[node name="Misil_G" type="Area2D" parent="."]
-position = Vector2( -7392.06, 188.416 )
-script = ExtResource( 23 )
-
-[node name="Sprite" type="Sprite" parent="Misil_G"]
-scale = Vector2( 0.04, 0.04 )
-texture = ExtResource( 20 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Misil_G"]
-position = Vector2( 2.6543, -0.09375 )
-rotation = 1.5708
-scale = Vector2( 0.08, 0.02 )
-shape = SubResource( 6 )
-
-[node name="LifeTime" type="Timer" parent="Misil_G"]
-wait_time = 15.0
-
-[node name="Explosion" parent="Misil_G" instance=ExtResource( 22 )]
-position = Vector2( -9.25879, 0.151505 )
-scale = Vector2( 0.5, 0.5 )
-
-[node name="ParticulasFuego" parent="Misil_G" instance=ExtResource( 21 )]
-position = Vector2( -7.16064, -0.258667 )
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( -7569.89, 4098.91 )
 [connection signal="playBackgroundMusic" from="." to="SoundPlayer" method="_on_StageGonza_playBackgroundMusic"]
 [connection signal="setCheckpoint" from="Checkpoint/Checkpoint2" to="." method="_on_Checkpoint2_setCheckpoint"]
 [connection signal="body_entered" from="Checkpoint/Checkpoint2/Area2D" to="Checkpoint/Checkpoint2" method="_on_Area2D_body_entered"]
@@ -608,5 +568,3 @@ scale = Vector2( 0.5, 0.5 )
 [connection signal="playFx" from="PortalParticula3" to="SoundPlayer" method="_on_PortalParticula3_playFx"]
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
 [connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
-[connection signal="body_entered" from="Misil_G" to="Misil_G" method="_on_Misil_G_body_entered"]
-[connection signal="timeout" from="Misil_G/LifeTime" to="Misil_G" method="_on_LifeTime_timeout"]
