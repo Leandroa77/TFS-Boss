@@ -24,21 +24,21 @@ __meta__ = {
 }
 
 [node name="Menu" type="Panel" parent="."]
-margin_left = 301.837
-margin_top = 160.556
-margin_right = 731.837
-margin_bottom = 375.556
+margin_left = 150.818
+margin_top = 161.827
+margin_right = 896.818
+margin_bottom = 415.827
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Title" type="Label" parent="Menu"]
-margin_left = 78.2711
-margin_top = 30.0135
-margin_right = 358.271
-margin_bottom = 80.0135
+margin_left = 74.4914
+margin_top = 40.0929
+margin_right = 704.491
+margin_bottom = 90.0929
 custom_fonts/font = SubResource( 1 )
-text = "BOSS"
+text = "jumpin' j4ck flash"
 align = 1
 valign = 1
 __meta__ = {
@@ -47,10 +47,10 @@ __meta__ = {
 }
 
 [node name="Start" type="Button" parent="Menu"]
-margin_left = 94.2373
-margin_top = 111.932
-margin_right = 331.237
-margin_bottom = 183.932
+margin_left = 246.454
+margin_top = 134.206
+margin_right = 483.453
+margin_bottom = 206.206
 custom_fonts/font = SubResource( 2 )
 text = "Start"
 __meta__ = {
