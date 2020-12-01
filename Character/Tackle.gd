@@ -27,9 +27,9 @@ var height = 0.0
 
 var hookPosition:Vector2
 var enemy
-
+var left_shot
 var animated
-
+var target
 
 func initialize(direction, speed, velocity, enemy):
 	self.direction = direction
@@ -43,6 +43,10 @@ func exit():
 
 func handle_input(_event):
 	pass
+	
+func _input(event):
+	if event is InputEventMouseButton:
+		target = event.global_position
 
 func enter():
 	horizontal_velocity = enter_velocity
@@ -59,7 +63,16 @@ func update(delta):
 	lighting.set_default_color(ColorN("gold",1))
 	lighting.width = 10
 	lighting.visible = true
-	animated.play("tackle")
+	left_shot = get_viewport().size.x / 2 < target.x
+	print("click ",target.x)
+	print("viewport",get_viewport().size.x)
+	if left_shot:
+		animated.flip_h = false
+		animated.play("tackle")
+	else:
+		animated.flip_h = true
+		animated.play("tackle")
+	#animated.play("tackle")
 	velocity = owner.move_and_slide(velocity)
 	
 	var slide_count = owner.get_slide_count()
