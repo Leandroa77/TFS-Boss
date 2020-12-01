@@ -6,6 +6,9 @@ onready var soundPlayer = $SoundPlayer
 
 onready var restart_UI_template = preload("res://UI/Restart_UI/Restart_UI.tscn")
 onready var character_template = preload("res://Character/Character.tscn")
+onready var wall_template = preload("res://objects/ParedMadera/ParedMaderaOtroColor.tscn")
+
+var all_walls_pos: Array 
 
 signal backgroundMusic(value)
 
@@ -29,6 +32,7 @@ func _on_Restart_UI_timeOutRestart():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	emit_signal("backgroundMusic", 1)
+	get_all_walls_positions()
 	spawn_player()
 	#feo hardcodeado, pero el tiempo apura.
 	#$Enemies/EnemyFloor.set_target($Character)
@@ -41,13 +45,14 @@ func _ready():
 #func _process(delta):
 #	pass
 func spawn_player():
-	call_deferred("add_child", player)
+	#call_deferred("add_child", player)
 	
 	player.global_position = player_spawn_position.global_position
 	
 
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
+		destroy_all_walls()
 		var new_player:Character = character_template.instance()
 		
 		new_player.global_position = player_spawn_position.global_position
@@ -63,6 +68,8 @@ func respawn_player():
 		
 		#ya se llamo restart ui previene que se llame mas de una vez esto.
 		ya_se_llamo_restart_ui = true
+		reset_acids()
+		reset_walls()
 
 
 func set_ya_se_llamo_restart_ui(boolean):
@@ -72,10 +79,31 @@ func set_ya_se_llamo_restart_ui(boolean):
 func _on_Checkpoint1_body_entered(body):
 	if (body.is_in_group("player")):
 		player_spawn_position.position = body.position
+		reset_acids()
 	pass # Replace with function body.
 
+func reset_acids():
+	for acid in get_tree().get_nodes_in_group("acid"):
+		acid.reset_position()
+	pass
+	
+func get_all_walls_positions():
+	for wall in get_tree().get_nodes_in_group("wall"):
+		all_walls_pos.append(wall.global_position)
+
+func destroy_all_walls():
+	for wall in get_tree().get_nodes_in_group("wall"):
+		wall.queue_free()
+
+func reset_walls():
+	for wall_pos in all_walls_pos:
+		var new_wall = wall_template.instance()
+		new_wall.global_position = wall_pos
+		call_deferred("add_child", new_wall)
+	pass
 
 func _on_Checkpoint2_body_entered(body):
 	if (body.is_in_group("player")):
 		player_spawn_position.position = body.position
 	pass # Replace with function body.
+

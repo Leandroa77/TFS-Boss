@@ -77,8 +77,8 @@ func update(delta):
 		owner.itimer.start()
 		
 	left_shot = get_viewport().size.x / 2 < target.x
-	print("click ",target.x)
-	print("viewport",get_viewport().size.x)
+	#print("click ",target.x)
+	#print("viewport",get_viewport().size.x)
 	if left_shot:
 		animated.flip_h = false
 		animated.play("hook")

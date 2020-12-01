@@ -39,7 +39,7 @@ func set_laser_raycast_width_size(aSize):
 	$RayCast2D.scale.y = aSize
 
 func make_beam():
-	line2d.points[1] = transform.xform_inv(raycast2d.get_collision_point())
+	line2d.points[1] = global_transform.xform_inv(raycast2d.get_collision_point())
 
 func check_for_hits():
 	#rompe cuando el personaje muere muy rapido (?

@@ -1,15 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HitText/HitText.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 1 )
-
-[sub_resource type="Environment" id=2]
-background_mode = 4
-glow_enabled = true
-glow_blend_mode = 0
 
 [node name="HitText" type="Label"]
 margin_left = 677.617
@@ -26,6 +21,3 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="Effect" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
