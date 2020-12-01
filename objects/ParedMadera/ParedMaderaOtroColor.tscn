@@ -9,6 +9,7 @@ extents = Vector2( 15.7964, 96.9817 )
 
 [node name="ParedMaderaOtroColor" type="StaticBody2D" groups=[
 "enemy",
+"wall",
 ]]
 position = Vector2( 202.766, 443.003 )
 collision_layer = 9

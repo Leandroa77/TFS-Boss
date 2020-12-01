@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 32 )
 
-[node name="Acid3" type="Area2D"]
+[node name="Acid3" type="Area2D" groups=[
+"acid",
+]]
 script = ExtResource( 1 )
 velocity = 100.0
 

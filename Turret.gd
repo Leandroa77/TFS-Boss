@@ -56,7 +56,7 @@ func try_to_shoot():
 		if result.collider.is_in_group("player"):
 			emit_signal("playerDetected")
 			$Sprite.set_modulate(Color(1.2,1.2,1.2,1))
-			print("el colider es un player")
+			#print("el colider es un player")
 			#$Sprite.self_modulate.r = 1.0
 			#rotation = (target.position - position).angle()
 			#if can_shoot:
