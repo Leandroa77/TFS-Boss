@@ -28,6 +28,9 @@ var height = 0.0
 var hookPosition:Vector2
 var hitted_hook
 var animated
+var target
+var left_shot
+
 
 func initialize(direction, speed, velocity, hook):
 	self.direction = direction
@@ -47,7 +50,10 @@ func enter():
 	horizontal_velocity = enter_velocity
 	vertical_speed = 800.0
 	animated = get_parent().get_parent().get_node("BodyPivot/AnimatedSprite3")
-	
+
+func _input(event):
+	if event is InputEventMouseButton:
+		target = event.global_position
 	
 func update(delta):
 	#owner.itimer.start()
@@ -65,10 +71,21 @@ func update(delta):
 	#    var collision = get_slide_collision(slide_count - 1)
 	#    var collider = collision.collider
 	
+	
 	var distance2character = hitted_hook.get_global_position().distance_to(owner.get_global_position());
 	if(distance2character<100): 
 		owner.itimer.start()
 		
+	left_shot = get_viewport().size.x / 2 < target.x
+	print("click ",target.x)
+	print("viewport",get_viewport().size.x)
+	if left_shot:
+		animated.flip_h = false
+		animated.play("hook")
+	else:
+		animated.flip_h = true
+		animated.play("hook")
+
 	var slide_count = owner.get_slide_count()
 	if slide_count:
 		var collision = owner.get_slide_collision(slide_count - 1)
@@ -78,7 +95,6 @@ func update(delta):
 
 	lighting.width = 10
 	lighting.visible = true
-	animated.play("hook")
 	
 
 func _on_Timer_timeout():
