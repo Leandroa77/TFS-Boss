@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic20.tscn" type="PackedScene" id=14]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic3.tscn" type="PackedScene" id=15]
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
 
 [sub_resource type="Curve2D" id=1]
@@ -41,10 +42,10 @@ extents = Vector2( 78.981, 10 )
 script = ExtResource( 6 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -8661.45
-margin_top = -1518.95
-margin_right = 4366.55
-margin_bottom = 5464.05
+margin_left = -8602.59
+margin_top = -1499.61
+margin_right = 4425.41
+margin_bottom = 5483.39
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -493,6 +494,8 @@ position = Vector2( -7561.95, 4026.86 )
 [node name="Character" parent="." instance=ExtResource( 2 )]
 modulate = Color( 1.1, 1.1, 1.1, 1 )
 position = Vector2( -7575.44, 4128.15 )
+
+[node name="Pause" parent="Character" instance=ExtResource( 17 )]
 
 [node name="Checkpoint2" type="Node2D" parent="."]
 position = Vector2( -2435.95, 1781.61 )

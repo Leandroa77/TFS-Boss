@@ -1,8 +1,11 @@
 extends Node
 
+signal playBackgroundMusic(value)
+
 onready var wall_template = preload("res://objects/ParedMadera/ParedMadera.tscn")
 onready var character_template = preload("res://Character/Character.tscn")
 onready var restart_UI_template = preload("res://UI/Restart_UI/Restart_UI.tscn")
+onready var pause_template = preload("res://Pause/Pause.tscn")
 
 onready var player_spawn_position = $SpawnPosition
 onready var enemies = $Enemies
@@ -10,7 +13,6 @@ onready var character = $Character
 onready var soundPlayer = $SoundPlayer
 onready var walls = $Paredes
 onready var wallsPositions = [Vector2(-2180.46, -284.927), Vector2(-2179.27, 67.078), Vector2(-3300.04, 1986.87)]
-signal playBackgroundMusic(value)
 var ya_se_llamo_restart_ui = false
 
 func _ready():
@@ -45,13 +47,13 @@ func spawn_player():
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
 		respawnWalls()
-		#var pause = pause_template.instance()
+		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
 		
 		new_player.global_position = player_spawn_position.global_position
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
-		#new_player.add_child(pause)
+		new_player.add_child(pause)
 		add_child(new_player)
 
 		for enemy in enemies.get_children():
