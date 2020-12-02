@@ -96,10 +96,13 @@ func destroy_all_walls():
 		wall.queue_free()
 
 func reset_walls():
+	var index = 1
 	for wall_pos in all_walls_pos:
 		var new_wall = wall_template.instance()
 		new_wall.global_position = wall_pos
+		new_wall.connect("detonate", soundPlayer, "_on_ParedMaderaOtroColor" + str(index) + "_detonate")
 		call_deferred("add_child", new_wall)
+		index += 1
 	pass
 
 func _on_Checkpoint2_body_entered(body):

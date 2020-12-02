@@ -90,3 +90,32 @@ func _on_ParedMadera2_detonate(value):
 func _on_ParedMadera3_detonate(value):
 	fxPlayer2.stream = fxSoundsMap2[value]
 	fxPlayer2.play()
+
+func _on_StageAcido_backgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
+
+func _on_ParedMaderaOtroColor1_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+
+func _on_ParedMaderaOtroColor2_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+
+func _on_ParedMaderaOtroColor4_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+
+func _on_ParedMaderaOtroColor6_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+
+func _on_ParedMaderaOtroColor7_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+
+func _on_ParedMaderaOtroColor8_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+

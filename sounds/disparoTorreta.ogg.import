@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/disparoTorreta.ogg-fb65c8000e6aa61c3d78583015c75e69.oggstr"
+
+[deps]
+
+source_file="res://sounds/disparoTorreta.ogg"
+dest_files=[ "res://.import/disparoTorreta.ogg-fb65c8000e6aa61c3d78583015c75e69.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
