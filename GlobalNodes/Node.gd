@@ -14,6 +14,6 @@ func _on_Music_finished():
 	play_music()
 
 #no deberia estar aca. 
-func _unhandled_input(event):
-	if event.is_action_pressed("escape"):
-		get_tree().quit()
+#func _unhandled_input(event):
+#	if event.is_action_pressed("escape"):
+#		get_tree().quit()

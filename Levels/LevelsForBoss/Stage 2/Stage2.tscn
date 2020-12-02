@@ -290,10 +290,10 @@ position = Vector2( 8656.68, 1574.69 )
 position = Vector2( 9105.48, 1572.19 )
 
 [node name="Hook21" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 9368, 1672 )
+position = Vector2( 9596.84, 1619.03 )
 
 [node name="Hook22" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 9740.54, 1607.42 )
+position = Vector2( 10232.1, 1753.63 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( -447.225, 2228.77 )

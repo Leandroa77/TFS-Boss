@@ -13,10 +13,14 @@ onready var character = $Character
 onready var soundPlayer = $SoundPlayer
 onready var walls = $Paredes
 onready var wallsPositions = [Vector2(-2180.46, -284.927), Vector2(-2179.27, 67.078), Vector2(-3300.04, 1986.87)]
+onready var enemy_template = preload("res://Enemies/enemy ground/Enemy.tscn")
 var ya_se_llamo_restart_ui = false
+var all_enemies_pos: Array 
 
 func _ready():
 	emit_signal("playBackgroundMusic", 1)
+	
+	get_all_enemies_positions()
 	spawn_player()
 
 func respawnWalls():
@@ -46,6 +50,8 @@ func spawn_player():
 
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
+		
+		destroy_all_enemies()
 		respawnWalls()
 		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
@@ -54,12 +60,14 @@ func respawn_player():
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
 		new_player.add_child(pause)
+		character = new_player
 		add_child(new_player)
 
 		for enemy in enemies.get_children():
 			enemy.set_target(new_player)
 			#enemy.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
 		ya_se_llamo_restart_ui = true
+		reset_enemies()
 
 func _on_Checkpoint2_setCheckpoint(value):
 	player_spawn_position.global_position = value
@@ -69,3 +77,22 @@ func _on_Checkpoint3_setCheckpoint(value):
 
 func _on_Checkpoint4_setCheckpoint(value):
 	player_spawn_position.global_position = value
+	
+
+func get_all_enemies_positions():
+	for enemy in get_tree().get_nodes_in_group("enemyfloor"):
+		all_enemies_pos.append(enemy.global_position)
+		
+
+func destroy_all_enemies():
+	for enemy in get_tree().get_nodes_in_group("enemyfloor"):
+		enemy.queue_free()
+		
+
+func reset_enemies():
+	for enemy_pos in all_enemies_pos:
+		var new_enemy = enemy_template.instance()
+		new_enemy.global_position = enemy_pos 
+		new_enemy.set_target(character)
+		call_deferred("add_child", new_enemy)
+	pass
