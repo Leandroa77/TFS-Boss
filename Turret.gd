@@ -59,7 +59,7 @@ func try_to_shoot():
 			$Sprite.set_modulate(Color(1.2,1.2,1.2,1))
 			shoot()
 		else:
-			print("eaeaea")
+			#print("eaeaea")
 			$Sprite.set_modulate(Color(1,1,1,1))
 			emit_signal("playerEscaped")
 			timer_shooting_cooldown.stop()

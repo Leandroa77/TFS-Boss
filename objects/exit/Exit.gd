@@ -24,7 +24,7 @@ func _on_Exit_body_entered(body):
 		teleport()
 		
 func isLastLevel():
-	return get_parent().get_name() == "StageGonza"
+	return get_parent().get_name() == "Stage4"
 
 func _on_Timer_timeout():
 	get_tree().change_scene_to(next_scene)

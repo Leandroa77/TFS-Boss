@@ -5,7 +5,7 @@
 [ext_resource path="res://sounds/disparoTorreta.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 342.379
+radius = 396.238
 
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 22.5668

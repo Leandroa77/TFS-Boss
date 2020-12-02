@@ -60,16 +60,7 @@ func update(delta):
 	speed = 1500
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
-	#screen shake
-	#shake(duration, frequency, amplitude)
-	owner.get_node("Camera2D").shake(0.02, 100, 2)
-	velocity = owner.move_and_slide(velocity)
-	#var slide_count = owner.get_slide_count()
 	
-	# var slide_count = get_slide_count()
-	# if slide_count:
-	#    var collision = get_slide_collision(slide_count - 1)
-	#    var collider = collision.collider
 	
 	
 	var distance2character = hitted_hook.get_global_position().distance_to(owner.get_global_position());
@@ -77,8 +68,6 @@ func update(delta):
 		owner.itimer.start()
 		
 	left_shot = get_viewport().size.x / 2 < target.x
-	#print("click ",target.x)
-	#print("viewport",get_viewport().size.x)
 	if left_shot:
 		animated.flip_h = false
 		animated.play("hook")
@@ -86,15 +75,23 @@ func update(delta):
 		animated.flip_h = true
 		animated.play("hook")
 
-	var slide_count = owner.get_slide_count()
-	if slide_count:
-		var collision = owner.get_slide_collision(slide_count - 1)
-		var collider = collision.collider
-		if !collider.is_in_group("hook"):
-			emit_signal("finished", "impulse")
 
+
+	#screen shake
+	#shake(duration, frequency, amplitude)
+	owner.get_node("Camera2D").shake(0.02, 100, 2)
+	var collider_data = owner.move_and_collide(velocity * delta)
 	lighting.width = 10
 	lighting.visible = true
+	if collider_data:
+		if !collider_data.collider.is_in_group("hook"):
+			lighting.width = 4
+			lighting.visible = false
+			owner.hitted_hook = false
+			lighting.set_default_color(owner.default_aim_color)
+			emit_signal("finished", "impulse")
+
+	
 	
 
 func _on_Timer_timeout():

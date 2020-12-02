@@ -64,8 +64,8 @@ func update(delta):
 	lighting.width = 10
 	lighting.visible = true
 	left_shot = get_viewport().size.x / 2 < target.x
-	print("click ",target.x)
-	print("viewport",get_viewport().size.x)
+	#print("click ",target.x)
+	#print("viewport",get_viewport().size.x)
 	if left_shot:
 		animated.flip_h = false
 		animated.play("tackle")
@@ -73,20 +73,19 @@ func update(delta):
 		animated.flip_h = true
 		animated.play("tackle")
 	#animated.play("tackle")
-	velocity = owner.move_and_slide(velocity)
+	var collider_data = owner.move_and_collide(velocity * delta)
 	
-	var slide_count = owner.get_slide_count()
-	if slide_count:
-		var collision = owner.get_slide_collision(slide_count - 1)
-		var collider = collision.collider
-		if collider.is_in_group("enemy"):
+	
+	if collider_data:
+		if collider_data.collider.is_in_group("enemy"):
 			owner.get_node("Camera2D").shake(0.5, 100, 10)
-			collider.hitted()
-			lighting.set_default_color(owner.default_aim_color)
-			lighting.width = 4
-			lighting.visible = false
+			collider_data.collider.hitted()
 			emit_signal("finished", "jump") 
 		else:
 			emit_signal("finished", "idle")
+		
+		lighting.set_default_color(owner.default_aim_color)
+		lighting.width = 4
+		lighting.visible = false
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=2]
@@ -18,6 +18,7 @@
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
+[ext_resource path="res://Levels/LevelsForBoss/Stage mov hook/StageMovHookSimple.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -465,6 +466,7 @@ position = Vector2( 1713.76, -245.552 )
 
 [node name="Exit" parent="." instance=ExtResource( 10 )]
 position = Vector2( 3165.02, 2270.8 )
+next_scene = ExtResource( 19 )
 
 [node name="PortalParticula" parent="." instance=ExtResource( 11 )]
 modulate = Color( 3, 3, 3, 1 )
@@ -480,7 +482,7 @@ punto = Vector2( 252.149, 4635.22 )
 
 [node name="PortalParticula3" parent="." instance=ExtResource( 11 )]
 modulate = Color( 3, 3, 3, 1 )
-position = Vector2( -115.044, 3698.93 )
+position = Vector2( -151.814, 3766.81 )
 color = Color( 0.956863, 0.768627, 0.0392157, 1 )
 punto = Vector2( 1553.36, -980.019 )
 
