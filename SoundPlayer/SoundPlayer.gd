@@ -5,11 +5,15 @@ onready var fxPlayer2 = $FxPlayer2
 onready var bgPlayer = $BgPlayer
 onready var fxEnemy = $FxEnemy
 onready var music = load("res://sounds/BackgroundMusic.ogg")
+onready var music2 = load("res://sounds/BackgroundMusic2.ogg")
+onready var music3 = load("res://sounds/BackgroundMusic3.ogg")
+onready var music4 = load("res://sounds/BackgroundMusic4.ogg")
 onready var explosion = load("res://sounds/Explosion.ogg")
 onready var grappHook = load("res://sounds/GrapplingHook.ogg")
 onready var tackle = load("res://sounds/Tackle.ogg")
 onready var portalG = load("res://sounds/portalGonza.ogg")
 onready var expPared = load("res://sounds/explosionPared.ogg")
+onready var elevator = load("res://sounds/elevator_music.ogg")
 
 var bgSoundsMap = {}
 var fxSoundsMap = {}
@@ -30,6 +34,10 @@ func _ready():
 
 	bgSoundsMap[0] = null
 	bgSoundsMap[1] = music
+	bgSoundsMap[2] = elevator
+	bgSoundsMap[3] = music2
+	bgSoundsMap[4] = music3
+	bgSoundsMap[5] = music4
 
 func _on_Stage1_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
@@ -126,3 +134,23 @@ func _on_ParedMaderaOtroColor3_detonate(value):
 func _on_ParedMadera4_detonate(value):
 	fxPlayer2.stream = fxSoundsMap2[value]
 	fxPlayer2.play()
+
+func _on_PlatformSleeping_changeMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()
+
+func _on_Portal_sound(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+
+func _on_Portal2_sound(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+
+func _on_Portal3_sound(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()
+
+func _on_Portal4_sound(value):
+	fxPlayer.stream = fxSoundsMap[value]
+	fxPlayer.play()

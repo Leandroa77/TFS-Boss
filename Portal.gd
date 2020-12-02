@@ -2,6 +2,8 @@ extends Area2D
 
 export(int) var id = 0
 
+signal sound(value)
+
 var lock_portal = false
 var can_be_used = true
 
@@ -25,6 +27,7 @@ func _on_Portal_body_entered(body):
 			for portal in get_tree().get_nodes_in_group("portal"):
 				if portal.can_be_used():
 					if(portal.id == self.id and portal != self):
+						emit_signal("sound", 6)
 						portal.is_being_used()
 						body.position = portal.position
 	pass # Replace with function body.
