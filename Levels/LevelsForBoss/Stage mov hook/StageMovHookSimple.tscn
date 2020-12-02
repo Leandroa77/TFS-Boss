@@ -18,7 +18,7 @@
 [ext_resource path="res://obstacles/guns/laser gun/RotatingLasers4.tscn" type="PackedScene" id=16]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic20.tscn" type="PackedScene" id=17]
 [ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Levels/LevelsForBoss/Stage Acido/Stage4.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Levels/Intervals/Interval5/Stage5Interval.tscn" type="PackedScene" id=19]
 [ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=21]
 
@@ -364,19 +364,16 @@ position = Vector2( -4496, 568 )
 position = Vector2( -3800, 568 )
 
 [node name="PlatformFalling2" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -1800, 440 )
+position = Vector2( -1776, 440 )
 
 [node name="PlatformFalling12" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -1896, 440 )
+position = Vector2( -1872, 440 )
 
 [node name="PlatformFalling13" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -1992, 440 )
+position = Vector2( -1968, 440 )
 
 [node name="PlatformFalling3" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -1704, 440 )
-
-[node name="PlatformFalling4" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -1608, 440 )
+position = Vector2( -1680, 440 )
 
 [node name="PlatformFalling9" parent="PlatformsFalling" instance=ExtResource( 4 )]
 position = Vector2( -3472, 568 )

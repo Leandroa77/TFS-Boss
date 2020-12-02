@@ -61,8 +61,9 @@ func hitted():
 	$Timer.start()
 	isAlive = false
 
-func set_target(target):
-	self.target = target
+#func set_target(target):
+func set_target(targe):
+	self.target = targe
 
 func _on_Timer_timeout():
 	queue_free()

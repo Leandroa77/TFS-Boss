@@ -15,7 +15,7 @@ var plataforma_troll_pos: Vector2
 
 signal backgroundMusic(value)
 
-
+var esta_sonando_musica_troll = false
 var ya_se_llamo_restart_ui = false
 #parche horrible para que funcione el checkpoint. por alguna razon se llama
 # 2 veces al restart ui
@@ -78,7 +78,11 @@ func respawn_player():
 		var new_plataforma_troll = plataforma_troll_template.instance()
 		new_plataforma_troll.connect("changeMusic", soundPlayer, "_on_PlatformSleeping_changeMusic")
 		new_plataforma_troll.global_position = plataforma_troll_pos
+		new_plataforma_troll.connect("changed_music", self, "_on_PlatformSleeping_changed_music")
 		call_deferred("add_child", new_plataforma_troll)
+		if esta_sonando_musica_troll:
+			emit_signal("backgroundMusic", 5)
+			esta_sonando_musica_troll = false
 
 
 func set_ya_se_llamo_restart_ui(boolean):
@@ -122,3 +126,10 @@ func _on_Checkpoint2_body_entered(body):
 func _on_resetearAcidos_body_entered(body):
 	if (body.is_in_group("player")):
 		reset_acids()
+
+func _on_PlatformSleeping_changed_music():
+	print("esto se activo")
+	esta_sonando_musica_troll = true
+	
+	
+

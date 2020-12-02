@@ -1,6 +1,6 @@
 extends "res://Character/Motion.gd"
 
-signal saliDeAcaLoco()
+#signal saliDeAcaLoco()
 
 var speed:float = 1500.0
 var velocity:Vector2
@@ -31,12 +31,13 @@ var left_shot
 var animated
 var target
 
-func initialize(direction, speed, velocity, enemy):
-	self.direction = direction
+#func initialize(direction, speed, velocity, enemy):
+func initialize(directio, speed, velocit, enem):
+	self.direction = directio
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
-	self.hookPosition = enemy.get_global_position()
-	self.enemy = enemy
+	self.hookPosition = enem.get_global_position()
+	self.enemy = enem
 	
 func exit():
 	pass

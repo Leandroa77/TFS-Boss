@@ -13,7 +13,7 @@ onready var bullet_scene = preload("res://obstacles/guns/turret/Bullet.tscn")
 onready var bullet_start_position:Position2D = $Position2DStartOfProyectile
 
 func shoot():
-	if can_shoot():
+	if can_shoot_and_can_shoot_cd():
 		var bullet = bullet_scene.instance()
 	#get_parent().add_child(bullet)
 		bullet.global_position = bullet_start_position.global_position
@@ -28,7 +28,7 @@ func shoot():
 	#call_deferred("add_child", bullet)
 	#add_child(bullet)
 	
-func can_shoot():
+func can_shoot_and_can_shoot_cd():
 	return can_shoot and can_shoot_cd
 	
 #get_parent().call_deferred("add_child", bullet)

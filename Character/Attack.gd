@@ -8,9 +8,10 @@ onready var lighting = owner.get_node("Line2DLighting")
 onready var camera = owner.get_node("Camera2D")
 onready var timer = $Timer
 
-func initialize(enemy):
-	self.enemy_position = enemy.get_global_position()
-	self.enemy = enemy 
+#func initialize(enemy):
+func initialize(enem):
+	self.enemy_position = enem.get_global_position()
+	self.enemy = enem 
 	timer.start()
 
 func update(delta):

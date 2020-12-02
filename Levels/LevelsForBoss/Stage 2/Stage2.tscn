@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/LevelsForBoss/Stage 2/Stage2.gd" type="Script" id=1]
-[ext_resource path="res://Levels/LevelsForBoss/StageGonza/StageGonza.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Intervals/Interval3/Stage3Interval.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Character/Character.tscn" type="PackedScene" id=3]
 [ext_resource path="res://objects/hook/Hook.tscn" type="PackedScene" id=4]
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=5]
@@ -27,10 +27,10 @@ __meta__ = {
 [node name="SoundPlayer" parent="." instance=ExtResource( 8 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -1016.0
-margin_top = -112.0
-margin_right = 10928.0
-margin_bottom = 3304.0
+margin_left = -973.237
+margin_top = -90.6187
+margin_right = 10970.8
+margin_bottom = 3325.38
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -209,11 +209,6 @@ position = Vector2( 9184, 1768 )
 rotation = 3.14159
 move_direction = Vector2( 1, 0 )
 
-[node name="MovTurret17" parent="Turrets" instance=ExtResource( 13 )]
-position = Vector2( 9512, 1760 )
-rotation = 3.14159
-move_direction = Vector2( 1, 0 )
-
 [node name="Destructibles" type="Node2D" parent="."]
 
 [node name="ParedMadera1" parent="Destructibles" instance=ExtResource( 12 )]
@@ -293,9 +288,6 @@ position = Vector2( 9105.48, 1572.19 )
 
 [node name="Hook21" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 9596.84, 1619.03 )
-
-[node name="Hook22" parent="Hooks" instance=ExtResource( 4 )]
-position = Vector2( 10232.1, 1753.63 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( -447.225, 2228.77 )

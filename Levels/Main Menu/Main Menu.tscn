@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Main Menu/Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Character/Character_Controller.gd" type="Script" id=4]
-[ext_resource path="res://Levels/LevelsForBoss/Stage 1/Stage1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Intervals/Interval1/Stage1Interval.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/hook/Hook.tscn" type="PackedScene" id=6]
 [ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Cursor.tscn" type="PackedScene" id=8]
