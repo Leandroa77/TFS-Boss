@@ -63,11 +63,11 @@ func respawn_player():
 		character = new_player
 		add_child(new_player)
 
+		reset_enemies()
 		for enemy in enemies.get_children():
 			enemy.set_target(new_player)
 			#enemy.connect("sound_missile", soundPlayer,"_on_EnemyFloor_sound_missile")
 		ya_se_llamo_restart_ui = true
-		reset_enemies()
 
 func _on_Checkpoint2_setCheckpoint(value):
 	player_spawn_position.global_position = value

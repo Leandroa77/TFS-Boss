@@ -24,7 +24,7 @@
 [ext_resource path="res://Levels/Animation Win/AnimationWin.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 512, 16 )
+extents = Vector2( 146.51, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 104 )
@@ -320,7 +320,7 @@ position = Vector2( 3944, 5696 )
 position = Vector2( 3616, 5488 )
 
 [node name="Hook44" parent="Hooks" instance=ExtResource( 6 )]
-position = Vector2( 5424, 5472 )
+position = Vector2( 5831.29, 5375.83 )
 
 [node name="Hook36" parent="Hooks" instance=ExtResource( 6 )]
 position = Vector2( 3624, 5944 )
@@ -354,7 +354,8 @@ shape = SubResource( 1 )
 position = Vector2( 4296, 7424 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2"]
-position = Vector2( 0, 80.0005 )
+position = Vector2( -95.0264, -41.0361 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="resetearAcidos" type="Area2D" parent="Checkpoints"]
@@ -372,7 +373,7 @@ position = Vector2( -8, 72 )
 shape = SubResource( 2 )
 
 [node name="Position2DPlayerRespawn" type="Position2D" parent="."]
-position = Vector2( -2381.1, 7535.7 )
+position = Vector2( -2383.66, 7483.78 )
 
 [node name="PlatformSleeping" parent="." instance=ExtResource( 18 )]
 position = Vector2( 4752, 5424 )
