@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/LevelsForBoss/Stage 2/Stage2.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Intervals/Interval3/Stage3Interval.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://obstacles/saw/Saw.tscn" type="PackedScene" id=7]
 [ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/LevelsForBoss/Stage 1/CheatKeys.gd" type="Script" id=10]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic20.tscn" type="PackedScene" id=11]
 [ext_resource path="res://objects/ParedMadera/ParedMaderaOtroColor.tscn" type="PackedScene" id=12]
 [ext_resource path="res://obstacles/guns/turret/MovTurret/MovTurret.tscn" type="PackedScene" id=13]
@@ -23,6 +24,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 376.0 ]
 }
+
+[node name="CheatKeys" type="Node" parent="."]
+script = ExtResource( 10 )
 
 [node name="SoundPlayer" parent="." instance=ExtResource( 8 )]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://objects/hook/HookMovSimple.tscn" type="PackedScene" id=1]
 [ext_resource path="res://TileMap/TileMap.tscn" type="PackedScene" id=2]
@@ -21,12 +21,16 @@
 [ext_resource path="res://Levels/Intervals/Interval5/Stage5Interval.tscn" type="PackedScene" id=19]
 [ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Levels/LevelsForBoss/Stage 1/CheatKeys.gd" type="Script" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 144, 8 )
 
 [node name="StageMovHookSimple" type="Node2D"]
 script = ExtResource( 12 )
+
+[node name="CheatKeys" type="Node" parent="."]
+script = ExtResource( 22 )
 
 [node name="SoundPlayer" parent="." instance=ExtResource( 20 )]
 
