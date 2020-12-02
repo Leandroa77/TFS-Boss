@@ -20,7 +20,8 @@ func _on_MoveToScreen_timeout():
 	Input.action_release("move_right")
 
 func _on_Exit3_pressed():
-	get_tree().quit()
+	#get_tree().quit()
+	pass
 
 func _on_UpTitle_timeout():
 	title.get_child(0).interpolate_property(title, "rect_position", title.get_rect().position, titlePos.global_position, 1.0, Tween.TRANS_BACK, Tween.EASE_OUT)
