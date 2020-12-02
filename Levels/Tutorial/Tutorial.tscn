@@ -7,7 +7,7 @@
 [ext_resource path="res://objects/ParedMadera/ParedMadera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Tutorial/Tutorial.gd" type="Script" id=7]
-[ext_resource path="res://Levels/LevelsForBoss/Stage 1/Stage1.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Intervals/Interval1/Stage1Interval.tscn" type="PackedScene" id=8]
 [ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]

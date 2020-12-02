@@ -22,6 +22,7 @@ func _ready():
 	
 	get_all_enemies_positions()
 	spawn_player()
+	set_target_all_enemies()
 
 func respawnWalls():
 	var index = 1
@@ -96,3 +97,8 @@ func reset_enemies():
 		new_enemy.set_target(character)
 		call_deferred("add_child", new_enemy)
 	pass
+	
+func set_target_all_enemies():
+	for enemy in get_tree().get_nodes_in_group("enemyfloor"):
+		enemy.set_target(character)
+	

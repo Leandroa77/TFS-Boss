@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if (hitted_something() and is_shooting):
 		is_shooting = false
 		detonate()
-		if hitted_player:
+		if hitted_player and !target== null:
 			target.got_hit()
 		
 
@@ -48,8 +48,9 @@ func detonate():
 	
 	
 
-func set_target(target):
-	self.target = target
+#func set_target(target):
+func set_target(targe):
+	self.target = targe
 	
 	
 func setDir():

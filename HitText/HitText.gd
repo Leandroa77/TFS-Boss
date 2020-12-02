@@ -5,8 +5,9 @@ var value = 1
 var baseSize = 16
 var size = 16
 
-func incrementHit(value, pos):
-	match value:
+#func incrementHit(value, pos):
+func incrementHit(valu, pos):
+	match valu:
 		1:
 			text = "1 Hit"
 			changeFontSize(16)
@@ -23,8 +24,9 @@ func incrementHit(value, pos):
 		_:
 			MoveRight(pos)
 
-func toChange(value, pos):
-	match value:
+#func toChange(value, pos):
+func toChange(valu, pos):
+	match valu:
 		0:
 			MoveRight(pos)
 		1:
@@ -35,10 +37,10 @@ func toChange(value, pos):
 			changeFontSize(size)
 			MoveLeft(pos)
 		_:
-			text = str(value) + " Hits"
+			text = str(valu) + " Hits"
 			size += 3
 			changeFontSize(min(size, 25))
-			if(value == 3):
+			if(valu == 3):
 				power()
 
 func MoveLeft(pos):

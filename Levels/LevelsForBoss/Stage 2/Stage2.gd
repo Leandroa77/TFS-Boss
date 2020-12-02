@@ -41,7 +41,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func spawn_player():
-	call_deferred("add_child", player)
+	#call_deferred("add_child", player)
 	
 	player.global_position = player_spawn_position.global_position
 	

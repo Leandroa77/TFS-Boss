@@ -21,10 +21,11 @@ var velocity:Vector2
 
 var animated
 
-func initialize(speed, velocity):
+#func initialize(speed, velocity):
+func initialize(speed, velocit):
 	horizontal_speed = speed
 	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
-	enter_velocity = velocity
+	enter_velocity = velocit
 
 func enter():
 	var input_direction = get_input_direction()

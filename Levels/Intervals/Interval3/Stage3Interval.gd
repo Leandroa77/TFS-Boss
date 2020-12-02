@@ -3,6 +3,8 @@ extends Node
 onready var interval = $Interval
 var degradation:float = 1
 
+export var next_scene : PackedScene
+
 func _ready():
 	set_process(false)
 
@@ -16,3 +18,5 @@ func _on_Interval_bajarTexto():
 
 func _on_Interval_borrarTexto():
 	set_process(true)
+	
+	get_tree().change_scene_to(next_scene)

@@ -29,13 +29,14 @@ var initial_vertical_speed:float
 var can_impulse = true
 var was_moved = false
 
-func initialize(speed, velocity, hook_position):
+#func initialize(speed, velocity, hook_position):
+func initialize(speed, velocit, hook_positio):
 	horizontal_speed = speed.x
 	max_horizontal_speed = speed.x if speed.x > 0.0 else base_max_horizontal_speed
-	enter_velocity = velocity
+	enter_velocity = velocit
 	initial_dir = speed
-	self.hook_position = hook_position 
-	velocity_impulse = velocity
+	self.hook_position = hook_positio 
+	velocity_impulse = velocit
 	if (hook_position.y > owner.get_global_position().y):
 		vertical_speed = 100.0 #/  600.0 / que tan fuerte es el impulso post rayo
 	else:

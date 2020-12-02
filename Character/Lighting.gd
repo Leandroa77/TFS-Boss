@@ -1,6 +1,6 @@
 extends "res://Character/Motion.gd"
 
-signal saliDeAcaLoco()
+
 
 var speed:float = 1500.0
 var velocity:Vector2
@@ -32,10 +32,11 @@ var target
 var left_shot
 
 
-func initialize(direction, speed, velocity, hook):
-	self.direction = direction
-	horizontal_speed = speed
-	max_horizontal_speed = speed if speed > 0.0 else base_max_horizontal_speed
+#func initialize(dir, speed, velocity, hook):
+func initialize(dir, sped, velocit, hook):
+	self.direction = dir
+	horizontal_speed = sped
+	max_horizontal_speed = sped if sped > 0.0 else base_max_horizontal_speed
 	hookPosition = hook.get_global_position()
 	hitted_hook = hook
 	
@@ -80,6 +81,7 @@ func update(delta):
 	#screen shake
 	#shake(duration, frequency, amplitude)
 	owner.get_node("Camera2D").shake(0.02, 100, 2)
+	velocity.normalized()
 	var collider_data = owner.move_and_collide(velocity * delta)
 	lighting.width = 10
 	lighting.visible = true

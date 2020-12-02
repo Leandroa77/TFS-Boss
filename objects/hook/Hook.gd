@@ -13,8 +13,5 @@ func glow_off():
 	$Light2D.set_process(false)
 
 
-func _on_Hook_area_entered(area):
-	#aca se produciria el efecto
-	pass 
 
 

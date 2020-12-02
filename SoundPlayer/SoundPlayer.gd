@@ -21,6 +21,7 @@ var fxSoundsMap2 = {}
 var fxEnemySoundsMap = {}
 
 func _ready():
+	
 	fxSoundsMap[0] = null
 	fxSoundsMap[1] = explosion
 	fxSoundsMap[2] = grappHook

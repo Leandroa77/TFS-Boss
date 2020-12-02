@@ -18,7 +18,7 @@
 [ext_resource path="res://obstacles/spikes/spike/SpikeStatic.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Levels/LevelsForBoss/StageGonza/Checkpoint.gd" type="Script" id=18]
-[ext_resource path="res://Levels/LevelsForBoss/Stage mov hook/StageMovHookSimple.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Levels/Intervals/Interval4/Stage4Interval.tscn" type="PackedScene" id=19]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
