@@ -28,7 +28,7 @@ func _on_Restart_UI_timeOutRestart():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	emit_signal("backgroundMusic", 1)
+	emit_signal("backgroundMusic", 3)
 	spawn_player()
 	#feo hardcodeado, pero el tiempo apura.
 	#$Enemies/EnemyFloor.set_target($Character)

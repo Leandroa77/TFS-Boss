@@ -154,3 +154,11 @@ func _on_Portal3_sound(value):
 func _on_Portal4_sound(value):
 	fxPlayer.stream = fxSoundsMap[value]
 	fxPlayer.play()
+
+func _on_ParedMaderaOtroColor5_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
+
+func _on_StageMovHookSimple_backgroundMusic(value):
+	bgPlayer.stream = bgSoundsMap[value]
+	bgPlayer.play()

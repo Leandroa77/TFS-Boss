@@ -18,7 +18,7 @@ var ya_se_llamo_restart_ui = false
 var all_enemies_pos: Array 
 
 func _ready():
-	emit_signal("playBackgroundMusic", 1)
+	emit_signal("playBackgroundMusic", 3)
 	
 	get_all_enemies_positions()
 	spawn_player()
