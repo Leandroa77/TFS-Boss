@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Levels/LevelsForBoss/Stage Acido/Stage4.gd" type="Script" id=1]
 [ext_resource path="res://obstacles/guns/laser gun/LaserGun.tscn" type="PackedScene" id=2]
@@ -24,10 +24,13 @@
 [ext_resource path="res://Levels/Animation Win/AnimationWin.tscn" type="PackedScene" id=22]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 146.51, 16 )
+extents = Vector2( 137.2, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 8, 104 )
+extents = Vector2( 47.4564, 104 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 47.4564, 104 )
 
 [node name="StageAcido" type="Node2D"]
 script = ExtResource( 1 )
@@ -347,7 +350,8 @@ id = 1
 position = Vector2( 1001.2, 7504.55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint1"]
-position = Vector2( 71.7344, 60.4082 )
+position = Vector2( -50.3413, -39.3145 )
+rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Checkpoint2" type="Area2D" parent="Checkpoints"]
@@ -362,15 +366,15 @@ shape = SubResource( 1 )
 position = Vector2( 528, 7384 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/resetearAcidos"]
-position = Vector2( -8, 72 )
+position = Vector2( -28.602, 63.1704 )
 shape = SubResource( 2 )
 
 [node name="resetearAcidos2" type="Area2D" parent="Checkpoints"]
 position = Vector2( 3656, 7264 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/resetearAcidos2"]
-position = Vector2( -8, 72 )
-shape = SubResource( 2 )
+position = Vector2( -29.3574, 85.3481 )
+shape = SubResource( 3 )
 
 [node name="Position2DPlayerRespawn" type="Position2D" parent="."]
 position = Vector2( -2383.66, 7483.78 )
