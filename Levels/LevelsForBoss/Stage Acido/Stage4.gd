@@ -87,7 +87,7 @@ func set_ya_se_llamo_restart_ui(boolean):
 
 func _on_Checkpoint1_body_entered(body):
 	if (body.is_in_group("player")):
-		player_spawn_position.position = body.position
+		player_spawn_position.global_position = body.global_position
 
 func reset_acids():
 	for acid in get_tree().get_nodes_in_group("acid"):
@@ -117,7 +117,7 @@ func reset_walls():
 
 func _on_Checkpoint2_body_entered(body):
 	if (body.is_in_group("player")):
-		player_spawn_position.position = body.position
+		player_spawn_position.global_position = body.global_position
 
 func _on_resetearAcidos_body_entered(body):
 	if (body.is_in_group("player")):

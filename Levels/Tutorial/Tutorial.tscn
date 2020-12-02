@@ -16,6 +16,20 @@ extents = Vector2( 13.8723, 98.0345 )
 [node name="Tutorial" type="Node2D"]
 script = ExtResource( 7 )
 
+[node name="SoundPlayer" parent="." instance=ExtResource( 9 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+show_behind_parent = true
+margin_left = -391.119
+margin_top = -287.0
+margin_right = 4559.88
+margin_bottom = 1225.0
+mouse_filter = 2
+color = Color( 0.0509804, 0.0588235, 0.0588235, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Spikes" type="Node2D" parent="."]
 
 [node name="BiggerSpike" parent="Spikes" instance=ExtResource( 3 )]
@@ -55,18 +69,6 @@ position = Vector2( 2374.7, 363.254 )
 
 [node name="Hook3" parent="Hooks" instance=ExtResource( 4 )]
 position = Vector2( 2644.42, 186.466 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-show_behind_parent = true
-margin_left = -389.0
-margin_top = -287.0
-margin_right = 4562.0
-margin_bottom = 1225.0
-mouse_filter = 2
-color = Color( 0.0509804, 0.0588235, 0.0588235, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Exit" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4004, 124 )
@@ -130,9 +132,8 @@ position = Vector2( 3391.13, 102.034 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint1"]
 position = Vector2( 2, 1 )
 shape = SubResource( 1 )
-
-[node name="SoundPlayer" parent="." instance=ExtResource( 9 )]
 [connection signal="backgroundMusic" from="." to="SoundPlayer" method="_on_Tutorial_backgroundMusic"]
+[connection signal="detonate" from="Walls/ParedMadera" to="SoundPlayer" method="_on_ParedMadera_detonate"]
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
 [connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_Checkpoint1_body_entered"]

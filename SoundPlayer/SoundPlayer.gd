@@ -162,3 +162,7 @@ func _on_ParedMaderaOtroColor5_detonate(value):
 func _on_StageMovHookSimple_backgroundMusic(value):
 	bgPlayer.stream = bgSoundsMap[value]
 	bgPlayer.play()
+
+func _on_ParedMadera_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()
