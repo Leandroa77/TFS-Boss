@@ -7,9 +7,11 @@ onready var soundPlayer = $SoundPlayer
 onready var restart_UI_template = preload("res://UI/Restart_UI/Restart_UI.tscn")
 onready var character_template = preload("res://Character/Character.tscn")
 onready var wall_template = preload("res://objects/ParedMadera/ParedMaderaOtroColor.tscn")
+onready var plataforma_troll_template = preload("res://objects/platforms/automatic/PlatformSleeping.tscn")
 onready var pause_template = preload("res://Pause/Pause.tscn")
 
 var all_walls_pos: Array 
+var plataforma_troll_pos: Vector2
 
 signal backgroundMusic(value)
 
@@ -35,6 +37,7 @@ func _ready():
 	emit_signal("backgroundMusic", 1)
 	get_all_walls_positions()
 	spawn_player()
+	plataforma_troll_pos = $PlatformSleeping.global_position
 	#feo hardcodeado, pero el tiempo apura.
 	#$Enemies/EnemyFloor.set_target($Character)
 	#$Enemies/EnemyFloor2.set_target($Character)
@@ -47,13 +50,13 @@ func _ready():
 #	pass
 func spawn_player():
 	#call_deferred("add_child", player)
-	
 	player.global_position = player_spawn_position.global_position
 	
 
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
 		destroy_all_walls()
+		destroy_plataforma_troll()
 		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
 		
@@ -73,6 +76,9 @@ func respawn_player():
 		ya_se_llamo_restart_ui = true
 		reset_acids()
 		reset_walls()
+		var new_plataforma_troll = plataforma_troll_template.instance()
+		new_plataforma_troll.global_position = plataforma_troll_pos
+		call_deferred("add_child", new_plataforma_troll)
 
 
 func set_ya_se_llamo_restart_ui(boolean):
@@ -97,6 +103,10 @@ func get_all_walls_positions():
 func destroy_all_walls():
 	for wall in get_tree().get_nodes_in_group("wall"):
 		wall.queue_free()
+		
+func destroy_plataforma_troll():
+	for plat_troll in get_tree().get_nodes_in_group("troll"):
+		plat_troll.queue_free()
 
 func reset_walls():
 	var index = 1
@@ -113,3 +123,9 @@ func _on_Checkpoint2_body_entered(body):
 		player_spawn_position.position = body.position
 	pass # Replace with function body.
 
+
+
+func _on_resetearAcidos_body_entered(body):
+	if (body.is_in_group("player")):
+		reset_acids()
+	pass # Replace with function body.

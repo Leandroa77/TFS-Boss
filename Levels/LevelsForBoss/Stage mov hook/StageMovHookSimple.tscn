@@ -321,10 +321,10 @@ __meta__ = {
 
 [node name="HookMovSimple" parent="Hooks" instance=ExtResource( 1 )]
 position = Vector2( -5705.08, 238.915 )
-speed = 180.0
+speed = 222.0
 
 [node name="Hook" parent="Hooks" instance=ExtResource( 15 )]
-position = Vector2( 0, 768 )
+position = Vector2( 8, 752 )
 
 [node name="Hook2" parent="Hooks" instance=ExtResource( 15 )]
 position = Vector2( 496, 648 )
@@ -333,7 +333,7 @@ position = Vector2( 496, 648 )
 position = Vector2( 1240, 960 )
 
 [node name="Hook4" parent="Hooks" instance=ExtResource( 15 )]
-position = Vector2( 1632, 920 )
+position = Vector2( 1648, 904 )
 
 [node name="Hook5" parent="Hooks" instance=ExtResource( 15 )]
 position = Vector2( 2752, 2240 )
@@ -374,13 +374,13 @@ position = Vector2( -1704, 440 )
 position = Vector2( -1608, 440 )
 
 [node name="PlatformFalling9" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -3552, 568 )
+position = Vector2( -3472, 568 )
 
 [node name="PlatformFalling10" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -3184, 568 )
+position = Vector2( -3072, 568 )
 
 [node name="PlatformFalling11" parent="PlatformsFalling" instance=ExtResource( 4 )]
-position = Vector2( -2856, 568 )
+position = Vector2( -2720, 568 )
 
 [node name="Character" parent="." instance=ExtResource( 3 )]
 position = Vector2( -5632, 520 )
@@ -419,17 +419,17 @@ __meta__ = {
 }
 
 [node name="MovTurret" parent="Turrets" instance=ExtResource( 13 )]
-position = Vector2( -3352, 600 )
+position = Vector2( -3256, 600 )
 distance = 75.0
 move_direction = Vector2( 0, 2 )
 
 [node name="MovTurret2" parent="Turrets" instance=ExtResource( 13 )]
-position = Vector2( -3032, 600 )
+position = Vector2( -2904, 600 )
 distance = 75.0
 move_direction = Vector2( 0, 2 )
 
 [node name="MovTurret3" parent="Turrets" instance=ExtResource( 13 )]
-position = Vector2( -2712, 600 )
+position = Vector2( -2536, 600 )
 distance = 75.0
 move_direction = Vector2( 0, 2 )
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
