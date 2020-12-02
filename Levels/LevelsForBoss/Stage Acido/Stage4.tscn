@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Levels/LevelsForBoss/Stage Acido/Stage4.gd" type="Script" id=1]
 [ext_resource path="res://obstacles/guns/laser gun/LaserGun.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://obstacles/Acid/Acid2.tscn" type="PackedScene" id=11]
 [ext_resource path="res://obstacles/saw/MovSaw.tscn" type="PackedScene" id=12]
 [ext_resource path="res://objects/ParedMadera/ParedMaderaOtroColor.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SoundPlayer/SoundPlayer.tscn" type="PackedScene" id=14]
 [ext_resource path="res://obstacles/guns/turret/Turret.tscn" type="PackedScene" id=15]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic10.tscn" type="PackedScene" id=16]
 [ext_resource path="res://obstacles/spikes/bigger spikes/SpikeStatic5.tscn" type="PackedScene" id=17]
@@ -25,6 +26,8 @@ extents = Vector2( 512, 16 )
 
 [node name="StageAcido" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="SoundPlayer" parent="." instance=ExtResource( 14 )]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -3440.0
@@ -153,7 +156,7 @@ position = Vector2( 4608, 2400 )
 
 [node name="Walls" type="Node" parent="."]
 
-[node name="ParedMaderaOtroColor" parent="Walls" instance=ExtResource( 13 )]
+[node name="ParedMaderaOtroColor1" parent="Walls" instance=ExtResource( 13 )]
 position = Vector2( -2685.6, 6324.08 )
 
 [node name="ParedMaderaOtroColor2" parent="Walls" instance=ExtResource( 13 )]
@@ -373,6 +376,14 @@ move_direction = Vector2( 0, -1 )
 position = Vector2( 4744, 4856 )
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 20 )]
+[connection signal="backgroundMusic" from="." to="SoundPlayer" method="_on_StageAcido_backgroundMusic"]
+[connection signal="detonate" from="Walls/ParedMaderaOtroColor1" to="SoundPlayer" method="_on_ParedMaderaOtroColor1_detonate"]
+[connection signal="detonate" from="Walls/ParedMaderaOtroColor2" to="SoundPlayer" method="_on_ParedMaderaOtroColor2_detonate"]
+[connection signal="detonate" from="Walls/ParedMaderaOtroColor4" to="SoundPlayer" method="_on_ParedMaderaOtroColor4_detonate"]
+[connection signal="detonate" from="Walls/ParedMaderaOtroColor6" to="SoundPlayer" method="_on_ParedMaderaOtroColor6_detonate"]
+[connection signal="detonate" from="Walls/ParedMaderaOtroColor7" to="SoundPlayer" method="_on_ParedMaderaOtroColor7_detonate"]
+[connection signal="detonate" from="Walls/ParedMaderaOtroColor8" to="SoundPlayer" method="_on_ParedMaderaOtroColor8_detonate"]
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
+[connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_Checkpoint1_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="." method="_on_Checkpoint1_body_entered"]

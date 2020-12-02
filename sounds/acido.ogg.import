@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/acido.ogg-a2da8d4d7c0882f93b6c05b9e76b0164.oggstr"
+
+[deps]
+
+source_file="res://sounds/acido.ogg"
+dest_files=[ "res://.import/acido.ogg-a2da8d4d7c0882f93b6c05b9e76b0164.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

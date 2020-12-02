@@ -4,6 +4,7 @@ signal playerDetected
 signal playerEscaped
 
 onready var timer_shooting_cooldown :Timer = $TimerShootingCD
+onready var audioPlayer = $AudioStreamPlayer
 var target
 var can_shoot = false
 var can_shoot_cd = true
@@ -23,6 +24,7 @@ func shoot():
 		get_parent().get_parent().call_deferred("add_child", bullet)
 		can_shoot_cd = false
 		$TimerCD.start()
+		audioPlayer.play()
 	#call_deferred("add_child", bullet)
 	#add_child(bullet)
 	
