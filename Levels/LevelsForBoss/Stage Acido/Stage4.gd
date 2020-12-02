@@ -7,6 +7,7 @@ onready var soundPlayer = $SoundPlayer
 onready var restart_UI_template = preload("res://UI/Restart_UI/Restart_UI.tscn")
 onready var character_template = preload("res://Character/Character.tscn")
 onready var wall_template = preload("res://objects/ParedMadera/ParedMaderaOtroColor.tscn")
+onready var pause_template = preload("res://Pause/Pause.tscn")
 
 var all_walls_pos: Array 
 
@@ -53,11 +54,13 @@ func spawn_player():
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
 		destroy_all_walls()
+		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
 		
 		new_player.global_position = player_spawn_position.global_position
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
+		new_player.add_child(pause)
 		#add_child(new_player)
 		call_deferred("add_child", new_player)
 		#if is_instance_valid($Enemies/EnemyFloor):

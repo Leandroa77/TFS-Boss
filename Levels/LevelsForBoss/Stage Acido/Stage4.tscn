@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Levels/LevelsForBoss/Stage Acido/Stage4.gd" type="Script" id=1]
 [ext_resource path="res://obstacles/guns/laser gun/LaserGun.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://objects/platforms/automatic/PlatformSleeping.tscn" type="PackedScene" id=18]
 [ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=19]
 [ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Pause/Pause.tscn" type="PackedScene" id=21]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 16 )
@@ -331,6 +332,8 @@ tile_data = PoolIntArray( 7078022, 33, 0, 7078023, 49, 0, 7078024, 49, 0, 707802
 
 [node name="Character" parent="." instance=ExtResource( 9 )]
 position = Vector2( -2473.31, 7542.64 )
+
+[node name="Pause" parent="Character" instance=ExtResource( 21 )]
 
 [node name="Portals" type="Node" parent="."]
 
