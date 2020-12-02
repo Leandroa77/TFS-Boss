@@ -19,4 +19,4 @@ func _physics_process(delta):
 	var position_move = sin (time_init * speed * PI)
 	var offset = position_move * distance * move_direction
 	position = origin + offset
-	rotate(0.001)
+	rotate(0.01)

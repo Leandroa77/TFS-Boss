@@ -54,6 +54,7 @@ func _physics_process(delta):
 			pos = $Position2D.position
 
 func hitted():
+	isAlive = false
 	$Explosion.detonate_explosion()
 	$AnimatedSprite2.visible = false
 	$CollisionShape2D.disabled = true
@@ -78,9 +79,10 @@ func _on_ShotTimer_timeout():
 		velocity.x = speed * direction
 			
 func shoot():
-	yield(get_tree().create_timer(0.5), "timeout")
-	var misil = Missile.instance()
-	#emit_signal("sound_missile", 2)
-	misil.target = target
-	misil.position = pos
-	add_child(misil)
+	if isAlive:
+		yield(get_tree().create_timer(0.5), "timeout")
+		var misil = Missile.instance()
+		#emit_signal("sound_missile", 2)
+		misil.target = target
+		misil.position = pos
+		add_child(misil)
