@@ -122,3 +122,7 @@ func _on_ParedMaderaOtroColor8_detonate(value):
 func _on_ParedMaderaOtroColor3_detonate(value):
 	fxPlayer2.stream = fxSoundsMap2[value]
 	fxPlayer2.play()
+
+func _on_ParedMadera4_detonate(value):
+	fxPlayer2.stream = fxSoundsMap2[value]
+	fxPlayer2.play()

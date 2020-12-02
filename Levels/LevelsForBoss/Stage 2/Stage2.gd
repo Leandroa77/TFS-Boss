@@ -1,14 +1,14 @@
 extends Node2D
 
+signal backgroundMusic(value)
+
 onready var player :Character = $Character 
 onready var player_spawn_position : Position2D = $Position2DPlayerRespawn
 onready var soundPlayer = $SoundPlayer
 
 onready var restart_UI_template = preload("res://UI/Restart_UI/Restart_UI.tscn")
 onready var character_template = preload("res://Character/Character.tscn")
-
-signal backgroundMusic(value)
-
+onready var pause_template = preload("res://Pause/Pause.tscn")
 
 var ya_se_llamo_restart_ui = false
 #parche horrible para que funcione el checkpoint. por alguna razon se llama
@@ -48,11 +48,13 @@ func spawn_player():
 
 func respawn_player():
 	if !ya_se_llamo_restart_ui:
+		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
 		
 		new_player.global_position = player_spawn_position.global_position
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
+		new_player.add_child(pause)
 		#add_child(new_player)
 		call_deferred("add_child", new_player)
 		#if is_instance_valid($Enemies/EnemyFloor):
