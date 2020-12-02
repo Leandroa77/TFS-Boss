@@ -9,18 +9,12 @@ onready var character_template = preload("res://Character/Character.tscn")
 onready var wall_template = preload("res://objects/ParedMadera/ParedMaderaOtroColor.tscn")
 onready var pause_template = preload("res://Pause/Pause.tscn")
 
-var all_walls_pos = []
-
 signal backgroundMusic(value)
 
 
 var ya_se_llamo_restart_ui = false
 #parche horrible para que funcione el checkpoint. por alguna razon se llama
 # 2 veces al restart ui
-
-func get_all_walls_positions():
-	for wall in get_tree().get_nodes_in_group("wall"):
-		all_walls_pos.append(wall.global_position)
 
 func _on_Character_die(cameraDir):
 	var restart_UI:Node2D = restart_UI_template.instance()
@@ -38,7 +32,6 @@ func _on_Restart_UI_timeOutRestart():
 func _ready():
 	emit_signal("backgroundMusic", 1)
 	spawn_player()
-	get_all_walls_positions()
 	pass # Replace with function body.
 
 
@@ -50,7 +43,6 @@ func spawn_player():
 	
 
 func respawn_player():
-	destroy_all_walls()
 	if !ya_se_llamo_restart_ui:
 		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
@@ -67,7 +59,6 @@ func respawn_player():
 		
 		#ya se llamo restart ui previene que se llame mas de una vez esto.
 		ya_se_llamo_restart_ui = true
-		reset_walls()
 
 
 func set_ya_se_llamo_restart_ui(boolean):
@@ -84,16 +75,3 @@ func _on_Checkpoint2_body_entered(body):
 	if (body.is_in_group("player")):
 		player_spawn_position.position = body.position
 	pass # Replace with function body.
-
-func reset_walls():
-	var index = 1
-	for wall_pos in all_walls_pos:
-		var new_wall = wall_template.instance()
-		new_wall.global_position = wall_pos
-		new_wall.connect("detonate", soundPlayer, "_on_ParedMaderaOtroColor" + str(index) + "_detonate")
-		call_deferred("add_child", new_wall)
-		index += 1
-
-func destroy_all_walls():
-	for wall in get_tree().get_nodes_in_group("wall"):
-		wall.queue_free()
