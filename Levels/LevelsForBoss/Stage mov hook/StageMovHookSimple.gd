@@ -10,6 +10,7 @@ onready var wall_template = preload("res://objects/ParedMadera/ParedMaderaOtroCo
 onready var enemy_template = preload("res://Enemies/enemy ground/Enemy.tscn")
 onready var platform_template = preload("res://objects/platforms/falling/PlatformFalling.tscn")
 onready var movHook_simple_template = preload("res://objects/hook/HookMovSimple.tscn")
+onready var pause_template = preload("res://Pause/Pause.tscn")
 
 var all_walls_pos: Array 
 var all_enemies_pos: Array 
@@ -39,7 +40,7 @@ func _on_Restart_UI_timeOutRestart():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	emit_signal("backgroundMusic", 1)
+	emit_signal("backgroundMusic", 4)
 	get_all_walls_positions()
 	get_all_enemies_positions()
 	get_all_platforms_positions()
@@ -68,11 +69,13 @@ func respawn_player():
 		destroy_all_enemies()
 		destroy_all_platforms()
 		destroy_all_mov_hook_simples()
+		var pause = pause_template.instance()
 		var new_player:Character = character_template.instance()
 		
 		new_player.global_position = player_spawn_position.global_position
 		new_player.connect("die", self,"_on_Character_die")
 		new_player.connect("sound", soundPlayer,"_on_Character_sound")
+		new_player.add_child(pause)
 		#add_child(new_player)
 		player = new_player
 		call_deferred("add_child", new_player)
@@ -146,10 +149,13 @@ func destroy_all_platforms():
 		platform.queue_free()
 
 func reset_walls():
+	var index = 1
 	for wall_pos in all_walls_pos:
 		var new_wall = wall_template.instance()
 		new_wall.global_position = wall_pos
+		new_wall.connect("detonate", soundPlayer, "_on_ParedMaderaOtroColor" + str(index) + "_detonate")
 		call_deferred("add_child", new_wall)
+		index += 1
 	pass
 
 func reset_platforms():
@@ -162,6 +168,7 @@ func reset_movhook_simples():
 	for hookmovsimple_pos in all_movhook_simple_pos:
 		var new_hookmovsimple = movHook_simple_template.instance()
 		new_hookmovsimple.global_position = hookmovsimple_pos
+		new_hookmovsimple.speed = 222
 		call_deferred("add_child", new_hookmovsimple)
 
 func reset_enemies():

@@ -34,7 +34,7 @@ func _on_Restart_UI_timeOutRestart():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	emit_signal("backgroundMusic", 1)
+	emit_signal("backgroundMusic", 5)
 	get_all_walls_positions()
 	spawn_player()
 	plataforma_troll_pos = $PlatformSleeping.global_position
@@ -51,7 +51,6 @@ func _ready():
 func spawn_player():
 	#call_deferred("add_child", player)
 	player.global_position = player_spawn_position.global_position
-	
 
 func respawn_player():
 	if !ya_se_llamo_restart_ui:

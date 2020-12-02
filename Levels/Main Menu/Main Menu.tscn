@@ -89,14 +89,14 @@ animations = [ {
 "name": "walk",
 "speed": 20.0
 }, {
-"frames": [ ExtResource( 29 ) ],
-"loop": true,
-"name": "on_air",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 30 ), ExtResource( 26 ), ExtResource( 45 ), ExtResource( 16 ), ExtResource( 27 ), ExtResource( 19 ), ExtResource( 29 ), ExtResource( 28 ) ],
 "loop": true,
 "name": "jump",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": true,
+"name": "on_air",
 "speed": 10.0
 } ]
 
