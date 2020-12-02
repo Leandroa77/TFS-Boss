@@ -20,7 +20,7 @@
 [ext_resource path="res://objects/exit/Exit.tscn" type="PackedScene" id=19]
 [ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=20]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 512, 16 )
 
 [node name="StageAcido" type="Node2D"]
@@ -352,14 +352,14 @@ position = Vector2( 1001.2, 7504.55 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint1"]
 position = Vector2( 71.7344, 60.4082 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Checkpoint2" type="Area2D" parent="Checkpoints"]
 position = Vector2( 4296, 7424 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Checkpoints/Checkpoint2"]
 position = Vector2( 0, 80.0005 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Position2DPlayerRespawn" type="Position2D" parent="."]
 position = Vector2( -2472, 7544 )

@@ -21,6 +21,7 @@ func _on_Area2D_body_entered(body):
 	if body.is_in_group("player"):
 		$TimerFade.start()
 		$TimerQueueOut.start()
+		$Area2D.set_process(false)
 	pass # Replace with function body.
 
 func fade_in():

@@ -12,11 +12,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "falling",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 8 ) ],
 "loop": true,
 "name": "idle",
@@ -26,6 +21,11 @@ animations = [ {
 "loop": true,
 "name": "walk",
 "speed": 7.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "falling",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -33,6 +33,7 @@ extents = Vector2( 22.3436, 19.1483 )
 
 [node name="EnemyFloor" type="KinematicBody2D" groups=[
 "enemy",
+"enemyfloor",
 ]]
 scale = Vector2( 1.5, 1.5 )
 collision_layer = 8
