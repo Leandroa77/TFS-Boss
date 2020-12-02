@@ -272,10 +272,13 @@ position = Vector2( 848, 5304 )
 position = Vector2( 1224, 5304 )
 
 [node name="Hook28" parent="Hooks" instance=ExtResource( 6 )]
-position = Vector2( 4624, 7304 )
+position = Vector2( 4617.27, 7304 )
+
+[node name="Hook45" parent="Hooks" instance=ExtResource( 6 )]
+position = Vector2( 4714.82, 7095.46 )
 
 [node name="Hook29" parent="Hooks" instance=ExtResource( 6 )]
-position = Vector2( 4624, 7080 )
+position = Vector2( 4638.25, 6385.1 )
 
 [node name="Hook30" parent="Hooks" instance=ExtResource( 6 )]
 position = Vector2( 3968, 6984 )
@@ -284,7 +287,7 @@ position = Vector2( 3968, 6984 )
 position = Vector2( 3648, 6816 )
 
 [node name="Hook32" parent="Hooks" instance=ExtResource( 6 )]
-position = Vector2( 3712, 6552 )
+position = Vector2( 3669.24, 6559.13 )
 
 [node name="Hook33" parent="Hooks" instance=ExtResource( 6 )]
 position = Vector2( 4744, 6232 )
@@ -369,13 +372,13 @@ position = Vector2( -8, 72 )
 shape = SubResource( 2 )
 
 [node name="Position2DPlayerRespawn" type="Position2D" parent="."]
-position = Vector2( -2472, 7552 )
+position = Vector2( -2381.1, 7535.7 )
 
 [node name="PlatformSleeping" parent="." instance=ExtResource( 18 )]
 position = Vector2( 4752, 5424 )
 
 [node name="Character" parent="." instance=ExtResource( 9 )]
-position = Vector2( -2473.31, 7542.64 )
+position = Vector2( -2416.74, 7542.64 )
 
 [node name="Pause" parent="Character" instance=ExtResource( 21 )]
 
@@ -403,9 +406,14 @@ tile_data = PoolIntArray( 7078022, 33, 0, 7078023, 49, 0, 7078024, 49, 0, 707802
 [connection signal="detonate" from="Walls/ParedMaderaOtroColor6" to="SoundPlayer" method="_on_ParedMaderaOtroColor6_detonate"]
 [connection signal="detonate" from="Walls/ParedMaderaOtroColor7" to="SoundPlayer" method="_on_ParedMaderaOtroColor7_detonate"]
 [connection signal="detonate" from="Walls/ParedMaderaOtroColor8" to="SoundPlayer" method="_on_ParedMaderaOtroColor8_detonate"]
+[connection signal="sound" from="Portals/Portal" to="SoundPlayer" method="_on_Portal_sound"]
+[connection signal="sound" from="Portals/Portal2" to="SoundPlayer" method="_on_Portal2_sound"]
+[connection signal="sound" from="Portals/Portal3" to="SoundPlayer" method="_on_Portal3_sound"]
+[connection signal="sound" from="Portals/Portal4" to="SoundPlayer" method="_on_Portal4_sound"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint1" to="." method="_on_Checkpoint1_body_entered"]
 [connection signal="body_entered" from="Checkpoints/Checkpoint2" to="." method="_on_Checkpoint1_body_entered"]
 [connection signal="body_entered" from="Checkpoints/resetearAcidos" to="." method="_on_resetearAcidos_body_entered"]
 [connection signal="body_entered" from="Checkpoints/resetearAcidos2" to="." method="_on_resetearAcidos_body_entered"]
+[connection signal="changeMusic" from="PlatformSleeping" to="SoundPlayer" method="_on_PlatformSleeping_changeMusic"]
 [connection signal="die" from="Character" to="." method="_on_Character_die"]
 [connection signal="sound" from="Character" to="SoundPlayer" method="_on_Character_sound"]

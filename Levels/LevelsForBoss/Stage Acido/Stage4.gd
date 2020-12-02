@@ -77,6 +77,7 @@ func respawn_player():
 		reset_acids()
 		reset_walls()
 		var new_plataforma_troll = plataforma_troll_template.instance()
+		new_plataforma_troll.connect("changeMusic", soundPlayer, "_on_PlatformSleeping_changeMusic")
 		new_plataforma_troll.global_position = plataforma_troll_pos
 		call_deferred("add_child", new_plataforma_troll)
 
@@ -88,14 +89,11 @@ func set_ya_se_llamo_restart_ui(boolean):
 func _on_Checkpoint1_body_entered(body):
 	if (body.is_in_group("player")):
 		player_spawn_position.position = body.position
-		reset_acids()
-	pass # Replace with function body.
 
 func reset_acids():
 	for acid in get_tree().get_nodes_in_group("acid"):
 		acid.reset_position()
-	pass
-	
+
 func get_all_walls_positions():
 	for wall in get_tree().get_nodes_in_group("wall"):
 		all_walls_pos.append(wall.global_position)
@@ -121,11 +119,7 @@ func reset_walls():
 func _on_Checkpoint2_body_entered(body):
 	if (body.is_in_group("player")):
 		player_spawn_position.position = body.position
-	pass # Replace with function body.
-
-
 
 func _on_resetearAcidos_body_entered(body):
 	if (body.is_in_group("player")):
 		reset_acids()
-	pass # Replace with function body.
