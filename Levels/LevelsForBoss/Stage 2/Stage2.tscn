@@ -17,6 +17,7 @@
 extents = Vector2( 8, 112 )
 
 [node name="Stage2" type="Node2D"]
+position = Vector2( -16, 0 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 376.0 ]

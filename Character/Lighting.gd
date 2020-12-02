@@ -57,7 +57,7 @@ func _input(event):
 	
 func update(delta):
 	#owner.itimer.start()
-	speed = 1500
+	speed = 1400#1500
 	velocity = self.direction * speed
 	velocity.y += gravity * delta
 	
